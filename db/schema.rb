@@ -10,26 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_075652) do
+ActiveRecord::Schema.define(version: 2020_09_06_152052) do
 
-  create_table "calenders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "calendars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "image"
     t.bigint "user_id"
     t.bigint "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["group_id"], name: "index_calenders_on_group_id"
-    t.index ["user_id"], name: "index_calenders_on_user_id"
+    t.index ["group_id"], name: "index_calendars_on_group_id"
+    t.index ["user_id"], name: "index_calendars_on_user_id"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text"
     t.bigint "user_id"
-    t.bigint "calender_id"
+    t.bigint "calendar_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["calender_id"], name: "index_comments_on_calender_id"
+    t.index ["calendar_id"], name: "index_comments_on_calendar_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(version: 2020_09_05_075652) do
     t.date "start_day"
     t.date "end_day"
     t.bigint "user_id"
-    t.bigint "calender_id"
+    t.bigint "calendar_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["calender_id"], name: "index_plans_on_calender_id"
+    t.index ["calendar_id"], name: "index_plans_on_calendar_id"
     t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
@@ -78,12 +78,12 @@ ActiveRecord::Schema.define(version: 2020_09_05_075652) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "calenders", "groups"
-  add_foreign_key "calenders", "users"
-  add_foreign_key "comments", "calenders"
+  add_foreign_key "calendars", "groups"
+  add_foreign_key "calendars", "users"
+  add_foreign_key "comments", "calendars"
   add_foreign_key "comments", "users"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
-  add_foreign_key "plans", "calenders"
+  add_foreign_key "plans", "calendars"
   add_foreign_key "plans", "users"
 end

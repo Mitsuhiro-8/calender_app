@@ -1,5 +1,5 @@
-class Calender < ApplicationRecord
-
+class Calendar < ApplicationRecord
+  
   has_many :plans
   has_many :comments
   belongs_to :user

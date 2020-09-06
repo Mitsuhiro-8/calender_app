@@ -1,6 +1,6 @@
-class CreateCalenders < ActiveRecord::Migration[6.0]
+class CreateCalendars < ActiveRecord::Migration[6.0]
   def change
-    create_table :calenders do |t|
+    create_table :calendars do |t|
       t.string :name
       t.string :image
       t.references :user, foreign_key: true

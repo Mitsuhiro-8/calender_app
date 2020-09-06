@@ -23,7 +23,7 @@ Things you may want to cover:
 
 * ...
 
-# calender_app DB設計
+# calendar_app DB設計
 
 ## users
 |Column|Type|Options|
@@ -34,7 +34,7 @@ Things you may want to cover:
 ### Association
 - has_many :group_users
 - has_many :groups, through: :group_users
-- has_many :calenders
+- has_many :calendars
 - has_many :comments
 - has_many :plans
 
@@ -45,7 +45,7 @@ Things you may want to cover:
 ### Association
 - has_many :group_users
 - has_many :users, trough: :group_users
-- has_many :calenders
+- has_many :calendars
 
 ## group_users
 |Column|Type|Options|
@@ -56,7 +56,7 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :group
 
-## calenders
+## calendars
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -79,17 +79,17 @@ Things you may want to cover:
 |start_day|date|null: false|
 |end_day|date|
 |user_id|integer|null: false, foreign_key|
-|calender_id|integer|null: false, foreign_key: true|
+|calendar_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :calender
+- belongs_to :calendar
 
 ## comments
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|calender_id|integer|null: false, foreign_key: true|
+|calendar_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :calender
+- belongs_to :calendar

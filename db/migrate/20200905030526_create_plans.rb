@@ -8,7 +8,7 @@ class CreatePlans < ActiveRecord::Migration[6.0]
       t.date :start_day
       t.date :end_day
       t.references :user, foreign_key: :true
-      t.references :calender, foreign_key: :true
+      t.references :calendar, foreign_key: :true
 
       t.timestamps
     end
