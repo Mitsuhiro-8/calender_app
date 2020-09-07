@@ -1,0 +1,20 @@
+.menu{class: "container d-flex justify-content-between"}
+  .left-items{class: "d-flex justify-content-around"}
+    #add-button
+      = icon('fas', 'edit')
+
+    .year-contents{class: "d-flex justify-content-around ml-5"}
+      #previous
+        = icon('fas', 'arrow-alt-circle-left')
+      #year-month{class: "border border-dark rounded-pill mx-2 px-1"}
+      #next
+        = icon('fas', 'arrow-alt-circle-right')
+
+  .right-items
+    .change-contents{class: "d-flex justify-content-around"}
+      #today{class: "border border-dark"}
+        今日
+      #change-year{class: "border border-dark mx-2"}
+        年
+      #change-month{class: "border border-dark"}
+        月

@@ -1,0 +1,112 @@
+// ヘッダー
+.header {
+  height: 50px;
+  align-items: center;
+}
+
+
+// メニュー
+.menu {
+  height: 50px;
+  align-items: center;
+
+  #add-button {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  #previous {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  #year-month {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  #next {
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  #today {
+    cursor: pointer;
+    user-select: none;
+  }
+  #change-year {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  #change-month {
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+
+// カレンダー
+.calendar {
+  height: calc(80vh);
+  padding: 0;
+  margin: auto;
+  
+  .day-of-the-week {
+    background-color: gray;
+    border-bottom: 1px solid black;
+    
+    .day-week {
+      text-align:center;
+      flex-grow: 1;
+      
+      &:first-child {
+        color: red;
+      }
+      
+      &:last-child {
+        color: blue;
+      }
+    }
+  }
+  
+  #weeks {
+    height: 90%;
+    
+    .week {
+      background-color: cadetblue;
+      height: calc(100% / 6);
+      border-bottom: 1px solid black;
+      display: flex;
+      justify-content: space-around;
+      
+      .day {
+        text-align: center;
+        width: calc(100% / 7);
+        flex: auto;
+
+        &:first-child {
+          color: red;
+        }
+        
+        &:last-child {
+          color: blue;
+        }
+        
+        &:hover {
+          box-shadow: 0 0 10px black;
+        }
+
+        
+      }
+      .disabled {
+        opacity: 0.3;
+      }
+      
+      .today {
+        background-color: white;
+      }
+
+    }
+  }
+}
