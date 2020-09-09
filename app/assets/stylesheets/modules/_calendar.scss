@@ -1,9 +1,7 @@
 // ヘッダー
 .header {
   height: 50px;
-  align-items: center;
 }
-
 
 // メニュー
 .menu {
@@ -74,7 +72,7 @@
     height: 90%;
     
     .week {
-      background-color: cadetblue;
+      background-color: whitesmoke;
       height: calc(100% / 6);
       border-bottom: 1px solid black;
       display: flex;
@@ -83,7 +81,6 @@
       .day {
         text-align: center;
         width: calc(100% / 7);
-        flex: auto;
 
         &:first-child {
           color: red;
@@ -104,7 +101,7 @@
       }
       
       .today {
-        background-color: white;
+        background-color: palegreen;
       }
 
     }

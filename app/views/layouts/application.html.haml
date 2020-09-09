@@ -1,5 +1,5 @@
 !!!
-%html
+%html{class: 'vh-100 bg-light'}
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title CalenderApp
@@ -7,6 +7,6 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application'
-  %body
+  %body{class: 'container'}
     = render 'layouts/notifications'
     = yield

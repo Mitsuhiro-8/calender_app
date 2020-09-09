@@ -2,6 +2,7 @@
 
 window.addEventListener("load", function() {
 
+  console.clear();
   {
     const today = new Date();
     let year = today.getFullYear();

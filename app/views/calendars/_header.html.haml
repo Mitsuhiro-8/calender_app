@@ -1,11 +1,18 @@
-.header{class: "container d-flex justify-content-between"}
-  .header-left{class: "d-flex justify-content-between"}
-    .tittle
-      タイトル
-    .user{class: "ml-5"}
-      みつひろ
+.header{class: "bg-info text-white"}
+  %nav{class: "d-flex justify-content-between"}
+    .headerLeft{class: "btn-toolbar"} 
+      .tittle
+        Schedule share
+      .user{class: "ml-5"}
+        %span
+          = link_to edit_user_path(current_user), class: 'text-decoration-none' do
+            = icon('fas', 'user-edit')
 
-  .header-right
-    .group
-      .members
-        みつひろ
+    .headerRight
+      .group{class: "d-flex justify-content-end"}
+        .group__create
+          = link_to 'グループ作成', new_group_path
+        .group__edit{class: "mx-2"}
+          = link_to 'グループ編集', '#'
+        .group__members
+          メンバー名

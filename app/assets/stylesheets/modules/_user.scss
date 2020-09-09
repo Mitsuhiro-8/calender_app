@@ -1,0 +1,99 @@
+// 新規アカウント・ログイン画面
+.AccountPage {
+  margin-top: 5em;
+  width: 60%;
+  height: 80%;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  &__title {
+    padding: 1em;
+    width: 80%;
+
+    h3 {
+      font-weight: bold;
+      font-size: x-large;
+    }
+    p {
+      margin-bottom: 0;
+      font-size: small;
+    }
+  }
+
+
+  &__form {
+    padding: 1em;
+    width:80%;
+
+  }
+}
+
+.FormField {
+  margin-bottom: 0.5em;
+
+  &__label--normal {
+    
+    i {
+      font-size: 11px;
+    }
+
+// エラー
+    .field_with_errors {
+      display: inline-block;
+      color: tomato;
+      font-weight: 400;
+    }
+  }
+
+  &__input--normal {
+    // input {
+    //   width: 80%;
+    //   box-sizing: border-box;
+    //   letter-spacing: 1px;
+    // }
+    .field_with_errors {
+      position: relative;
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 5px;
+        background-color: tomato;
+      }
+    }
+  }
+}
+
+
+// エラー部分
+#error_explanation {
+  padding: 20px 30px;
+  border-radius: 2px;
+
+  h2 {
+    margin-bottom: 10px;
+    color: #d65f4c;
+    font-size: 14px;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 17px;
+    list-style: square;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+  }
+}
