@@ -1,7 +1,7 @@
 .group__edit{class: 'container'}
   .groupPage__title
     %h3 グループ編集
-    = link_to "戻る", calendars_path, class: 'btn btn-primary text-left'
+    = link_to "戻る", :back, class: 'btn btn-primary text-left'
   .groupPage__form
     = form_with model: @group, local: true do |f|
       - if @group.errors.any?
