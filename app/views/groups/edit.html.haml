@@ -1,0 +1,24 @@
+.group__edit{class: 'container'}
+  .groupPage__title
+    %h3 グループ編集
+    = link_to "戻る", calendars_path, class: 'btn btn-primary text-left'
+  .groupPage__form
+    = form_with model: @group, local: true do |f|
+      - if @group.errors.any?
+        = render "groups/error_messages"
+      .formField{class: 'mb-3'}
+        .formField__label
+          = f.label :name, 'グループ名'
+        .formField__input
+          = f.text_field :name, class: 'form-control', placeholder: 'グループ名を入力してください'
+      .formField{class: 'mb-3'}
+        .fromField__label
+          = f.label :user_ids, 'グループメンバー'
+        .formField__input
+          = f.text_field :user_ids, class: 'form-control', value: "", placeholder: '追加したいメンバーの名前を入力してください'
+        .groupMember{class: 'd-flex'}
+        - @group.users.each do |user|
+          - if current_user.name != user.name
+            .groupMember__name{class: 'd-inline bg-dark text-white'}
+              =user.name
+      = f.submit "保存", class: 'btn btn-primary'

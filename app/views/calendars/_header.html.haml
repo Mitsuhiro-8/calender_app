@@ -1,4 +1,4 @@
-.header{class: "bg-info text-white"}
+.header{class: "px-3 bg-info text-white"}
   %nav{class: "d-flex justify-content-between"}
     .headerLeft{class: "btn-toolbar"} 
       .tittle
@@ -7,12 +7,15 @@
         %span
           = link_to edit_user_path(current_user), class: 'text-decoration-none' do
             = icon('fas', 'user-edit')
-
     .headerRight
-      .group{class: "d-flex justify-content-end"}
-        .group__create
-          = link_to 'グループ作成', new_group_path
-        .group__edit{class: "mx-2"}
-          = link_to 'グループ編集', '#'
-        .group__members
-          メンバー名
+      .group{class: "btn-group"}
+        .group__create{class: "mr-3"}
+          = link_to 'グループ作成', new_group_path, class: "btn btn-primary"
+        
+        .group__list{class: "d-flex flex-column"}
+          %button#group__btn{type: "button", class: "btn btn-primary dropdown-toggle"}
+            グループリスト
+            %ul#group__name{class: "bg-primary w-100"}
+              - current_user.groups.each do |group|
+                %li
+                  = link_to group.name, edit_group_path(group), class: "w-100 btn btn-primary"

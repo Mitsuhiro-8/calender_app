@@ -1,8 +1,20 @@
 'use strict';
 
 window.addEventListener("load", function() {
-
   console.clear();
+  // ヘッダーのドロップダウンリスト
+  {
+    const groupBtn = document.getElementById('group__btn');
+    const groupName = document.getElementById('group__name');
+    if(groupBtn) {
+      groupBtn.addEventListener("click", function() {
+        groupName.classList.toggle('open');
+      });
+    }
+  }
+
+
+  // カレンダーの日付取得
   {
     const today = new Date();
     let year = today.getFullYear();
