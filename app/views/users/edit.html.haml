@@ -1,7 +1,7 @@
 .AccountPage{class: 'container'}
   .AccountPage__title
     %h3 アカウントの編集
-    = link_to "ログアウト", '#', class: 'btn btn-secondary'
+    = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-secondary'
     = link_to "戻る", :back, class: 'btn btn-secondary'
   .AccountPage__form
     = form_for(current_user) do |f|

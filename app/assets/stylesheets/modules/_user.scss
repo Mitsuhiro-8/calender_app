@@ -51,11 +51,7 @@
   }
 
   &__input--normal {
-    // input {
-    //   width: 80%;
-    //   box-sizing: border-box;
-    //   letter-spacing: 1px;
-    // }
+
     .field_with_errors {
       position: relative;
 
@@ -75,7 +71,7 @@
 
 
 // エラー部分
-#error_explanation {
+.error_explanation {
   padding: 20px 30px;
   border-radius: 2px;
 

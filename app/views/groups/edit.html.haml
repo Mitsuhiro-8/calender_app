@@ -15,7 +15,7 @@
         .fromField__label
           = f.label :user_ids, 'グループメンバー'
         .formField__input
-          = f.text_field :user_ids, class: 'form-control', value: "", placeholder: '追加したいメンバーの名前を入力してください'
+          = f.collection_check_boxes :user_ids, User.all, :id, :name
         .groupMember{class: 'd-flex'}
         - @group.users.each do |user|
           - if current_user.name != user.name
