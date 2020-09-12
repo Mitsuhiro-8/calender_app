@@ -11,27 +11,11 @@
         = icon('fas', 'caret-square-right')
       #yearMonth__btn{class: "btn btn-light"}
 
-  .right__items
-    .calendar__menu{class: "d-flex align-items-center"}
-      #calendar__add
-        = link_to new_calendar_path, class: 'text-decoration-none' do
-          = icon('fas', 'calendar-plus')
-      #calendar__edit{class: "mx-3"}
-        = link_to edit_calendar_path(@calendar), class: 'text-decoration-none' do
-          = icon('fas', 'calendar-check')
-      .calendar__list
-        %button#calendar__btn{class: "btn"}
-          = link_to '#' do
-            =icon('fas', 'calendar-alt')
-            %ul#calendar__name{class: "bg-primary"}
-              - current_user.calendars.each do |calendar|
-                %li{class: "d-block"}
-                  = link_to calendar.name, calendar_path(calendar), class: "btn btn-primary d-block"
-      
-      .change__contents{class: "d-flex justify-content-around"}
-        #today{class: "btn btn-light"}
-          今日
-        #change__year{class: "btn btn-light"}
-          年
-        #change__month{class: "btn btn-light"}
-          月
+  .right__items 
+    .change__contents{class: "d-flex justify-content-around"}
+      #today{class: "btn btn-light"}
+        今日
+      #change__year{class: "btn btn-light"}
+        年
+      #change__month{class: "btn btn-light"}
+        月

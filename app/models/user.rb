@@ -6,9 +6,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  has_many :group_users
-  has_many :groups, through: :group_users
-  has_many :calendars
+  has_many :calendar_users
+  has_many :calendars, through: :calendar_users
   has_many :comments
   has_many :plans
 

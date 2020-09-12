@@ -2,17 +2,7 @@
 
 window.addEventListener("load", function() {
   console.clear();
-  // ヘッダーのグループリスト
-  {
-    const groupBtn = document.getElementById('group__btn');
-    const groupName = document.getElementById('group__name');
-    if(groupBtn) {
-      groupBtn.addEventListener("click", function() {
-        groupName.classList.toggle('open');
-      });
-    }
-  }
-  // メニューのカレンダーリスト
+  // ヘッダーのカレンダーリスト
   {
     const calendarBtn = document.getElementById('calendar__btn');
     const calendarName = document.getElementById('calendar__name');
@@ -22,7 +12,17 @@ window.addEventListener("load", function() {
       });
     }
   }
-
+  // ヘッダーのメンバーリスト
+  {
+    const memberBtn = document.getElementById('member__btn');
+    const memberName = document.getElementById('member__name');
+    if(memberBtn) {
+      memberBtn.addEventListener("click", function() {
+        memberName.classList.toggle('open');
+      });
+    }
+  }
+  
 
   // カレンダーの日付取得
   {
