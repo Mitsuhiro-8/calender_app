@@ -2,13 +2,23 @@
 
 window.addEventListener("load", function() {
   console.clear();
-  // ヘッダーのドロップダウンリスト
+  // ヘッダーのグループリスト
   {
     const groupBtn = document.getElementById('group__btn');
     const groupName = document.getElementById('group__name');
     if(groupBtn) {
       groupBtn.addEventListener("click", function() {
         groupName.classList.toggle('open');
+      });
+    }
+  }
+  // メニューのカレンダーリスト
+  {
+    const calendarBtn = document.getElementById('calendar__btn');
+    const calendarName = document.getElementById('calendar__name');
+    if(calendarBtn) {
+      calendarBtn.addEventListener("click", function() {
+        calendarName.classList.toggle('open');
       });
     }
   }
@@ -87,7 +97,7 @@ window.addEventListener("load", function() {
     // 西暦の表示
     function renderTitle() {
       const title = `${year + "年"}${month + 1 + "月"}`;
-      document.getElementById('year-month').textContent = title;
+      document.getElementById('yearMonth__btn').textContent = title;
     }
 
     // 一週間ごとに要素を作成
@@ -161,7 +171,7 @@ window.addEventListener("load", function() {
       }
       createCalendar();
     });
-
+    // 今日の日付を取得
     document.getElementById('today').addEventListener('click', () => {
       year = today.getFullYear();
       month = today.getMonth();

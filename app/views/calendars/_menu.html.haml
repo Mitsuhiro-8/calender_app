@@ -1,20 +1,37 @@
 .menu{class: "container d-flex justify-content-between"}
-  .left-items{class: "d-flex justify-content-around"}
-    #add-button
-      = icon('fas', 'edit')
+  .left__items{class: "d-flex justify-content-around align-items-center"}
+    #plan
+      = link_to '#' do
+        = icon('fas', 'edit')
 
-    .year-contents{class: "d-flex justify-content-around ml-5"}
+    .year__contents{class: "d-flex justify-content-around align-items-center ml-5"}
       #previous
-        = icon('fas', 'arrow-alt-circle-left')
-      #year-month{class: "border border-dark rounded-pill mx-2 px-1"}
-      #next
-        = icon('fas', 'arrow-alt-circle-right')
+        = icon('fas', 'caret-square-left')
+      #next{class: "mx-3"}
+        = icon('fas', 'caret-square-right')
+      #yearMonth__btn{class: "btn btn-light"}
 
-  .right-items
-    .change-contents{class: "d-flex justify-content-around"}
-      #today{class: "border border-dark"}
-        今日
-      #change-year{class: "border border-dark mx-2"}
-        年
-      #change-month{class: "border border-dark"}
-        月
+  .right__items
+    .calendar__menu{class: "d-flex align-items-center"}
+      #calendar__add
+        = link_to new_calendar_path, class: 'text-decoration-none' do
+          = icon('fas', 'calendar-plus')
+      #calendar__edit{class: "mx-3"}
+        = link_to edit_calendar_path(@calendar), class: 'text-decoration-none' do
+          = icon('fas', 'calendar-check')
+      .calendar__list
+        %button#calendar__btn{class: "btn"}
+          = link_to '#' do
+            =icon('fas', 'calendar-alt')
+            %ul#calendar__name{class: "bg-primary"}
+              - current_user.calendars.each do |calendar|
+                %li{class: "d-block"}
+                  = link_to calendar.name, calendar_path(calendar), class: "btn btn-primary d-block"
+      
+      .change__contents{class: "d-flex justify-content-around"}
+        #today{class: "btn btn-light"}
+          今日
+        #change__year{class: "btn btn-light"}
+          年
+        #change__month{class: "btn btn-light"}
+          月

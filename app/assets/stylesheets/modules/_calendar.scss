@@ -28,7 +28,7 @@
   height: 50px;
   align-items: center;
 
-  #add-button {
+  #plan {
     cursor: pointer;
     user-select: none;
   }
@@ -38,7 +38,7 @@
     user-select: none;
   }
 
-  #year-month {
+  #yearMonth__btn {
     cursor: pointer;
     user-select: none;
   }
@@ -52,15 +52,38 @@
     cursor: pointer;
     user-select: none;
   }
-  #change-year {
+  #change__year {
     cursor: pointer;
     user-select: none;
   }
 
-  #change-month {
+  #change__month {
     cursor: pointer;
     user-select: none;
   }
+  i {
+    font-size: medium;
+  }
+}
+
+.calendar__list {
+
+  ul {
+    width: 10em;
+    position: absolute;
+    top: 3em;
+    left: 0;
+    border-radius: 0.5em;
+    display: none;
+
+    &.open {
+      display: block;
+    }
+  }
+}
+
+#calendar__btn {
+  position: relative;
 }
 
 
