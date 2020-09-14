@@ -5,6 +5,7 @@ class CalendarsController < ApplicationController
   
   def show
     @calendar = Calendar.find(params[:id])
+    @plan = Plan.new
   end
 
   def new

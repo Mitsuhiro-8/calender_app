@@ -1,0 +1,54 @@
+#mask {
+  background-color: black;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+
+  &.hidden {
+    display:none;
+  }
+}
+
+#plan {
+  background-color: rgb(133, 186, 235);
+  width: 50%;
+  border: none;
+  border-radius: 0.5em;
+  box-shadow: 0 0 5px black;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  animation: modal 0.5s forwards;
+  z-index: 2;
+
+  &.hidden {
+    display:none;
+  }
+}
+
+#plan__close--new {
+  cursor: pointer;
+  user-select: none;
+}
+
+// モーダルアニメーション
+@keyframes modal {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+    animation-timing-function: ease-out;
+  } 
+
+  100% {
+    transform: translateZ(5px);
+    transform: none;
+    opacity: 1;
+    
+  } 
+}

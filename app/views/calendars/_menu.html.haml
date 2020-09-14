@@ -1,8 +1,8 @@
 .menu{class: "container d-flex justify-content-between"}
   .left__items{class: "d-flex justify-content-around align-items-center"}
-    #plan__btn{class: "btn"}
-      = link_to new_calendar_plan_path(params[:id]) do
-        = icon('fas', 'edit')
+    %button#plan__btn{class: "btn"}
+      = icon('fas', 'edit')
+      -# = link_to new_calendar_plan_path(params[:id]) do
 
     .year__contents{class: "d-flex justify-content-around align-items-center ml-5"}
       #previous

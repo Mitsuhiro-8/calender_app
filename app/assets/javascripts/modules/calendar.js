@@ -22,6 +22,25 @@ window.addEventListener("load", function() {
       });
     }
   }
+  // メニューの予定追加ボタン
+  {
+    const planBtn = document.getElementById('plan__btn');
+    const plan = document.getElementById('plan');
+    const close = document.getElementById('plan__close--new')
+    const mask = document.getElementById('mask');
+
+    planBtn.addEventListener("click", function() {
+      plan.classList.remove('hidden');
+      mask.classList.remove('hidden'); 
+    });
+    close.addEventListener("click", function() {
+      plan.classList.add('hidden');
+      mask.classList.add('hidden'); 
+    });
+    mask.addEventListener("click", function() {
+      close.click();
+    });
+  }
   
 
   // カレンダーの日付取得
@@ -40,7 +59,7 @@ window.addEventListener("load", function() {
         dates.unshift({
           date: d - i,
           isToday: false,
-          isDisabled: true,
+          isDisabledBack: true,
         });
       }
 
@@ -78,7 +97,7 @@ window.addEventListener("load", function() {
         dates.push({
           date: i,
           isToday: false,
-          isDisabled: true,
+          isDisabledPrev: true,
         });
       }
       return dates;
@@ -123,6 +142,13 @@ window.addEventListener("load", function() {
 
 
         week.forEach(date => {
+          // 日付とイベント用のdiv作成
+          const dayCell = document.createElement('div');
+          dayCell.classList.add('dayCell');
+          dayCell.id = `${year}-${(("00") + (month+1)).slice(-2)}-${(("00") + (date.date)).slice(-2)}`
+          // dayCell.dataset.day = `${year}-${(("00") + (month+1)).slice(-2)}-${(("00") + (date.date)).slice(-2)}`;
+
+          // 日付入りのdiv作成
           const dayDiv = document.createElement('div');
           dayDiv.classList.add('day');
           dayDiv.textContent = date.date;
@@ -133,12 +159,22 @@ window.addEventListener("load", function() {
             dayDiv.classList.add('today');
           }
 
-          // disabledクラスを付与
-          if (date.isDisabled) {
-            dayDiv.classList.add('disabled');
+          // disabledクラスとデータタイプを付与
+          if (date.isDisabledBack) {
+            dayDiv.classList.add('disabledBack');
+            dayCell.id = `${year}-${(("00") + (month)).slice(-2)}-${(("00") + (date.date)).slice(-2)}`;
           }
-          // weekクラスの子要素としてdayクラスを配置
-          weekDiv.appendChild(dayDiv);
+
+          if (date.isDisabledPrev) {
+            dayDiv.classList.add('disabledPrev')
+            dayCell.id = `${year}-${(("00") + (month+2)).slice(-2)}-${(("00") + (date.date)).slice(-2)}`;
+          
+          }
+          // weekクラスの子要素としてdayCellクラスを配置
+          weekDiv.appendChild(dayCell);
+          // さらに子要素としてdayクラスを配置
+          dayCell.appendChild(dayDiv);
+
         });
         document.getElementById('weeks').appendChild(weekDiv);
       });
@@ -171,6 +207,7 @@ window.addEventListener("load", function() {
       }
       createCalendar();
     });
+
     // 今日の日付を取得
     document.getElementById('today').addEventListener('click', () => {
       year = today.getFullYear();
@@ -180,5 +217,27 @@ window.addEventListener("load", function() {
     });
 
     createCalendar();
+  }
+
+  // 予定追加イベント
+  {
+    // const pairId = document.getElementById()
+    // const eventDiv = document.createElement(
+      //`<div class="clickable" draggable="true">
+      //   <div class="">
+      //     <div class="css-hh5x8d ers05i62">
+      //     </div>
+      //   </div>
+      //     <div class="">
+      //       <div class="">
+      //         <span class="">タイトル</span>
+      //         <span class="" role="button"></span>
+      //       </div>
+      //     </div>
+      //   <div class="">開始時間</div>
+      // </div>`
+    // );
+    // eventDiv.classList.add('event');
+    // pairId.appendChild
   }
 });

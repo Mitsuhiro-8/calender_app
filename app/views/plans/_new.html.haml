@@ -1,0 +1,43 @@
+#mask.hidden
+#plan.hidden{class: "p-5 container"}
+  .colse__btn
+    %butto#plan__close--new
+      =icon('fas', 'window-close')
+  = form_with model: [@calendar,@plan] , local: true do |f|
+    -# -if @plan.errors.any?
+    -#   = render "plan/error_messages"
+    .formField{class: "mb-3"}
+      .formField__label
+        = f.label :title, 'タイトル', class: "font-weight-bold"
+      .formField__input
+        = f.text_field :title, class: 'form-control', placeholder: 'タイトルを入力してください'
+
+    .formField{class: "mb-3 d-flex justify-content-around"}
+      .formField__startDay
+        .formField__input
+          = f.date_field :start_day
+      .form__connect
+        &sim;
+      .formField__endDay
+        .formField__input
+          = f.date_field :end_day
+
+    .formField{class: "mb-3 d-flex justify-content-around"}
+      .formField__startTime
+        .formField__input
+          = f.time_field :start_time
+      .form__connect
+        &sim;
+      .formField__endTime
+        .formField__input
+          = f.time_field :end_time
+
+    .formField{class: "mb-3 d-flex justify-content-around"}
+      .formField__content
+        .formField__label
+          = f.label :content, '内容'
+        .formField__input
+          = f.text_area :content, size: "40×40", class: "form-control"
+
+    .formSubmit{class: "text-right"}
+      = f.submit "登録", class: 'btn btn-primary'
