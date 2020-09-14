@@ -30,7 +30,7 @@
   height: 50px;
   align-items: center;
 
-  #plan {
+  #plan_btn {
     cursor: pointer;
     user-select: none;
   }
@@ -129,32 +129,37 @@
       display: flex;
       justify-content: space-around;
       
-      .day {
+      .dayCell {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
         text-align: center;
-        width: calc(100% / 7);
+          width: calc(100% / 7);
 
-        &:first-child {
-          color: red;
+          &:hover {
+            box-shadow: 0 0 5px black;
+          }
+          &:first-child {
+            color: red;
+          }
+          
+          &:last-child {
+            color: blue;
+          }
+          
+        
+
+        .disabledBack {
+          opacity: 0.3;
+        }
+        .disabledPrev {
+          opacity: 0.3;
         }
         
-        &:last-child {
-          color: blue;
+        .today {
+          background-color: rgb(133, 186, 235);
         }
-        
-        &:hover {
-          box-shadow: 0 0 5px black;
-        }
-
-        
       }
-      .disabled {
-        opacity: 0.3;
-      }
-      
-      .today {
-        background-color: rgb(133, 186, 235);
-      }
-
     }
   }
 }

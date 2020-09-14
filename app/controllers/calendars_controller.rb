@@ -1,6 +1,5 @@
 class CalendarsController < ApplicationController
 
-  
   def index
   end
   
@@ -10,12 +9,13 @@ class CalendarsController < ApplicationController
 
   def new
     @calendar = Calendar.new
+    @calendar.users << current_user
   end
 
   def create
     @calendar = Calendar.new(calendar_params)
-    if @calendar.save!
-      redirect_to calendar_path(current_user), notice: 'カレンダーを作成しました'
+    if @calendar.save
+      redirect_to calendar_path(@calendar), notice: 'カレンダーを作成しました'
     else
       render :new
     end
@@ -28,7 +28,7 @@ class CalendarsController < ApplicationController
   def update
     @calendar = Calendar.find(params[:id])
     if @calendar.update(calendar_params)
-      redirect_to edit_calendar_path(@calendar), notice: 'カレンダーを更新しました'
+      redirect_to calendar_path(params[:id]), notice: 'カレンダーを更新しました'
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class CalendarsController < ApplicationController
   private
 
   def calendar_params
-    params.require(:calendar).permit(:name, :image).merge(user_id: current_user.id)
+    params.require(:calendar).permit(:name, :image, user_ids: [])
   end
 
 end
