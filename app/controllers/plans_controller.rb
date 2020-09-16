@@ -10,12 +10,12 @@ class PlansController < ApplicationController
   end
 
   def create
-    # binding.pry
     @plan = @calendar.plans.new(plan_params)
-    if @plan.save!
+    if @plan.save
       redirect_to calendar_path(@calendar), notice: '予定を登録しました'
     else
-      render :new
+      redirect_back(fallback_location: calendar_path(@calendar))
+      flash[:notice] = "予定を登録できませんでした"
     end
   end
 
@@ -24,6 +24,19 @@ class PlansController < ApplicationController
   end
 
   def update
+    @plan = @calendar.plans.new(plan_params)
+    if @plan.save
+      redirect_to calendar_path(@calendar), notice: '予定を登録しました'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    plan = Plan.find(params[:id])
+    plan.destroy
+    redirect_to calendar_path(@calendar), notice: 'タスクが完了しました'
+
   end
 
   private

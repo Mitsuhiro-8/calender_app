@@ -1,0 +1,6 @@
+.error_explanation{class: 'alert alert-warning'}
+  %h2{class: "font-weight-bold"}
+    = "#{@plan.errors.full_messages.count}件のエラーが発生しました。"
+  %ul{class: 'text-dark text-break'}
+    - @plan.errors.full_messages.each do |message|
+      %li= message

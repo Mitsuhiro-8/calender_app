@@ -1,7 +1,12 @@
 .main
   = render "header"
   = render "menu"
+  = render "plans/new"
 
-  .main__calendar
+.main__contents{class: "d-flex"}
+  .side__bar{class: "border-right col-2"}
+    = render "plans/index"
+  .aaaaaaa{class: "border-right col-2"}
+    %p コメントリスト
+  .main__calendar{class: "col-8"}
     = render "calendar"
-    = render "plans/new"

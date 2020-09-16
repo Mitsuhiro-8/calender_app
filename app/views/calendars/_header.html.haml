@@ -1,31 +1,42 @@
-.header{class: "px-3"}
+.header{class: "px-3 border-bottom"}
   %nav{class: "h-100 d-flex justify-content-between align-items-center"}
     .headerLeft{class: "d-flex"} 
-      .tittle
-        Schedule share
-      .user{class: "ml-5"}
-        .user_edit
+      .tittle{class: "mr-5"}
+        = @calendar.name
+      .user
+        .user__edit
           = link_to edit_user_path(current_user), class: 'text-decoration-none' do
             = icon('fas', 'user-edit')
+          %span.pop
+            ユーザー編集
+      .user__name{class: "mx-1"}
+        = current_user.name
+      .user__mr
+        さんのカレンダー
     .headerRight{class: "d-flex align-items-center"}
       .calendar__menu{class: "d-flex align-items-center"}
         #calendar__add
-          = link_to '#', class: 'text-decoration-none' do
+          = link_to new_calendar_path, class: 'text-decoration-none' do
             = icon('fas', 'calendar-plus')
+          %span.pop カレンダーの新規作成
         #calendar__edit{class: "mx-3"}
           = link_to edit_calendar_path(params[:id]), class: 'text-decoration-none' do
             = icon('fas', 'calendar-check')
+          %span.pop カレンダーの編集
         .calendar__list
+          %span.pop カレンダーの切替
           %button#calendar__btn{class: "btn"}
             =icon('fas', 'calendar-alt')
-            %ul#calendar__name{class: "bg-light"}
+            %ul#calendar__name{class: "bg-primary"}
               - current_user.calendars.each do |calendar|
                 %li{class: "d-block"}
-                  = link_to calendar.name, calendar_path(calendar.id), class: "btn d-block"
+                  = link_to calendar.name, calendar_path(calendar.id), class: "btn d-block text-white"
       .member__list
+        %span.pop メンバーリスト
         #member__btn{class: "btn"}
           =icon('fas', 'users')
-          %ul#member__name{class: "bg-light"}
+        
+          %ul#member__name{class: "bg-info"}
             - @calendar.users.each do |user|
               %li
-                = link_to user.name, '#', class: "btn d-block"
+                = link_to user.name, '#', class: "btn d-block text-white"

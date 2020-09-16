@@ -1,21 +1,23 @@
-.menu{class: "container d-flex justify-content-between"}
+.menu{class: "container d-flex justify-content-between border-bottom"}
   .left__items{class: "d-flex justify-content-around align-items-center"}
-    %button#plan__btn{class: "btn"}
+    #plan__btn{class: "btn"}
       = icon('fas', 'edit')
-      -# = link_to new_calendar_plan_path(params[:id]) do
+      %span.pop 予定作成
 
+  .right__items{class: "d-flex"}
     .year__contents{class: "d-flex justify-content-around align-items-center ml-5"}
       #previous
         = icon('fas', 'caret-square-left')
+        %span.pop 前月
       #next{class: "mx-3"}
         = icon('fas', 'caret-square-right')
-      #yearMonth__btn{class: "btn btn-light"}
-
-  .right__items 
+        %span.pop 翌月
+      #yearMonth__btn{class: "mx-3 bg-light"}
     .change__contents{class: "d-flex justify-content-around"}
       #today{class: "btn btn-light"}
         今日
-      #change__year{class: "btn btn-light"}
+        %span.pop 今日のカレンダーへ
+      #change__year{class: "mx-3 btn btn-light"}
         年
       #change__month{class: "btn btn-light"}
         月

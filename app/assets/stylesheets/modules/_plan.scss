@@ -1,3 +1,43 @@
+// サイドバー
+.side__bar {
+
+  
+  .side__plans {
+    overflow: auto;
+    height: 70vh;
+  }
+
+  .plan__container {
+    height: 70px;
+    font-size: xx-small;
+    position: relative;
+    
+    .link__front {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      text-indent:-999px;
+      z-index: 1;
+      font-size: small;
+    }
+    .plan__done {
+      
+      button {
+      }
+      &--btn {
+        padding: 0;
+        font-size: medium;
+        cursor: pointer;
+        user-select: none;
+        color: blue;
+      }
+    }
+  }
+}
+  
+// plan-newビュー
 #mask {
   background-color: black;
   opacity: 0.5;
@@ -6,7 +46,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 0;
+  z-index: 5;
 
   &.hidden {
     display:none;
@@ -25,7 +65,7 @@
   right: 0;
   margin: 0 auto;
   animation: modal 0.5s forwards;
-  z-index: 2;
+  z-index: 10;
 
   &.hidden {
     display:none;
@@ -51,4 +91,44 @@
     opacity: 1;
     
   } 
+}
+
+// plan-editビュー
+#mask__show {
+  background-color: black;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+
+  &.hidden {
+    display:none;
+  }
+}
+
+#plan__edit {
+  background-color: rgb(133, 186, 235);
+  width: 50%;
+  border: none;
+  border-radius: 0.5em;
+  box-shadow: 0 0 5px black;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  animation: modal 0.5s forwards;
+  z-index: 10;
+
+  &.hidden {
+    display:none;
+  }
+}
+
+#plan__close--edit {
+  cursor: pointer;
+  user-select: none;
 }

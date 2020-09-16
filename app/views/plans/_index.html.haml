@@ -1,0 +1,30 @@
+.side__plans{class: "mt-1"}
+  .plan__list
+    %p 予定リスト
+    - @calendar.plans.order(:start_day).order(:start_time).each do |plan|
+      .plan__container{class: "p-1 mb-1 text-sm-left bg-info rounded overflow-hidden"}
+        = link_to '', edit_calendar_plan_path(plan.calendar_id, plan.id), class: "link__front"
+        .plan__content{class: "d-flex justify-content-between"}
+          .plan__top{class: "d-flex flex-column"}
+            .plan__title
+              = plan.title
+            .plan__day{class: "d-flex"}
+              .plan__startDay
+                = plan.start_day.strftime("%m月%d日")
+              %div{class: "mx-1"} &sim;
+              - if plan.end_day
+                .plan__endDay
+                  = plan.end_day.strftime("%m月%d日")
+          .plan__done
+            = button_to calendar_plan_path(plan.calendar_id, plan.id), method: :delete, class: "mr-2 btn plan__done--btn" do
+              =icon('fas', 'check-square')
+        .plan__time{class: "d-flex"}
+          .plan__startTime
+            = plan.start_time.strftime("%H:%M")
+          %div{class: "mx-1"} &sim;
+          - if plan.end_time
+            .plan__endTime
+              = plan.end_time.strftime("%H:%M")
+        .user_name{class: "d-flex"}
+          %div= plan.user.name
+          %div さんの予定

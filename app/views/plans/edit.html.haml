@@ -1,15 +1,13 @@
-#mask.hidden
-#plan.hidden{class: "p-5 container"}
-  .colse__btn{class: "mb-3"}
-    %butto#plan__close--new
-      =icon('fas', 'window-close')
-  %h3{class: "font-weight-bold"} 予定の作成
-  = form_with model: [@calendar,@plan], id: "plan__form--new", local: true do |f|
+#plan__edit{class: "p-5 container"}
+  .back__btn
+    = link_to "戻る", :back, class: 'mb-3 btn btn-primary text-left'
+  %h3{class: "font-weight-bold"} 予定の編集
+  = form_with model: [@calendar,@plan], id: "plan__form--edit", local: true do |f|
     -if @plan.errors.any?
       = render "plans/error_messages"
     .formField{class: "mb-3"}
       .formField__input
-        = f.text_field :title, class: 'form-control', placeholder: 'タイトルを入力してください'
+        = f.text_field :title, class: 'form-control'
 
     .formField{class: "mb-3 d-flex justify-content-start"}
       .formField__startDay
@@ -31,7 +29,7 @@
         .formField__input
           = f.time_field :end_time
 
-    .formField{class: "mb-3 d-flex justify-content-start"}
+    .formField{class: "mb-3 d-flex justify-content-around"}
       .formField__content
         .formField__label
           = f.label :content, '内容'
@@ -39,4 +37,4 @@
           = f.text_area :content, size: "50×40", class: "form-control"
 
     .formSubmit{class: "text-left"}
-      = f.submit "登録", class: 'btn btn-primary plan__submit'
+      = f.submit "更新", class: 'btn btn-primary plan__submit'

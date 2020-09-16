@@ -22,7 +22,7 @@ window.addEventListener("load", function() {
       });
     }
   }
-  // メニューの予定追加ボタン
+  // 予定追加ボタン(plans/new)
   {
     const planBtn = document.getElementById('plan__btn');
     const plan = document.getElementById('plan');
@@ -41,6 +41,27 @@ window.addEventListener("load", function() {
       close.click();
     });
   }
+
+  // 個別の予定表示(plans/show)
+  {
+    const planBtn = document.getElementById('plan__btn');
+    const plan = document.getElementById('plan');
+    const close = document.getElementById('plan__close--new')
+    const mask = document.getElementById('mask');
+
+    planBtn.addEventListener("click", function() {
+      plan.classList.remove('hidden');
+      mask.classList.remove('hidden'); 
+    });
+    close.addEventListener("click", function() {
+      plan.classList.add('hidden');
+      mask.classList.add('hidden'); 
+    });
+    mask.addEventListener("click", function() {
+      close.click();
+    });
+  }
+
   
 
   // カレンダーの日付取得
@@ -221,23 +242,60 @@ window.addEventListener("load", function() {
 
   // 予定追加イベント
   {
-    // const pairId = document.getElementById()
-    // const eventDiv = document.createElement(
-      //`<div class="clickable" draggable="true">
-      //   <div class="">
-      //     <div class="css-hh5x8d ers05i62">
-      //     </div>
-      //   </div>
-      //     <div class="">
-      //       <div class="">
-      //         <span class="">タイトル</span>
-      //         <span class="" role="button"></span>
-      //       </div>
-      //     </div>
-      //   <div class="">開始時間</div>
-      // </div>`
-    // );
-    // eventDiv.classList.add('event');
-    // pairId.appendChild
+    // 予定追加イベント（仮）
+    const dCell = document.getElementsByClassName('dayCell');
+    function dayCellDblclick(){
+    plan.classList.remove('hidden');
+    mask.classList.remove('hidden');
   }
+  for(let i = 0; i < dCell.length; i++) {
+    dCell[i].addEventListener('dblclick', dayCellDblclick);
+  }
+}
+        //   const plan = document.getElementById('plan');
+        //   const close = document.getElementById('plan__close--new')
+        //   const mask = document.getElementById('mask');
+        //   const planNew = document.getElementById('plan__form--new');
+        
+        
+
+  //   function dayCellDblclick(){
+  //   plan.classList.remove('hidden');
+  //   mask.classList.remove('hidden');
+  //   const getId = event.target.id;
+  //   window.targetId = document.getElementById(getId);
+  // }
+      
+  //     planNew.addEventListener('submit', function(){
+  //       console.log(targetId);
+  //       // targetId.appendChild('div');
+  //       targetId.appendChild(createHTML);
+  //   })
+  
+    
+  //   close.addEventListener("click", function() {
+  //   plan.classList.add('hidden');
+  //   mask.classList.add('hidden'); 
+  // });
+
+  //   mask.addEventListener("click", function() {
+  //   close.click();
+  // });
+
+  // function createHTML() {
+  //     let strHtml = `<div class="" role="button">
+  //                      <div class="clickable" draggable="true">
+  //                       <div>
+  //                         <span>=plan.title</span>
+  //                       </div>
+  //                       <div>
+  //                         =plan.start_time
+  //                       </div>
+  //                      </div>
+  //                    </div>`;
+  //   let divElm = document.createElement("div");
+  //   divElm.innerHTML = strHtml;
+  //   return divElm.children[0];
+  //   };
+
 });

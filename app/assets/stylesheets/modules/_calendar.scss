@@ -1,59 +1,225 @@
 // ヘッダー
 .header {
   height: 50px;
+  
+  .fas {
+    color: #00BCD4;
+    font-size: large;
+  }
 }
 
-.member__list {
-  
-  #member__btn {
-    position: relative;
+// マウスオーバーアクション用にpopクラスのspanタグを隠す
+span {
+  display:none;
+  @include pop();
+}
+
+// -------------------------------------------
+//ユーザー編集アイコンのマウスオーバー時の設定
+
+/* 吹出口部分を表示 */
+.user__edit .pop:before{
+  @include popOutlet();
+}
+/* 基準位置の設定 */
+.user__edit {
+  position: relative;
+  /* マウスオーバー時にpopを表示 */
+  &:hover .pop {
+    display: block;
+    color: white;
+    width: 80px;                          /* 吹き出し全体の幅 */
+    left : -40%;                           /* 表示位置 */
+    top: 160%;                           /* 表示位置 */
+  }
+}
+
+// --------------------------------------
+// カレンダー作成アイコンのpop
+#calendar__add {
+  position: relative;
+
+  &:hover .pop {
+    display: block;
+    color: white;
+    width: 110px;
+    left: -100%;
+    top: 160%;
+  }
+}
+#calendar__add .pop:before{
+  @include popOutlet();
+}
+
+// カレンダー編集アイコンのpop
+#calendar__edit {
+  position: relative;
+
+  &:hover .pop {
+    display: block;
+    color: white;
+    width: 110px;
+    left: -100%;
+    top: 160%;
+  }
+}
+#calendar__edit .pop:before{
+  @include popOutlet();
+}
+
+
+// カレンダー切替アイコン
+.calendar__list .pop:before{
+  @include popOutlet();
+}
+
+.calendar__list {
+  position: relative;
+
+  &:hover .pop {
+    display: block;
+    color: white;
+    width: 100px;
+    left: -15%;
+    top: 120%;
   }
 
+  #calendar__btn {
+    position: relative;
+  }
+  
   ul {
     position: absolute;
-    top: 45px;
-    left: -40px;
+    top: 80px;
+    left: -30px;
     border-radius: 0.5em;
     display: none;
-    width: 100px;
+    width: 150px;
 
     &.open {
       display: block;
+      z-index: 1;
     }
   }
 }
 
+// ---------------------------------------------
+// メンバーリスト表示アイコン
+.member__list .pop:before{
+  @include popOutlet();
+}
+.member__list {  
+  position: relative;
+  &:hover .pop {
+    display: block;
+    color: white;
+    width: 80px;
+    left: 0;
+    top: 120%;
+  }
 
+  #member__btn {
+    position: relative;
+  }
+  
+  ul {
+    position: absolute;
+    top: 80px;
+    left: -20px;
+    border-radius: 0.5em;
+    display: none;
+    width: 100px;
+    
+    &.open {
+      display: block;
+      z-index: 1;
+    }
+  }
+}
 
+// --------------------------------------------
 // メニュー
 .menu {
   height: 50px;
   align-items: center;
 
-  #plan_btn {
+  .fas {
+    color: #00BCD4;
+    font-size: large;
+  }
+// 予定作成アイコン
+  #plan__btn {
+    position: relative;
     cursor: pointer;
     user-select: none;
+    &:hover .pop {
+      padding: 5px 0;
+      display: block;
+      color: white;
+      width: 50px;
+      top: 20%;
+      left: 90%;
+    }
+  }
+  #plan__btn .pop:before{
+    @include popOutlet-right();
   }
 
+  // 前月表示アイコン
   #previous {
+    position: relative;
     cursor: pointer;
     user-select: none;
+    &:hover .pop {
+      display: block;
+      color: white;
+      width: 50px;
+      left: -60%;
+      top: 160%;
+    }
   }
+  #previous .pop:before{
+    @include popOutlet();
+  }
+
+  // 翌月表示アイコン
+  #next {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    &:hover .pop {
+      display: block;
+      color: white;
+      width: 50px;
+      left: -60%;
+      top: 160%;
+    }
+  }
+  #next .pop:before{
+    @include popOutlet();
+  }
+
+// 今日のカレンダーを表示
+  #today {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    &:hover .pop {
+      display: block;
+      color: white;
+      width: 100px;
+      left: -10%;
+      top: 130%;
+    }
+  }
+    #today .pop:before{
+      @include popOutlet();
+    }
 
   #yearMonth__btn {
-    cursor: pointer;
-    user-select: none;
+    width: 90px;
   }
 
-  #next {
-    cursor: pointer;
-    user-select: none;
-  }
-  
-  #today {
-    cursor: pointer;
-    user-select: none;
-  }
   #change__year {
     cursor: pointer;
     user-select: none;
@@ -63,32 +229,11 @@
     cursor: pointer;
     user-select: none;
   }
-  i {
-    font-size: medium;
-  }
+
 }
 
-.calendar__list {
-  #calendar__btn {
-    position: relative;
-  }
-
-  ul {
-    position: absolute;
-    top: 45px;
-    left: -50px;
-    border-radius: 0.5em;
-    display: none;
-    width: 150px;
-
-    &.open {
-      display: block;
-    }
-  }
-}
-
-
-// カレンダー
+// -------------------------------------------------
+// カレンダー本体
 .main {
 
   &__calendar {
@@ -102,8 +247,8 @@
   margin: auto;
   
   .day-of-the-week {
-    background-color: gray;
-    border-bottom: 1px solid black;
+    background: rgba(121, 218, 248, 0.5);
+    border-bottom: 1px solid gray;
     
     .day-week {
       text-align:center;
@@ -125,7 +270,7 @@
     .week {
       background-color: whitesmoke;
       height: calc(100% / 6);
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid gray;
       display: flex;
       justify-content: space-around;
       
@@ -134,7 +279,9 @@
         flex-direction: column;
         justify-content: start;
         text-align: center;
-          width: calc(100% / 7);
+        width: calc(100% / 7);
+        cursor: pointer;
+        user-select: none;
 
           &:hover {
             box-shadow: 0 0 5px black;
