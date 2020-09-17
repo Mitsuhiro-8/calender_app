@@ -1,0 +1,39 @@
+// コメントリスト
+.side__comments {
+  overflow: auto;
+  height: 70vh;
+
+// コメント作成フォームを隠す設定
+  #comment__form {
+    display: none;
+    
+    &.open {
+      display: block;
+    }
+    #comment__close--btn {
+      cursor: pointer;
+      user-select: none;
+      color: royalblue;
+    }
+    .comment__submit {
+      width: 50px;
+      padding: 0;
+    }
+  }
+}
+// 個別コメントの設定
+.comment__container {
+  height: 70px;
+  width: 90%;
+  font-size: xx-small;
+  position: relative;
+  background-color: rgba(121, 218, 248, 0.8);
+
+  .comment__trash--btn {
+    padding: 0;
+    font-size: small;
+    cursor: pointer;
+    user-select: none;
+    color: rgba(243, 66, 60, 0.8);
+  }
+}

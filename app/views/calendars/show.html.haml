@@ -3,10 +3,10 @@
   = render "menu"
   = render "plans/new"
 
-.main__contents{class: "d-flex"}
-  .side__bar{class: "border-right col-2"}
+.main__contents{class: "d-flex justify-content-around"}
+  #side__bar{class: "border-right"}
     = render "plans/index"
-  .aaaaaaa{class: "border-right col-2"}
-    %p コメントリスト
-  .main__calendar{class: "col-8"}
+  #side__bar--second{class: "border-right"}
+    = render "comments/index"
+  #main__calendar
     = render "calendar"

@@ -26,7 +26,7 @@ class PlansController < ApplicationController
   def update
     @plan = @calendar.plans.new(plan_params)
     if @plan.save
-      redirect_to calendar_path(@calendar), notice: '予定を登録しました'
+      redirect_to calendar_path(@calendar), notice: '予定を更新しました'
     else
       render :edit
     end
@@ -35,8 +35,7 @@ class PlansController < ApplicationController
   def destroy
     plan = Plan.find(params[:id])
     plan.destroy
-    redirect_to calendar_path(@calendar), notice: 'タスクが完了しました'
-
+    redirect_to calendar_path(@calendar), notice: '予定を完了しました'
   end
 
   private

@@ -1,8 +1,13 @@
 .menu{class: "container d-flex justify-content-between border-bottom"}
   .left__items{class: "d-flex justify-content-around align-items-center"}
-    #plan__btn{class: "btn"}
-      = icon('fas', 'edit')
-      %span.pop 予定作成
+    .plan__item{class: "w-50"}
+      #plan__btn{class: "btn"}
+        = icon('fas', 'edit')
+        %span.pop 予定作成
+    .comment__item{class: "w-50"}
+      #comment__btn{class: "btn"}
+        = icon('fas', 'comment-alt')
+        %span.pop コメント作成
 
   .right__items{class: "d-flex"}
     .year__contents{class: "d-flex justify-content-around align-items-center ml-5"}

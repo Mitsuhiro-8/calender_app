@@ -22,47 +22,45 @@ window.addEventListener("load", function() {
       });
     }
   }
-  // 予定追加ボタン(plans/new)
+  // 予定作成アイコン
   {
     const planBtn = document.getElementById('plan__btn');
     const plan = document.getElementById('plan');
-    const close = document.getElementById('plan__close--new')
+    const planClose = document.getElementById('plan__close--new')
     const mask = document.getElementById('mask');
 
     planBtn.addEventListener("click", function() {
       plan.classList.remove('hidden');
       mask.classList.remove('hidden'); 
     });
-    close.addEventListener("click", function() {
+    planClose.addEventListener("click", function() {
       plan.classList.add('hidden');
       mask.classList.add('hidden'); 
     });
     mask.addEventListener("click", function() {
-      close.click();
+      planClose.click();
     });
   }
 
-  // 個別の予定表示(plans/show)
+  // コメント作成アイコン
   {
-    const planBtn = document.getElementById('plan__btn');
-    const plan = document.getElementById('plan');
-    const close = document.getElementById('plan__close--new')
-    const mask = document.getElementById('mask');
+    const comBtn = document.getElementById('comment__btn');
+    const comForm = document.getElementById('comment__form');
+    const comClose = document.getElementById('comment__close--btn')
+    const sideSecond = document.getElementById('side__bar--second')
+    const mainCalendar = document.getElementById('main__calendar')
 
-    planBtn.addEventListener("click", function() {
-      plan.classList.remove('hidden');
-      mask.classList.remove('hidden'); 
+    comBtn.addEventListener('click', function() {
+      comForm.classList.toggle('open'); 
+      sideSecond.classList.toggle('open');
+      mainCalendar.classList.toggle('open');
     });
-    close.addEventListener("click", function() {
-      plan.classList.add('hidden');
-      mask.classList.add('hidden'); 
-    });
-    mask.addEventListener("click", function() {
-      close.click();
-    });
+    comClose.addEventListener('click', function() {
+      comForm.classList.remove('open');
+      sideSecond.classList.remove('open');
+      mainCalendar.classList.remove('open');
+    }); 
   }
-
-  
 
   // カレンダーの日付取得
   {
