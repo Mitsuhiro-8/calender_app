@@ -11,6 +11,7 @@
     height: 70px;
     font-size: xx-small;
     position: relative;
+    background-color: rgba(121, 218, 248, 0.8);
     
     .link__front {
       position: absolute;
@@ -31,7 +32,7 @@
         font-size: medium;
         cursor: pointer;
         user-select: none;
-        color: blue;
+        color: royalblue;
       }
     }
   }
@@ -94,21 +95,6 @@
 }
 
 // plan-editビュー
-#mask__show {
-  background-color: black;
-  opacity: 0.5;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 5;
-
-  &.hidden {
-    display:none;
-  }
-}
-
 #plan__edit {
   background-color: rgb(133, 186, 235);
   width: 50%;
@@ -120,15 +106,5 @@
   left: 0;
   right: 0;
   margin: 0 auto;
-  animation: modal 0.5s forwards;
-  z-index: 10;
 
-  &.hidden {
-    display:none;
-  }
-}
-
-#plan__close--edit {
-  cursor: pointer;
-  user-select: none;
 }

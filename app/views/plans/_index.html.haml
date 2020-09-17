@@ -2,7 +2,7 @@
   .plan__list
     %p 予定リスト
     - @calendar.plans.order(:start_day).order(:start_time).each do |plan|
-      .plan__container{class: "p-1 mb-1 text-sm-left bg-info rounded overflow-hidden"}
+      .plan__container{class: "p-1 mb-1 text-sm-left rounded overflow-hidden"}
         = link_to '', edit_calendar_plan_path(plan.calendar_id, plan.id), class: "link__front"
         .plan__content{class: "d-flex justify-content-between"}
           .plan__top{class: "d-flex flex-column"}
