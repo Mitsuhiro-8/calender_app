@@ -1,3 +1,29 @@
+// 全体のレイアウト
+.main__contents {
+
+  #side__bar {
+    width: 15%;
+  }
+
+  #side__bar--second {
+    width: 15%;
+
+    &.open {
+      width: 25%;
+    }
+  }
+
+  #main__calendar {
+    width: 70%;
+    &.open {
+      width: 60%;
+    }
+  }
+}
+
+
+
+// -------------------------------------------
 // ヘッダー
 .header {
   height: 50px;
@@ -20,6 +46,8 @@ span {
 /* 吹出口部分を表示 */
 .user__edit .pop:before{
   @include popOutlet();
+  top: -20%;
+  left: 70%;
 }
 /* 基準位置の設定 */
 .user__edit {
@@ -29,7 +57,7 @@ span {
     display: block;
     color: white;
     width: 80px;                          /* 吹き出し全体の幅 */
-    left : -40%;                           /* 表示位置 */
+    right : -40%;                           /* 表示位置 */
     top: 160%;                           /* 表示位置 */
   }
 }
@@ -143,6 +171,10 @@ span {
   height: 50px;
   align-items: center;
 
+  .left__items {
+    width: 400px;
+  }
+
   .fas {
     color: #00BCD4;
     font-size: large;
@@ -163,6 +195,25 @@ span {
   }
   #plan__btn .pop:before{
     @include popOutlet-right();
+  }
+
+// コメント作成アイコン
+  #comment__btn {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    &:hover .pop {
+      padding: 5px 0;
+      display: block;
+      color: white;
+      width: 70px;
+      top: 10%;
+      left: 100%;
+    }
+  }
+  #comment__btn .pop:before{
+    @include popOutlet-right();
+    left: -10%;
   }
 
   // 前月表示アイコン
@@ -233,16 +284,10 @@ span {
 }
 
 // -------------------------------------------------
-// カレンダー本体
-.main {
-
-  &__calendar {
-    border-radius: 0.5em;
-  }
-}
-
+// カレンダー部分
 .calendar {
-  height: calc(80vh);
+  width: 90%;
+  height: 80vh;
   padding: 0;
   margin: auto;
   

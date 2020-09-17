@@ -1,40 +1,31 @@
-// サイドバー
-.side__bar {
+// 予定リストのサイドバー
+.side__plans {
+  overflow: auto;
+  height: 70vh;
+}
 
+.plan__container {
+  height: 70px;
+  width: 90%;
+  font-size: xx-small;
+  position: relative;
+  background-color: rgba(121, 218, 248, 0.8);
   
-  .side__plans {
-    overflow: auto;
-    height: 70vh;
+  .link__front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    text-indent:-999px;
+    z-index: 1;
   }
-
-  .plan__container {
-    height: 70px;
-    font-size: xx-small;
-    position: relative;
-    background-color: rgba(121, 218, 248, 0.8);
-    
-    .link__front {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 60%;
-      height: 100%;
-      text-indent:-999px;
-      z-index: 1;
+  .plan__done--btn {
+      padding: 0;
       font-size: small;
-    }
-    .plan__done {
-      
-      button {
-      }
-      &--btn {
-        padding: 0;
-        font-size: medium;
-        cursor: pointer;
-        user-select: none;
-        color: royalblue;
-      }
-    }
+      cursor: pointer;
+      user-select: none;
+      color: royalblue;
   }
 }
   
