@@ -1,15 +1,14 @@
-class CreatePlans < ActiveRecord::Migration[6.0]
+class CreateEvents < ActiveRecord::Migration[6.0]
   def change
-    create_table :plans do |t|
+    create_table :events do |t|
       t.string :title
       t.text :content
-      t.time :start_time
-      t.time :end_time
+      t.time :start_hour
+      t.time :end_hour
       t.date :start_day
       t.date :end_day
       t.references :user, foreign_key: :true
       t.references :calendar, foreign_key: :true
-
       t.timestamps
     end
   end

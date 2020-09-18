@@ -1,12 +1,16 @@
 .main
   = render "header"
   = render "menu"
-  = render "plans/new"
+  = render "events/new"
 
 .main__contents{class: "d-flex justify-content-around"}
   #side__bar{class: "border-right"}
-    = render "plans/index"
+    = render "events/index"
   #side__bar--second{class: "border-right"}
     = render "comments/index"
   #main__calendar
-    = render "calendar"
+    = month_calendar events: @events do |date, events|
+      .day__num= date.day
+      - events.each do |event|
+        .event{class: "event-#{event.id}"}
+          =link_to event.title, edit_calendar_event_path(event.calendar_id,event.id), class: "event__link"

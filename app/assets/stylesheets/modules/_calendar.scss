@@ -22,22 +22,21 @@
 }
 
 
-
 // -------------------------------------------
 // ヘッダー
 .header {
   height: 50px;
+
+    // マウスオーバーアクション用にpopクラスのspanタグを隠す
+  span {
+    display:none;
+    @include pop();
+  }
   
   .fas {
     color: #00BCD4;
     font-size: large;
   }
-}
-
-// マウスオーバーアクション用にpopクラスのspanタグを隠す
-span {
-  display:none;
-  @include pop();
 }
 
 // -------------------------------------------
@@ -171,16 +170,23 @@ span {
   height: 50px;
   align-items: center;
 
-  .left__items {
-    width: 400px;
+  // マウスオーバーアクション用にpopクラスのspanタグを隠す
+  span {
+    display:none;
+    @include pop();
   }
-
+  
   .fas {
     color: #00BCD4;
     font-size: large;
   }
+
+  .left__items {
+    width: 400px;
+  }
+
 // 予定作成アイコン
-  #plan__btn {
+  #event__btn {
     position: relative;
     cursor: pointer;
     user-select: none;
@@ -193,7 +199,7 @@ span {
       left: 90%;
     }
   }
-  #plan__btn .pop:before{
+  #event__btn .pop:before{
     @include popOutlet-right();
   }
 
@@ -255,6 +261,7 @@ span {
     position: relative;
     cursor: pointer;
     user-select: none;
+
     &:hover .pop {
       display: block;
       color: white;
@@ -285,73 +292,60 @@ span {
 
 // -------------------------------------------------
 // カレンダー部分
-.calendar {
-  width: 90%;
-  height: 80vh;
-  padding: 0;
-  margin: auto;
-  
-  .day-of-the-week {
-    background: rgba(121, 218, 248, 0.5);
-    border-bottom: 1px solid gray;
-    
-    .day-week {
-      text-align:center;
-      flex-grow: 1;
-      
-      &:first-child {
-        color: red;
-      }
-      
-      &:last-child {
-        color: blue;
-      }
-    }
-  }
-  
-  #weeks {
-    height: 90%;
-    
-    .week {
-      background-color: whitesmoke;
-      height: calc(100% / 6);
-      border-bottom: 1px solid gray;
-      display: flex;
-      justify-content: space-around;
-      
-      .dayCell {
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        text-align: center;
-        width: calc(100% / 7);
-        cursor: pointer;
-        user-select: none;
+.simple-calendar{
+  height: 100%;
 
-          &:hover {
-            box-shadow: 0 0 5px black;
-          }
-          &:first-child {
+  .calendar__month{
+
+  }
+  .calendar__heading{
+    
+  }
+  .table {
+    height: 90%;
+  }
+    .weeks {
+      background-color: white;
+      .week {
+        
+        .day {
+          width: calc(100% / 7);
+          padding: 0;
+          
+          &.wday-0 {
             color: red;
           }
           
-          &:last-child {
+          &.wday-6 {
             color: blue;
           }
           
-        
-
-        .disabledBack {
-          opacity: 0.3;
-        }
-        .disabledPrev {
-          opacity: 0.3;
-        }
-        
-        .today {
-          background-color: rgb(133, 186, 235);
+          &.prev-month {
+            opacity: 0.5;
+          }
+          &.next-month {
+            opacity: 0.5;
+          }
+          &.today {
+            background-color: rgb(133, 186, 235);
+          }
+          .event {
+            margin-right: 3px;
+            user-select: none;
+            cursor: pointer;
+            background-color: whitesmoke;
+            &:hover {
+              box-shadow: 0 0 5px black;
+            }
+            .event__link {
+              display: block;
+              height: 100%;
+              width: 100%;
+              color: black;
+              text-decoration: none;
+            }
+          }
         }
       }
     }
   }
-}

@@ -60,3 +60,4 @@ gem 'font-awesome-sass'
 gem 'bootstrap', '~> 4.5.2'
 gem 'rename'
 gem 'rails-i18n'
+gem "simple_calendar", "~> 2.0"

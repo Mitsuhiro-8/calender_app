@@ -5,8 +5,10 @@ class CalendarsController < ApplicationController
   
   def show
     @calendar = Calendar.find(params[:id])
-    @plan = Plan.new
     @comment = Comment.new
+    @event = Event.new
+    # @events = Event.all
+    @events = @calendar.events.includes(:user)
   end
 
   def new

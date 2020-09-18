@@ -9,6 +9,6 @@ class User < ApplicationRecord
   has_many :calendar_users
   has_many :calendars, through: :calendar_users
   has_many :comments
-  has_many :plans
+  has_many :events
 
 end

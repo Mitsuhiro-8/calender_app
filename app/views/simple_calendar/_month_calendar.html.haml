@@ -1,0 +1,22 @@
+.simple-calendar{class: "container"}
+  .calendar__month{class: "table-responsive"}
+  .calendar__heading{class: "d-flex"}
+    = link_to t('simple_calendar.previous', default: '前月'), calendar.url_for_previous_view
+    .calendar-title{class: "mx-5"}
+      = start_date.year.to_s + "年"
+      = t('date.month_names')[start_date.month]
+    = link_to t('simple_calendar.next', default: '翌月'), calendar.url_for_next_view
+  %table.table.table-striped
+    %thead
+      %tr
+        - date_range.slice(0, 7).each do |day|
+          %th= t('date.abbr_day_names')[day.wday]
+    %tbody.weeks
+      - date_range.each_slice(7) do |week|
+        %tr.week
+          - week.each do |day|
+            = content_tag :td, class: calendar.td_classes_for(day) do
+              - if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block)
+                - capture_haml(day, sorted_events.fetch(day, []), &passed_block)
+              - else
+                - passed_block.call day, sorted_events.fetch(day, [])

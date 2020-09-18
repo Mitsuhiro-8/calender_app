@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root "calendars#index"
   resources :users, only: [:index, :edit, :update]
   resources :calendars do
-    resources :plans
+    resources :events
     resources :comments
   end
   devise_scope :user do

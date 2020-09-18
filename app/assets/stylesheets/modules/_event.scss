@@ -1,10 +1,10 @@
 // 予定リストのサイドバー
-.side__plans {
+.side__events {
   overflow: auto;
   height: 70vh;
 }
 
-.plan__container {
+.event__container {
   height: 70px;
   width: 90%;
   font-size: xx-small;
@@ -20,7 +20,7 @@
     text-indent:-999px;
     z-index: 1;
   }
-  .plan__done--btn {
+  .event__done--btn {
       padding: 0;
       font-size: small;
       cursor: pointer;
@@ -29,7 +29,7 @@
   }
 }
   
-// plan-newビュー
+// event-newビュー
 #mask {
   background-color: black;
   opacity: 0.5;
@@ -45,7 +45,7 @@
   }
 }
 
-#plan {
+#event {
   background-color: rgb(133, 186, 235);
   width: 50%;
   border: none;
@@ -64,7 +64,7 @@
   }
 }
 
-#plan__close--new {
+#event__close--new {
   cursor: pointer;
   user-select: none;
 }
@@ -85,8 +85,8 @@
   } 
 }
 
-// plan-editビュー
-#plan__edit {
+// event-editビュー
+#event__edit {
   background-color: rgb(133, 186, 235);
   width: 50%;
   border: none;
