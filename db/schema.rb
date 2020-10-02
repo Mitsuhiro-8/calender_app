@@ -53,21 +53,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_042424) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
-  create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.time "start_time"
-    t.time "end_time"
-    t.date "start_day"
-    t.date "end_day"
-    t.bigint "user_id"
-    t.bigint "calendar_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["calendar_id"], name: "index_plans_on_calendar_id"
-    t.index ["user_id"], name: "index_plans_on_user_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email", default: "", null: false
@@ -88,6 +73,4 @@ ActiveRecord::Schema.define(version: 2020_09_18_042424) do
   add_foreign_key "comments", "users"
   add_foreign_key "events", "calendars"
   add_foreign_key "events", "users"
-  add_foreign_key "plans", "calendars"
-  add_foreign_key "plans", "users"
 end

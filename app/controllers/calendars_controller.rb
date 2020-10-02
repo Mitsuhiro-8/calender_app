@@ -7,7 +7,6 @@ class CalendarsController < ApplicationController
     @calendar = Calendar.find(params[:id])
     @comment = Comment.new
     @event = Event.new
-    # @events = Event.all
     @events = @calendar.events.includes(:user)
   end
 

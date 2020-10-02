@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
   }
   root "calendars#index"
+  resources :label_colors, only: [:index, :new, :create, :edit, :update], path: 'color'
   resources :users, only: [:index, :edit, :update]
   resources :calendars do
     resources :events

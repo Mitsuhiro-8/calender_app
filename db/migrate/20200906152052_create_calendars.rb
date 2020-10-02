@@ -1,5 +1,5 @@
 class CreateCalendars < ActiveRecord::Migration[6.0]
-  def change
+  def up
     create_table :calendars do |t|
       t.string :name
       t.string :image

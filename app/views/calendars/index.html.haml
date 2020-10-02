@@ -1,5 +1,8 @@
--# .main
--#   = render "header"
--#   = render "menu"
-
 .main__calendar
+  = month_calendar do |date|
+    .day__num
+      = date.day
+    - if HolidayJp.holiday?(Date.new(date.year, date.month, date.day))
+    - holidays = HolidayJp.between(Date.new(date.year, date.month, date.day), Date.new(date.year, date.month, date.day))
+      .holiday= holidays[0].name
+

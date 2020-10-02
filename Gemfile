@@ -56,13 +56,16 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 gem 'devise'
+# gem 'jquery-rails'
 gem 'pry-rails'
 gem 'font-awesome-sass'
 gem 'bootstrap', '~> 4.5.2'
 gem 'rename'
 gem 'rails-i18n'
-gem "simple_calendar", "~> 2.0"
+gem 'simple_calendar', '~> 2.0'
+gem 'holiday_jp'
+
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.18.4'
 end

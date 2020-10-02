@@ -41,7 +41,7 @@ window.addEventListener("load", function() {
       eventClose.click();
     });
       // 予定追加イベント（カレンダークリック時）
-      const dCell = document.getElementsByClassName('dayCell');
+      const dCell = document.getElementsByClassName('day');
       function dayCellDblclick(){
       event.classList.remove('hidden');
       mask.classList.remove('hidden');
@@ -49,6 +49,29 @@ window.addEventListener("load", function() {
     for(let i = 0; i < dCell.length; i++) {
       dCell[i].addEventListener('dblclick', dayCellDblclick);
     }
+  }
+  // 予定編集操作
+  {
+    const editEvent = document.getElementById('event__edit')
+    const editEventClose = document.getElementById('event__close--edit')
+    const editMask = document.getElementById('mask__edit');
+    const eventDiv = document.getElementsByClassName('event')
+    
+    // 予定変更イベント（カレンダークリック時）
+    function eventClick(){
+    editEvent.classList.remove('hidden');
+    editMask.classList.remove('hidden');
+  }
+  for(let i = 0; i < eventDiv.length; i++) {
+    eventDiv[i].addEventListener('click', eventClick);
+  }
+    editEventClose.addEventListener("click", function() {
+      editEvent.classList.add('hidden');
+      editMask.classList.add('hidden'); 
+    });
+    editMask.addEventListener("click", function() {
+      editEventClose.click();
+    });
   }
 
   // コメント作成アイコン

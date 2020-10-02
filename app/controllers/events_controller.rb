@@ -46,7 +46,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: '予定を更新しました' }
+        format.html { redirect_to @calendar, notice: '予定を更新しました' }
         # format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: '予定が完了しました' }
+      format.html { redirect_to @calendar, notice: '予定が完了しました' }
       # format.json { head :no_content }
     end
   end

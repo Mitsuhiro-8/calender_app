@@ -9,20 +9,30 @@
         = icon('fas', 'comment-alt')
         %span.pop コメント作成
 
-  .right__items{class: "d-flex"}
-    .year__contents{class: "d-flex justify-content-around align-items-center ml-5"}
-      #previous
-        = icon('fas', 'caret-square-left')
-        %span.pop 前月
-      #next{class: "mx-3"}
-        = icon('fas', 'caret-square-right')
-        %span.pop 翌月
-      #yearMonth__btn{class: "mx-3 bg-light"}
-    .change__contents{class: "d-flex justify-content-around"}
-      #today{class: "btn btn-light"}
-        今日
-        %span.pop 今日のカレンダーへ
-      #change__year{class: "mx-3 btn btn-light"}
-        年
-      #change__month{class: "btn btn-light"}
-        月
+  .right__items{class: "d-flex align-items-center"}
+    .calendar__menu{class: "d-flex align-items-center"}
+      #calendar__add
+        = link_to new_calendar_path, class: 'text-decoration-none' do
+          = icon('fas', 'calendar-plus')
+        %span.pop カレンダーの新規作成
+      #calendar__edit{class: "mx-3"}
+        = link_to edit_calendar_path(params[:id]), class: 'text-decoration-none' do
+          = icon('fas', 'calendar-check')
+        %span.pop カレンダーの編集
+      .calendar__list
+        %span.pop カレンダーの切替
+        %button#calendar__btn{class: "btn"}
+          =icon('fas', 'calendar-alt')
+          %ul#calendar__name{class: "bg-primary"}
+            - current_user.calendars.each do |calendar|
+              %li{class: "d-block"}
+                = link_to calendar.name, calendar_path(calendar.id), class: "btn d-block text-white"
+    .member__list
+      %span.pop メンバーリスト
+      #member__btn{class: "btn"}
+        =icon('fas', 'users')
+      
+        %ul#member__name{class: "bg-info"}
+          - @calendar.users.each do |user|
+            %li
+              = link_to user.name, '#', class: "btn d-block text-white"

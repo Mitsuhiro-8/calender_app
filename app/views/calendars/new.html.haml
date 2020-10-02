@@ -1,7 +1,7 @@
 .calendarPage{class: 'container'}
   .calendarPage__title
     %h3 カレンダー作成
-    = link_to "戻る", :back, class: 'btn btn-primary text-left'
+    -# = link_to "戻る", :back, class: 'btn btn-primary text-left'
   .calendarPage__form
     = form_with model: @calendar, local: true do |f|
       - if @calendar.errors.any?
