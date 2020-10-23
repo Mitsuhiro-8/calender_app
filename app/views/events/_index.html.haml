@@ -1,4 +1,4 @@
-%h6{class: "p-1"} 予定リスト
+%h6{class: "p-2 border-bottom"} 予定リスト
 .side__events{class: "mt-1"}
   .event__list{class: "d-flex flex-column align-items-center"}
     - @calendar.events.order(:start_day).order(:start_hour).each do |event|

@@ -15,7 +15,7 @@
         = link_to new_calendar_path, class: 'text-decoration-none' do
           = icon('fas', 'calendar-plus')
         %span.pop カレンダーの新規作成
-      #calendar__edit{class: "mx-3"}
+      #calendar__edit{class: "ml-4 mr-3"}
         = link_to edit_calendar_path(params[:id]), class: 'text-decoration-none' do
           = icon('fas', 'calendar-check')
         %span.pop カレンダーの編集
@@ -23,7 +23,7 @@
         %span.pop カレンダーの切替
         %button#calendar__btn{class: "btn"}
           =icon('fas', 'calendar-alt')
-          %ul#calendar__name{class: "bg-primary"}
+          %ul#calendar__name{class: "bg-info"}
             - current_user.calendars.each do |calendar|
               %li{class: "d-block"}
                 = link_to calendar.name, calendar_path(calendar.id), class: "btn d-block text-white"

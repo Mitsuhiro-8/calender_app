@@ -1,4 +1,4 @@
-%h6{class: "p-1"} コメントリスト
+%h6{class: "p-2 border-bottom"} コメントリスト
 .side__comments{class: "mt-1"}
   = render "comments/new"
   .comment__list{class: "d-flex flex-column align-items-center"}
@@ -6,7 +6,7 @@
       .comment__container{class: "p-1 mb-1 rounded overflow-hidden"}
         .comment__content{class: "d-flex justify-content-between"}
           .comment__top{class: "d-flex flex-column"}
-            .user_name{class: "d-flex"}
+            .user__name{class: "d-flex"}
               %div= comment.user.name
               %div さん
             .comment__time{class: "d-flex"}
