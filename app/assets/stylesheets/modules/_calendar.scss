@@ -14,10 +14,60 @@
     }
   }
 
+// お試し Todoリスト
+  // #side__bar--third {
+  //   width: 15%;
+  //   border-right: 1px solid #dee2e6;
+  //   #root {
+  //     .container {
+  //       margin: 0 auto;
+
+  //       h6  {
+  //         button {
+  //           float: right;
+  //         }
+  //         span {
+  //           margin-left: 3px;
+  //           color: #ccc;
+  //           font-weight: normal;
+  //         }
+  //       }
+
+  //       input[type="checkbox"] {
+  //         margin-right: 5px;
+
+  //       }
+
+  //       .done {
+  //         text-decoration: line-through;
+  //         color: gray;
+  //       }
+
+  //       .cmd {
+  //         cursor: pointer;
+  //         margin-left: 5px;
+  //         font-size: small;
+  //         color: rgba(50, 197, 202, 0.7);
+  //       }
+
+  //       input[type="text"] {
+  //         width: 100px;
+  //         height: 30px;
+  //         padding: 5px;
+  //         display: block;
+  //       }
+
+  //       input[type="submit"] {
+  //         display: block;
+  //       }
+  //     }
+  //   }
+  // }
+
   #main__calendar {
-    width: 70%;
+    width: 55%;
     &.open {
-      width: 60%;
+      width: 45%;
     }
   }
 }

@@ -9,7 +9,5 @@
             = icon('fas', 'user-edit')
           %span.pop
             ユーザー編集
-      .user__name{class: "mx-1"}
-        = current_user.name
-      .user__mr
-        さんのカレンダー
+      .user__name
+        = current_user.name + "  さんのカレンダー"
