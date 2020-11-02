@@ -1,13 +1,337 @@
 // 全体のレイアウト
+html, body {
+  background-color: whitesmoke;
+}
+
+.main {
+  // ヘッダー
+  .header {
+    height: 50px;
+    font-family: cursive;
+    padding: 0 30px;
+    border-bottom: 1px solid #dee2e6;
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__left {
+      display: flex;
+      align-items: center;
+
+      .title {
+        line-height: 50px;
+        letter-spacing: 3px;
+        font-weight: bold;
+        font-size: x-large;
+        border-right: 1px solid #dee2e6;
+        padding-right: 30px;
+        margin-left: 30px;
+      }
+
+    //ユーザー編集アイコンのマウスオーバー時の設定
+      /* 吹出口部分を表示 */
+      .user__edit .pop:before{
+        @include popOutlet-bottom(-25%, 70%);
+      }
+
+      /* 基準位置の設定 */
+      .user__edit {
+        position: relative;
+
+          // マウスオーバーアクション用にpopクラスのspanタグを隠す
+        span {
+          display:none;
+          @include pop();
+        }
+        /* マウスオーバー時にpopを表示 */
+        &:hover .pop {
+          display: block;
+          color: white;
+          width: 80px;                          /* 吹き出し全体の幅 */
+          right : -18%;                           /* 表示位置 */
+          top: 160%;                           /* 表示位置 */
+        }
+      }
+
+      a {
+        margin-left: 30px;
+        text-decoration: none;
+      }
+    }
+    .fas {
+      color: #00BCD4;
+      font-size: large;
+    }
+  }
+  // メニュー
+.menu {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dee2e6;
+  align-items: center;
+  
+  .fas {
+    color: #00BCD4;
+    font-size: large;
+  }
+
+  .left__items {
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .event__item {
+
+
+      // 予定作成アイコン
+      #event__btn {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+
+        span {
+          display:none;
+          @include pop();
+          padding: 5px 0;
+          width: 50px;
+          top: 10%;
+          left: 140%;
+        }
+      
+        &:hover .pop {
+          display: block;
+        }
+      }
+        #event__btn .pop:before{
+          @include popOutlet-right(30%, -15%);
+      }
+    }
+  }
+
+// コメント作成アイコン
+  .comment__item {
+
+    #comment__btn {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      
+      span {
+        display:none;
+        @include pop();
+        padding: 5px 0;
+        width: 70px;
+        top: 10%;
+        left: 140%;
+      }
+      
+      &:hover .pop {
+        display: block;
+      }
+    }
+    #comment__btn .pop:before{
+      @include popOutlet-right(30%, -10%);
+    }
+  }
+
+// --------------------------------------
+  .right__items {
+    display: inline-flex;
+    align-items: center;
+
+    .calendar__menu {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+
+      // カレンダー作成アイコンのpop
+      #calendar__add {
+        position: relative;
+
+        a {
+          text-emphasis: none;
+        }
+        
+        span {
+          @include pop();
+          display:none;
+          width: 110px;
+          bottom: 160%;
+          right: -230%;
+        }
+        
+        &:hover .pop {
+          display: block;
+        }
+      }
+      #calendar__add .pop:before{
+        border-top: 10px solid #00BCD4; /* 吹き出し口の高さ・色 */
+        border-left: 5px solid transparent;    /* 吹き出し口の幅１／２ */
+        border-right: 5px solid transparent;   /* 吹き出し口の幅１／２ */
+        top: 100%;                             /* 吹き出し口の位置調整 */
+        left : 55%;                              /* 吹き出し口の横位置 */
+        content: "";                       /* コンテンツの挿入 */
+        position: absolute;                /* 親要素を基準 */
+      }
+      
+      // カレンダー編集アイコンのpop
+      #calendar__edit {
+        margin: 0 20px;
+        position: relative;
+        
+        a {
+          text-emphasis: none;
+        }
+
+        span {
+          @include pop();
+          display:none;
+          width: 110px;
+          bottom: 160%;
+          right: -220%;
+        }
+        
+        &:hover .pop {
+          display: block;
+        }
+      }
+      #calendar__edit .pop:before{
+        @include popOutlet-top();
+      }
+      
+      
+      // カレンダー切替アイコン
+      .calendar__change .pop:before{
+        @include popOutlet-top();
+      }
+      
+      .calendar__change {
+        position: relative;
+        
+        span {
+          @include pop();
+          display:none;
+          width: 110px;
+          bottom: 160%;
+          right: -220%;
+        }
+        
+        &:hover .pop {
+          display: block;
+        }
+        
+        #calendar__btn {
+          position: relative;
+          display: inline-block;
+          user-select: none;
+          cursor: pointer;
+
+          ul#calendar__name {
+            position: absolute;
+            top: 50px;
+            left: -80px;
+            border-radius: 0.5em;
+            display: none;
+            width: 150px;
+            background-color: #00BCD4;
+            
+            &.open {
+              display: block;
+              z-index: 1;
+            }
+
+            li:hover {
+              border-radius: 0.5em;
+              background-color: rgba(0, 247, 255, 0.7);
+            }
+            a {
+              display: block;
+              padding-left: 5px;
+              text-decoration: none;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+      
+      // ---------------------------------------------
+      // メンバーリスト表示アイコン
+      .member__menu .pop:before{
+        @include popOutlet-top();
+      }
+      .member__menu {  
+        position: relative;
+        margin-right: 30px;
+        
+        span {
+          @include pop();
+          display:none;
+          width: 110px;
+          bottom: 160%;
+          right: -130%;
+      }
+      
+      &:hover .pop {
+        display: block;
+      }
+      
+      #member__btn {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+      }
+      
+      ul#member__name {
+        position: absolute;
+        top: 50px;
+        left: -20px;
+        border-radius: 0.5em;
+        display: none;
+        width: 100px;
+        background-color: #00BCD4;
+        
+        &.open {
+          display: block;
+          z-index: 1;
+        }
+        
+        li:hover {
+          background-color: rgba(0, 247, 255, 0.7);
+          border-radius: 0.5em;
+        }
+        a {
+          display: block;
+          padding-left: 5px;
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+  }  
+  }
+}
 .main__contents {
-
-
+  display: flex;
+  justify-content: space-around;
+  
   #side__bar {
     width: 15%;
+    border-right: 1px solid #dee2e6;
   }
 
   #side__bar--second {
     width: 15%;
+    border-right: 1px solid #dee2e6;
 
     &.open {
       width: 25%;
@@ -65,451 +389,331 @@
   // }
 
   #main__calendar {
-    width: 55%;
+    width: 70%;
     &.open {
-      width: 45%;
+      width: 60%;
     }
   }
 }
 
-
 // -------------------------------------------
-// ヘッダー
-.header {
-  height: 50px;
-  font-family: cursive;
 
-  .header__left {
 
-    .tittle {
-      letter-spacing: 3px;
-      font-weight: bold;
-      font-size: x-large;
-      border-right: 1px solid #dee2e6;
-    }
-  }
-  .fas {
-    color: #00BCD4;
-    font-size: large;
-  }
-}
-
-// -------------------------------------------
-//ユーザー編集アイコンのマウスオーバー時の設定
-
-/* 吹出口部分を表示 */
-.user__edit .pop:before{
-  @include popOutlet-bottom();
-  top: -25%;
-  left: 70%;
-}
-/* 基準位置の設定 */
-.user__edit {
-  position: relative;
-
-    // マウスオーバーアクション用にpopクラスのspanタグを隠す
-  span {
-    display:none;
-    @include pop();
-  }
-  /* マウスオーバー時にpopを表示 */
-  &:hover .pop {
-    display: block;
-    color: white;
-    width: 80px;                          /* 吹き出し全体の幅 */
-    right : -40%;                           /* 表示位置 */
-    top: 160%;                           /* 表示位置 */
-  }
-}
 
 // --------------------------------------------
-// メニュー
-.menu {
-  height: 50px;
-  align-items: center;
-  
-  .fas {
-    color: #00BCD4;
-    font-size: large;
-  }
 
-  .left__items {
-    width: 400px;
-  }
-
-// 予定作成アイコン
-  #event__btn {
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-
-    span {
-      display:none;
-      @include pop();
-      padding: 5px 0;
-      width: 50px;
-      top: 20%;
-      left: 90%;
-    }
-    
-    &:hover .pop {
-      display: block;
-    }
-  }
-  #event__btn .pop:before{
-    @include popOutlet-right();
-  }
-
-// コメント作成アイコン
-  #comment__btn {
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-
-    span {
-      display:none;
-      @include pop();
-      padding: 5px 0;
-      width: 70px;
-      top: 10%;
-      left: 100%;
-    }
-    
-    &:hover .pop {
-      display: block;
-    }
-  }
-  #comment__btn .pop:before{
-    @include popOutlet-right();
-    left: -10%;
-  }
-
-// --------------------------------------
-// カレンダー作成アイコンのpop
-#calendar__add {
-  position: relative;
-
-  span {
-    @include pop();
-    display:none;
-    width: 110px;
-    bottom: 160%;
-    right: -230%;
-  }
-
-  &:hover .pop {
-    display: block;
-  }
-}
-#calendar__add .pop:before{
-  border-top: 10px solid #00BCD4; /* 吹き出し口の高さ・色 */
-  border-left: 5px solid transparent;    /* 吹き出し口の幅１／２ */
-  border-right: 5px solid transparent;   /* 吹き出し口の幅１／２ */
-  top: 100%;                             /* 吹き出し口の位置調整 */
-  left : 55%;                              /* 吹き出し口の横位置 */
-  content: "";                       /* コンテンツの挿入 */
-  position: absolute;                /* 親要素を基準 */
-}
-
-// カレンダー編集アイコンのpop
-#calendar__edit {
-  position: relative;
-
-  span {
-    @include pop();
-    display:none;
-    width: 110px;
-    bottom: 160%;
-    right: -220%;
-  }
-
-  &:hover .pop {
-    display: block;
-  }
-}
-#calendar__edit .pop:before{
-  @include popOutlet-top();
-  top: 100%;
-  left: 55%;
-}
-
-
-// カレンダー切替アイコン
-.calendar__list .pop:before{
-  @include popOutlet-top();
-  top: 100%;
-  left: 55%;
-}
-
-.calendar__list {
-  position: relative;
-
-  span {
-    @include pop();
-    display:none;
-    width: 110px;
-    bottom: 120%;
-    right: -55%;
-  }
-
-  &:hover .pop {
-    display: block;
-  }
-
-  #calendar__btn {
-    position: relative;
-  }
-  
-  ul {
-    position: absolute;
-    top: 50px;
-    left: -80px;
-    border-radius: 0.5em;
-    display: none;
-    width: 150px;
-
-    &.open {
-      display: block;
-      z-index: 1;
-    }
-
-    li:hover {
-      background-color: rgba(50, 197, 202, 0.7);
-      border-radius: 0.5em;
-    }
-  }
-}
-
-// ---------------------------------------------
-// メンバーリスト表示アイコン
-.member__list .pop:before{
-  @include popOutlet-top();
-  top: 100%;
-  left: 55%;
-}
-.member__list {  
-  position: relative;
-
-  span {
-    @include pop();
-    display:none;
-    width: 110px;
-    bottom: 120%;
-    right: -40%;
-  }
-
-  &:hover .pop {
-    display: block;
-  }
-
-  #member__btn {
-    position: relative;
-  }
-  
-  ul {
-    position: absolute;
-    top: 50px;
-    left: -20px;
-    border-radius: 0.5em;
-    display: none;
-    width: 100px;
-    
-    &.open {
-      display: block;
-      z-index: 1;
-    }
-
-    li:hover {
-      background-color: rgba(50, 197, 202, 0.7);
-      border-radius: 0.5em;
-    }
-  }
-}
-
-
-}
 
 // -------------------------------------------------
 // カレンダー部分
-.simple-calendar{
-  height: 100%;
+// .simple-calendar{
+//   height: 100%;
 
-  .fas {
-    color: #00BCD4;
-    font-size: large;
-  }
+//   .fas {
+//     color: #00BCD4;
+//     font-size: large;
+//   }
 
-  .calendar__month{
+//   .calendar__month{
 
-  }
-  .calendar__heading{
-    height: 50px;
-  }
+//   }
+//   .calendar__heading{
+//     height: 50px;
+//   }
 
-    // 前月表示アイコン
-    #previous {
-      position: relative;
-      cursor: pointer;
-      user-select: none;
+//     // 前月表示アイコン
+//     #previous {
+//       position: relative;
+//       cursor: pointer;
+//       user-select: none;
 
-      span {
-        @include pop();
-        display:none;
-        padding: 10px;
-        width: 50px;
-        bottom: 140%;
-        right: -60%;
-      }
+//       span {
+//         @include pop();
+//         display:none;
+//         padding: 10px;
+//         width: 50px;
+//         bottom: 140%;
+//         right: -60%;
+//       }
 
-      &:hover .pop {
-        display: block;
-      }
-    }
-    #previous .pop:before{
-      @include popOutlet-top();
-      top: 100%;
-      left: 55%;
-    }
+//       &:hover .pop {
+//         display: block;
+//       }
+//     }
+//     #previous .pop:before{
+//       @include popOutlet-top();
+//     }
   
-    // 翌月表示アイコン
-    #next {
-      position: relative;
-      cursor: pointer;
-      user-select: none;
+//     // 翌月表示アイコン
+//     #next {
+//       position: relative;
+//       cursor: pointer;
+//       user-select: none;
 
-      span {
-        @include pop();
-        display:none;
-        padding: 10px;
-        width: 50px;
-        bottom: 140%;
-        right: -60%;
-      }
+//       span {
+//         @include pop();
+//         display:none;
+//         padding: 10px;
+//         width: 50px;
+//         bottom: 140%;
+//         right: -60%;
+//       }
 
-      &:hover .pop {
-        display: block;
-      }
-    }
-    #next .pop:before{
-      @include popOutlet-top();
-      top: 100%;
-      left: 55%;
-    }
-    .calendar__title{
-      font-family: cursive;
-    }
+//       &:hover .pop {
+//         display: block;
+//       }
+//     }
+//     #next .pop:before{
+//       @include popOutlet-top();
+//     }
+//     .calendar__title{
+//       font-family: cursive;
+//     }
 
-    // 今日のカレンダーを表示
-  #today {
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-    span {
-      display:none;
-      @include pop();
-    }
-    &:hover .pop {
-      display: block;
-      color: white;
-      width: 100px;
-      left: -10%;
-      top: 150%;
-    }
-  }
-    #today .pop:before{
-      @include popOutlet-bottom();
-    }
+//     // 今日のカレンダーを表示
+//   #today {
+//     position: relative;
+//     cursor: pointer;
+//     user-select: none;
+//     span {
+//       display:none;
+//       @include pop();
+//     }
+//     &:hover .pop {
+//       display: block;
+//       color: white;
+//       width: 100px;
+//       left: -10%;
+//       top: 150%;
+//     }
+//   }
+//     #today .pop:before{
+//       @include popOutlet-bottom(-10px, 20%);
+//     }
 
-  #yearMonth__btn {
-    width: 90px;
-  }
+//   #yearMonth__btn {
+//     width: 90px;
+//   }
 
-  #change__year {
-    cursor: pointer;
-    user-select: none;
-  }
+//   #change__year {
+//     cursor: pointer;
+//     user-select: none;
+//   }
 
-  #change__month {
-    cursor: pointer;
-    user-select: none;
-  }
+//   #change__month {
+//     cursor: pointer;
+//     user-select: none;
+//   }
 
-  .table {
-    height: 90%;
-  }
-  tr {
+//   .table {
+//     height: 90%;
+//   }
+//   tr {
 
-    th {
-      &:nth-last-child(2) {
-        color: blue;
-      }
+//     th {
+//       &:nth-last-child(2) {
+//         color: blue;
+//       }
 
-      &:last-child {
+//       &:last-child {
+//         color: red;
+//       }
+//     }
+//   }
+
+//     .weeks {
+
+//       .week {
+//           height: calc(100% / 5);
+//           font-family: cursive;
+
+//           div {
+//             font-family: cursive;
+//             height: calc(100% / 4);
+//           }
+
+//         .day {
+//           user-select: none;
+//           overflow: hidden;
+//           width: calc(100% / 7);
+//           padding: 0;
+          
+//           &.wday-0 {
+//             color: red;
+//           }
+          
+//           &.wday-6 {
+//             color: blue;
+//           }
+          
+//           &.prev-month {
+//             opacity: 0.5;
+//           }
+//           &.next-month {
+//             opacity: 0.5;
+//           }
+//           &.today .day__num{
+//             background-color: rgb(133, 186, 235);
+//           }
+
+//           &__num {
+//             padding: 0 5px;
+//           }
+
+//           .holiday {
+//             font-size: small;
+//             margin-right: 1px;
+//             color: white;
+//             background-color: red;
+//           }
+//           .event {
+//             color: black;
+//             padding: 0 5px;
+//             margin-right: 1px;
+//             font-size: small;
+//             user-select: none;
+//             cursor: pointer;
+//             background-color: aqua;
+//             font-family: cursive;
+
+//             a {
+//               display: block;
+//               text-decoration: none;
+//             }
+//               &:hover {
+//                 box-shadow: 0 0 5px black;
+//               }
+//           }
+//         }
+//       }
+//     }
+//   }
+
+
+// カレンダー（JSバージョン）
+#main__calendar {
+  box-sizing: border-box;
+  height: 80vh;
+  padding: 30px 0;
+  margin: 0 auto;
+
+  .monthCalendar {
+    height: 100%;
+    
+    .dayOfTheWeek {
+    display: flex;
+    padding: 0 20px 0 35px;
+    
+    
+    .day-week {
+      flex-grow: 1;
+      
+      &:first-child {
         color: red;
       }
+      
+      &:last-child {
+        color: blue;
+      }
     }
   }
+  
+  #weeks {
+    height: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1 1 auto;
+    height: 70vh;
 
-    .weeks {
-
-      .week {
-          height: calc(100% / 5);
-          font-family: cursive;
-
-          div {
-            font-family: cursive;
-            height: calc(100% / 4);
-          }
-
-        .day {
-          user-select: none;
-          overflow: hidden;
-          width: calc(100% / 7);
-          padding: 0;
+    .week {
+      position: relative;
+      flex: 1 1 auto;
+      border-top: 1px solid #dee2e6;
+      // .eventRow {
+        //   height: calc(100% / 3);
+        // }
+        
+      .dayCellRow {
+        // height: calc(100% / 6);
+        // display: flex;
+        // justify-content: space-around;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-flow: row nowrap;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        padding: 0 20px;
           
-          &.wday-0 {
-            color: red;
-          }
-          
-          &.wday-6 {
-            color: blue;
-          }
-          
-          &.prev-month {
-            opacity: 0.5;
-          }
-          &.next-month {
-            opacity: 0.5;
-          }
-          &.today .day__num{
-            background-color: rgb(133, 186, 235);
-          }
-
-          &__num {
-            padding: 0 5px;
-          }
-
-          .holiday {
-            font-size: small;
-            margin-right: 1px;
-            color: white;
-            background-color: red;
-          }
-          .event {
-            color: black;
-            padding: 0 5px;
-            margin-right: 1px;
-            font-size: small;
-            user-select: none;
-            cursor: pointer;
-            background-color: aqua;
-            font-family: cursive;
-
-            &:hover {
-              box-shadow: 0 0 5px black;
+          .dayCell {
+            // text-align: center;
+            // width: calc(100% / 7);
+            // flex: auto;
+            position: relative;
+            flex: 1;
+            
+            &:first-child {
+              color: red;
             }
+            
+            &:last-child {
+              color: blue;
+            }
+            
+            &:hover {
+              box-shadow: 0 0 10px black;
+              z-index: 1;
+            }
+          }
+       }
+       .eventRows {
+        position: relative;
+        display: flex;
+        flex-flow: column nowrap;
+        padding: 0 20px;
+        pointer-events: none;
+        
+        .dayRow {
+          display: flex;
+          flex: 0 0 35px;
+          flex-flow: row nowrap;
+          
+          .day {
+            flex: 1;
+            height: 30px;
+            padding: 5px 0 0 15px;
+            color: #212121;
+            font-weight: 500;
+            font-size: .75em;
+            line-height: 30px;
+          }
+          .disabledBack {
+            opacity: 0.3;
+          }
+          
+          .disabledPrev {
+           opacity: 0.3;
+          }
+          
+          .today {
+            background-color: #a0f4ff;
+          }
+        }
+
+        .week__event {
+          display: flex;
+          flex: 0 0 22px;
+          flex-flow: row nowrap;
+
+          .noEvent {
+            flex: 1 1 0px;
+            min-width: 0px;
           }
         }
       }
+       
+      }
     }
   }
+}

@@ -1,5 +1,5 @@
-.error_explanation{class: 'alert alert-warning'}
-  %h2{class: "font-weight-bold"}
+.error_explanation
+  %h2
     = "#{@calendar.errors.full_messages.count}件のエラーが発生しました。"
   %ul{class: 'text-dark text-break'}
     - @gcalendar.errors.full_messages.each do |message|

@@ -4,19 +4,36 @@
   = render  partial: "events/new", locals: { calendar: @calendar }
   = render  partial: "events/edit", locals: { calendar: @calendar }
 
-.main__contents{class: "d-flex justify-content-around"}
-  #side__bar{class: "border-right"}
+.main__contents
+  #side__bar
     = render "events/index"
-  #side__bar--second{class: "border-right"}
+  #side__bar--second
     = render "comments/index"
 
   #main__calendar
-    = month_calendar events: @events do |date, events|
-      .day__num
-        = date.day
-      - if HolidayJp.holiday?(Date.new(date.year, date.month, date.day))
-      - holidays = HolidayJp.between(Date.new(date.year, date.month, date.day), Date.new(date.year, date.month, date.day))
-        .holiday= holidays[0].name
-      - events.each do |event|
-        .event{class: "event-#{event.id}"}
-          =event.title
+    -# = month_calendar events: @events do |date, events|
+    -#   .day__num
+    -#     = date.day
+    -#   - if HolidayJp.holiday?(Date.new(date.year, date.month, date.day))
+    -#   - holidays = HolidayJp.between(Date.new(date.year, date.month, date.day), Date.new(date.year, date.month, date.day))
+    -#     .holiday= holidays[0].name
+    -#   - events.each do |event|
+    -#     .event{class: "event-#{event.id}"}
+    -#       = link_to event.title, edit_calendar_event_path(event.calendar_id, event.id)
+    .monthCalendar
+      .dayOfTheWeek
+        .day-week
+          日
+        .day-week
+          月
+        .day-week
+          火
+        .day-week
+          水
+        .day-week
+          木
+        .day-week
+          金
+        .day-week
+          土
+      #weeks

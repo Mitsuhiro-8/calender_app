@@ -1,14 +1,16 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def index
   end
 
   def edit
+    session[:calendarPath] = params[:calendarPath]
   end
-
+  
   def update
     if current_user.update(user_params)
-      redirect_to root_path
+      redirect_to calendar_path(session[:calendarPath]), notice: "ユーザー情報を更新しました" 
     else
       render :edit
     end

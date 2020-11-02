@@ -1,29 +1,28 @@
-%h6{class: "p-2 border-bottom"} 予定リスト
-.side__events{class: "mt-1"}
-  .event__list{class: "d-flex flex-column align-items-center"}
-    - @calendar.events.order(:start_day).order(:start_hour).each do |event|
-      .event__container{class: "p-1 mb-1 rounded"}
+%h6.event 予定リスト
+.side__events
+  .event__list
+    - @events.order(:start_day).order(:start_hour).each do |event|
+      .event__container
         = link_to '', edit_calendar_event_path(event.calendar_id, event.id), class: "link__front"
-        .event__top{class: "d-flex justify-content-between"}
+        .event__top
           .event__title
             = event.title
           .event__done
-            = button_to calendar_event_path(event.calendar_id, event.id), method: :delete, class: "mr-2 btn event__done--btn" do
+            = link_to calendar_event_path(event.calendar_id, event.id), method: :delete, class: "event__done--btn" do
               =icon('fas', 'check-square')
-        .event__day{class: "d-flex"}
+        .event__day
           .event__startDay
             = event.start_day.strftime("%m/%d")
-          %div{class: "mx-1"} &sim;
+          .bar &sim;
           - if event.end_day
             .event__endDay
               = event.end_day.strftime("%m/%d")
-        .event__time{class: "d-flex"}
+        .event__time
           .event__startTime
             = event.start_hour.strftime("%H:%M")
-          %div{class: "mx-1"} &sim;
+          .bar &sim;
           - if event.end_hour
             .event__endTime
               = event.end_hour.strftime("%H:%M")
-        .user_name{class: "d-flex"}
-          %div= event.user.name
-          %div さんの予定
+        .user_name
+          = event.user.name + " さんの予定"

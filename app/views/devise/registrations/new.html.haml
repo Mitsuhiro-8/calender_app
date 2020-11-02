@@ -3,8 +3,8 @@
     %h3 アカウントの作成
     = render "devise/shared/links"
   .AccountPage__form
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = devise_error_messages!
+    = form_for(@user, url: user_registration_path) do |f|
+      = render "devise/shared/error_messages", resource: @user
       .FormField
         .FormField__label--normal
           = f.label :name, '名前'

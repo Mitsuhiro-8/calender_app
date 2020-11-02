@@ -1,13 +1,26 @@
 class CalendarsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
   end
   
   def show
-    @calendar = Calendar.find(params[:id])
+    session[:calendarPath] = params[:calendarPath]
+    if session[:calendarPath].present?
+      @calendar = Calendar.find(session[:calendarPath])
+    else
+      @calendar = Calendar.find(current_user.calendars.last.id)
+    end
+    @events = @calendar.events.includes(:user)
+    @comments = @calendar.comments.includes(:user)
     @comment = Comment.new
     @event = Event.new
-    @events = @calendar.events.includes(:user)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @events }
+      # binding.pry
+    end
   end
 
   def new

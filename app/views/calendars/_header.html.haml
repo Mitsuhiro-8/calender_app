@@ -1,11 +1,11 @@
-.header{class: "px-3 border-bottom"}
-  %nav{class: "h-100 d-flex justify-content-between"}
-    .header__left{class: "d-flex align-items-center"} 
-      .tittle{class: "pr-3 ml-3"}
+.header
+  %nav
+    .header__left
+      .title
         = @calendar.name
-      .user{class: "pl-3"}
+      .user
         .user__edit
-          = link_to edit_user_path(current_user), class: 'text-decoration-none' do
+          = link_to edit_user_path(current_user.id, calendarPath: @calendar.id), class: 'user__edit--icon' do
             = icon('fas', 'user-edit')
           %span.pop
             ユーザー編集

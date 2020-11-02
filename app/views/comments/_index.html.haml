@@ -1,18 +1,17 @@
-%h6{class: "p-2 border-bottom"} コメントリスト
-.side__comments{class: "mt-1"}
+%h6.comment コメントリスト
+.side__comments
   = render "comments/new"
-  .comment__list{class: "d-flex flex-column align-items-center"}
-    - @calendar.comments.order(:created_at).each do |comment|
-      .comment__container{class: "p-1 mb-1 rounded overflow-hidden"}
-        .comment__content{class: "d-flex justify-content-between"}
-          .comment__top{class: "d-flex flex-column"}
-            .user__name{class: "d-flex"}
-              %div= comment.user.name
-              %div さん
-            .comment__time{class: "d-flex"}
+  #comment__list
+    - @comments.order(:created_at).each do |comment|
+      .comment__container
+        .comment__content
+          .comment__top
+            .user__name
+              = comment.user.name + " さん"
+            .comment__time
               = comment.created_at.strftime("%H:%M")
           .comment__done
-            = button_to calendar_comment_path(comment.calendar_id, comment.id), method: :delete, class: "mr-1 btn comment__trash--btn" do
+            = link_to calendar_comment_path(comment.calendar_id, comment.id), method: :delete, class: "comment__trash--btn" do
               =icon('fas', 'trash-alt')
-        .comment__text{class: "text-nowrap"}
+        .comment__text
           = comment.text

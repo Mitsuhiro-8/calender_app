@@ -1,27 +1,28 @@
-.calendarPage{class: 'container'}
+.calendarPage
   .calendarPage__title
     %h3 カレンダー編集
-    = link_to "戻る", :back, class: 'btn btn-primary text-left'
+    .back__btn
+      = link_to "戻る", :back 
   .calendarPage__form
     = form_with model: @calendar, local: true do |f|
       - if @calendar.errors.any?
         = render "calendars/error_messages"
-      .formField{class: 'mb-3'}
+      .formField
         .formField__label
           = f.label :name, 'カレンダー名'
         .formField__input
-          = f.text_field :name, class: 'form-control', placeholder: 'カレンダー名を入力してください'
+          = f.text_field :name,  placeholder: 'カレンダー名を入力してください'
           
-      .formField{class: 'mb-3'}
-        .fromField__label
-          = f.label :image, '画像'
-        .formField__input
-          = f.file_field :image
+      -# .formField{class: 'mb-3'}
+      -#   .fromField__label
+      -#     = f.label :image, '画像'
+      -#   .formField__input
+      -#     = f.file_field :image
 
-      .formField{class: 'mb-3'}
+      .formField
         .fromField__label
           = f.label :user_ids, 'カレンダーを共有したいメンバーを選択してください'
         .formField__input
           = f.collection_check_boxes :user_ids, User.all, :id, :name
 
-      = f.submit "更新", class: 'btn btn-primary'
+      = f.submit "更新"

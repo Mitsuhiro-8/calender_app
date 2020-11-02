@@ -1,12 +1,13 @@
 !!!
-%html{class: 'vh-100 bg-light'}
+%html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title CalenderApp
+    %title Our_Calender
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application'
-  %body{class: 'container mt-4'}
+    -# = javascript_include_tag 'application'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
     = render 'layouts/notifications'
     = yield

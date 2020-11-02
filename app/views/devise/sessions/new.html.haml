@@ -6,10 +6,6 @@
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .FormField
         .FormField__label--normal
-          = f.label :name, '名前'
-        .FormField__input--normal
-          = f.text_field :name, class: 'form-control', autofocus: true
-        .FormField__label--normal
           = f.label :email, 'メールアドレス'
         .FormField__input--normal
           = f.email_field :email, class: 'form-control', autofocus: true

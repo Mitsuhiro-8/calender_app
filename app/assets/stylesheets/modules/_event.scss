@@ -1,15 +1,31 @@
+h6.event {
+  padding: 10px;
+  border-bottom: 1px solid #dee2e6;
+}
+
 // 予定リストのサイドバー
 .side__events {
   overflow: auto;
   height: 70vh;
+  margin-top: 10px;
+}
+
+.event__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .event__container {
   height: 70px;
   width: 90%;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
   font-size: xx-small;
   position: relative;
   background-color: rgba(121, 218, 248, 0.8);
+  overflow: hidden;
   
   .link__front {
     position: absolute;
@@ -20,8 +36,27 @@
     text-indent:-999px;
     z-index: 1;
   }
+
+  .event__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .event__day {
+    display: flex;
+  }
+
+  .bar {
+    margin: 0 5px;
+  }
+
+  .event__time {
+    display: flex;
+  }
+
   .event__done--btn {
       padding: 0;
+      margin-right: 5px;
       font-size: small;
       cursor: pointer;
       user-select: none;

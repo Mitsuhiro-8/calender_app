@@ -1,0 +1,86 @@
+// カレンダー編集ページ
+.calendarPage {
+  height: 80vh;
+  width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+
+  &__title {
+    margin-bottom: 10px;
+
+    .back__btn {
+      width: 50px;
+      background-color: royalblue;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: rgba(65, 105, 225, 0.8);
+      }
+      a {
+        color: white;
+        display: block;
+        padding: 5px;
+        text-align: center;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__form {
+
+    .formField {
+      margin-bottom: 10px;
+
+      input[type="text"] {
+        display: block;
+        width: 70%;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 5px 5px;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+
+        &:focus {
+          outline: 0;
+          border: 2px solid #00BCD4;
+        }
+      }
+      input[type="checkbox"] {
+        user-select: none;
+        margin-right: 3px;
+      }
+      label {
+        user-select: none;
+        margin-right: 10px;
+      }
+    }
+
+    input[type="submit"] {
+      outline: 0;
+      width: 50px;
+      border: none;
+      padding: 5px;
+      color: white;
+      background-color: royalblue;
+      border-radius: 5px;
+      border-right: solid 2px rgb(0, 20, 78);
+      border-bottom: solid 2px rgb(0, 20, 78);
+      box-shadow: 3px 3px 3px gray;
+      transition: 0.2s;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: rgba(65, 105, 225, 0.8);
+        border-right: solid 2px rgb(11, 41, 131);
+        border-bottom: solid 2px rgb(11, 41, 131);
+      }
+      &:active {
+        transform: translateY(2px);
+        border-right: none;
+        border-bottom: none;
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_calendar
   def index
   end
@@ -12,9 +13,13 @@ class CommentsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @comment = @calendar.comments.new(comment_params)
     if @comment.save
-      redirect_to calendar_path(@calendar), notice: 'コメントを登録しました'
+      respond_to do |format|
+        format.json
+      end
+      # redirect_to calendar_path(@calendar), notice: 'コメントを登録しました'
     else
       redirect_back(fallback_location: calendar_path(@calendar))
       flash[:notice] = "コメントを登録できませんでした"

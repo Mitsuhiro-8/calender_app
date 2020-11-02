@@ -56,7 +56,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 gem 'devise'
-# gem 'jquery-rails'
 gem 'pry-rails'
 gem 'font-awesome-sass'
 gem 'bootstrap', '~> 4.5.2'

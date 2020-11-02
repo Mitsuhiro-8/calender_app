@@ -1,0 +1,13 @@
+.calendarPage
+  .calendarPage__title
+    %h3 カレンダー作成
+  .calendarPage__form
+    = form_for @calendar, url: {controller: "users/registrations", action: "create_calendar"} do |f| 
+      = render "devise/shared/error_messages", resource: @calendar
+      .formField
+        .formField__label
+          = f.label :name, 'カレンダー名'
+        .formField__input
+          = f.text_field :name, placeholder: 'カレンダー名を入力してください'
+
+      = f.submit "登録"

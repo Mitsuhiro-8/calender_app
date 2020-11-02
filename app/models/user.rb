@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 
   has_many :calendar_users
   has_many :calendars, through: :calendar_users

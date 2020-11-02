@@ -42,7 +42,7 @@
       font-size: 11px;
     }
 
-// エラー
+// フォーム部分のエラー表示
     .field_with_errors {
       display: inline-block;
       color: tomato;
@@ -70,12 +70,17 @@
 }
 
 
-// エラー部分
+// エラーメッセージ
 .error_explanation {
   padding: 20px 30px;
   border-radius: 2px;
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+
 
   h2 {
+    font-weight: bold;
     margin-bottom: 10px;
     color: #d65f4c;
     font-size: 14px;
@@ -83,6 +88,8 @@
 
   ul {
     margin: 0;
+    color: #343a40;
+    word-wrap: break-word;
     padding-left: 17px;
     list-style: square;
   }
