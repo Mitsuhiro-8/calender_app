@@ -11,6 +11,7 @@
     = render "comments/index"
 
   #main__calendar
+    #calendar
     -# = month_calendar events: @events do |date, events|
     -#   .day__num
     -#     = date.day
@@ -20,20 +21,21 @@
     -#   - events.each do |event|
     -#     .event{class: "event-#{event.id}"}
     -#       = link_to event.title, edit_calendar_event_path(event.calendar_id, event.id)
-    .monthCalendar
-      .dayOfTheWeek
-        .day-week
-          日
-        .day-week
-          月
-        .day-week
-          火
-        .day-week
-          水
-        .day-week
-          木
-        .day-week
-          金
-        .day-week
-          土
-      #weeks
+    -# ---------------------------
+    -# .monthCalendar
+    -#   .dayOfTheWeek
+    -#     .day-week
+    -#       日
+    -#     .day-week
+    -#       月
+    -#     .day-week
+    -#       火
+    -#     .day-week
+    -#       水
+    -#     .day-week
+    -#       木
+    -#     .day-week
+    -#       金
+    -#     .day-week
+    -#       土
+    -#   #weeks
