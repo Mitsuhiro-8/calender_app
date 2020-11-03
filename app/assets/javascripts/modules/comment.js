@@ -1,6 +1,6 @@
 'use strict';
 
-window.addEventListener("load", function() {
+window.addEventListener("DOMContentLoaded", function() {
   
   // 変数
   const comBtn = document.getElementById('comment__btn');

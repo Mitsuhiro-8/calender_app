@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :set_calendar
+  before_action :set_calendar, only: [:update, :create, :edit, :update, :destroy]
   # GET /events
   # GET /events.json
   def index
@@ -25,10 +25,10 @@ class EventsController < ApplicationController
     # binding.pry
     @event = @calendar.events.new(event_params)  
     if @event.save
-    # format.html { 
-      #   redirect_to @calendar, notice: '予定を登録しました'
-      # }
       respond_to do |format|
+      format.html { 
+          redirect_to @calendar, notice: '予定を登録しました'
+        }
         format.json
       end
     else

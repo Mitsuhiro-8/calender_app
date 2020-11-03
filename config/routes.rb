@@ -4,11 +4,12 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
   }
   
+  resources :events, only: [:edit]
   root "calendars#show"
   resources :label_colors, only: [:index, :new, :create, :edit, :update], path: 'color'
   resources :users, only: [:index, :edit, :update]
   resources :calendars do
-    resources :events
+    resources :events, only: [:create, :edit, :update, :destroy]
     resources :comments
   end
   devise_scope :user do

@@ -61,9 +61,11 @@ gem 'font-awesome-sass'
 gem 'bootstrap', '~> 4.5.2'
 gem 'rename'
 gem 'rails-i18n'
-gem 'simple_calendar', '~> 2.0'
-gem 'holiday_jp'
-
+# gem 'holiday_jp'
+# gem 'react-rails'
+gem "jquery-rails"
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 group :production do
   gem 'pg', '~> 0.18.4'

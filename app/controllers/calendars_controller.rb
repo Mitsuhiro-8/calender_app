@@ -16,11 +16,12 @@ class CalendarsController < ApplicationController
     @comment = Comment.new
     @event = Event.new
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @events }
+    # render json: @events
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @events }
       # binding.pry
-    end
+    # end
   end
 
   def new
