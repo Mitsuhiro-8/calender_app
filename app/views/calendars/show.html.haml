@@ -4,11 +4,9 @@
   = render  partial: "events/new", locals: { calendar: @calendar }
   = render  partial: "events/edit", locals: { calendar: @calendar }
 
-.main__contents
-  #side__bar
-    = render "events/index"
+.main__contents{data: {"turbolinks":"false"}}
   #side__bar--second
     = render "comments/index"
 
   #main__calendar
-    #calendar{data: {"turbolinks":"false"}}
+    #calendar

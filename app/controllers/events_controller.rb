@@ -2,25 +2,16 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :set_calendar, only: [:update, :create, :edit, :update, :destroy]
-  # GET /events
-  # GET /events.json
+
   def index
-    @events = Event.all
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
   end
 
-  # GET /events/new
   def new
-    # @event = Event.new
-    # @events = @calendar.events.includes(:user)
   end
 
-  # POST /events
-  # POST /events.json
   def create
     # binding.pry
     @event = @calendar.events.new(event_params)  
@@ -46,7 +37,6 @@ class EventsController < ApplicationController
   #   format.json
   # end
 
-  # GET /events/1/edit
   def edit
   end
   
@@ -77,12 +67,10 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def event_params
       params.require(:event).permit(:title, :content, :start_hour, :end_hour, :start_day, :end_day).merge(user_id: current_user.id, calendar_id: @calendar)
     end

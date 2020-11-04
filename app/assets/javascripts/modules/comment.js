@@ -59,21 +59,9 @@ window.addEventListener("DOMContentLoaded", function() {
       e.preventDefault();
       let formData = new FormData(this);
       let url = this.getAttribute('action');
-      // let getToken = document.forms['comment__form--new'].elements['authenticity_token'].value;
-
-      // console.log(...formData.entries());
-      // console.log(url);
-      // console.log(getToken);
-
-
+      
       fetch(url, {
         method: 'POST',
-        // headers: {
-        //   'Content-Type': 'application/json',
-        //   'X-CSRF-Token': getToken,
-        // },
-
-        // body:  JSON.stringify(formData),
         body:  formData,
       }).then(response => response.json())
 
