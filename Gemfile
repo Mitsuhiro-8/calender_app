@@ -61,7 +61,7 @@ gem 'font-awesome-sass'
 gem 'bootstrap', '~> 4.5.2'
 gem 'rename'
 gem 'rails-i18n'
-# gem 'holiday_jp'
+gem 'holiday_jp'
 # gem 'react-rails'
 gem "jquery-rails"
 gem 'fullcalendar-rails'

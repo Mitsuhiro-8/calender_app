@@ -40,3 +40,23 @@
   content: "";                       /* コンテンツの挿入 */
   position: absolute;                /* 親要素を基準 */
 }
+
+// fullcalendarのボタン
+@mixin calendarBtn ($width) {
+  outline: 0;
+  height: 30px;
+  width: $width;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  background-color: rgb(250, 250, 250);
+  border-radius: 5px;
+  color: #212529;
+  
+  &:hover {
+    color: #212529;
+    background-color: #e2e6ea;
+    transition: 1.0s;
+  }
+}

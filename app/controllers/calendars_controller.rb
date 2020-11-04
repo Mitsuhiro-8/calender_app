@@ -15,13 +15,8 @@ class CalendarsController < ApplicationController
     @comments = @calendar.comments.includes(:user)
     @comment = Comment.new
     @event = Event.new
-
-    # render json: @events
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @events }
-      # binding.pry
-    # end
+    # 祝日作成メソッド(2020年前後10年分のデータ)
+    @holidays = Calendar.create_holidays
   end
 
   def new
