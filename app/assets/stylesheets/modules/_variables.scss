@@ -60,3 +60,20 @@
     transition: 1.0s;
   }
 }
+
+// input[type="text"]フォーム
+@mixin inputText($width) {
+  display: block;
+  width: $width;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 5px 5px;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+
+  &:focus {
+    outline: 0;
+    border: 1px solid #00BCD4;
+    box-shadow: 0 0 0 0.2rem rgba(0, 240, 248, 0.3);
+  }
+}
