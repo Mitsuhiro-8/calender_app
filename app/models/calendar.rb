@@ -5,8 +5,7 @@ class Calendar < ApplicationRecord
   has_many :calendar_users
   has_many :users, through: :calendar_users
 
-  validates :name, presence: true
-
+  validates :name, presence: true, length: {maximum: 12}
 
 # 前後十年分の祝日生成
   def self.create_holidays
