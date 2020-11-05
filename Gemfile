@@ -32,6 +32,11 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'mysql2', '>= 0.4.4'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
+  gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
@@ -61,9 +66,11 @@ gem 'font-awesome-sass'
 gem 'bootstrap', '~> 4.5.2'
 gem 'rename'
 gem 'rails-i18n'
-gem 'simple_calendar', '~> 2.0'
 gem 'holiday_jp'
-
+# gem 'react-rails'
+gem "jquery-rails"
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 group :production do
   gem 'pg', '~> 0.18.4'

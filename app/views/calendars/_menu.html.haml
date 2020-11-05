@@ -1,13 +1,13 @@
 .menu
   .left__items
-    .event__item
-      #event__btn
-        = icon('fas', 'edit')
-        %span.pop 予定作成
     .comment__item
       #comment__btn
         = icon('fas', 'comment-alt')
         %span.pop コメント作成
+    .event__item
+      #event__btn
+        = icon('fas', 'edit')
+        %span.pop 予定作成
 
   .right__items
     .calendar__menu
@@ -27,18 +27,6 @@
             - current_user.calendars.each do |calendar|
               %li
                 = link_to calendar.name, calendar_path(calendar.id, calendarPath: calendar.id)
-      .change__contents{class: "d-flex justify-content-around"}
-        #today{class: "btn btn-light"}
-          今日
-        #change__year{class: "btn btn-light"}
-          年
-        #change__month{class: "btn btn-light"}
-          月
-        #previous
-          = icon('fas', 'caret-square-left')
-        #next{class: "mx-3"}
-          = icon('fas', 'caret-square-right')
-        #yearMonth__btn{class: "btn btn-light"}
     .member__menu
       %span.pop メンバーリスト
       #member__btn
