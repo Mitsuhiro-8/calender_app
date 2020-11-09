@@ -13,13 +13,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @event = @calendar.events.new(event_params)  
     if @event.save
       respond_to do |format|
-      format.html { 
-          redirect_to @calendar, notice: '予定を登録しました'
-        }
         format.json
       end
     else

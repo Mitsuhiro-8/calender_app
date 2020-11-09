@@ -19,7 +19,6 @@ class CommentsController < ApplicationController
       respond_to do |format|
         format.json
       end
-      # redirect_to calendar_path(@calendar), notice: 'コメントを登録しました'
     else
       redirect_back(fallback_location: calendar_path(@calendar))
       flash[:notice] = "コメントを登録できませんでした"
