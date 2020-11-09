@@ -12,4 +12,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.timestamps
     end
   end
+  def down
+    drop_table :events
+  end
 end

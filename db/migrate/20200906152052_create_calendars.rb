@@ -6,4 +6,8 @@ class CreateCalendars < ActiveRecord::Migration[6.0]
       t.timestamps
     end
   end
+
+  def down
+    drop_table :calendars
+  end
 end
