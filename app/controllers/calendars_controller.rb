@@ -2,6 +2,7 @@ class CalendarsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @calendars = current_user.calendars
   end
   
   def show
@@ -11,6 +12,7 @@ class CalendarsController < ApplicationController
     else
       @calendar = Calendar.find(current_user.calendars.last.id)
     end
+    @calendars = current_user.calendars
     @events = @calendar.events.includes(:user)
     @comments = @calendar.comments.includes(:user)
     @comment = Comment.new

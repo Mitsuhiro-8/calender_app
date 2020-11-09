@@ -1,13 +1,14 @@
 .menu
   .left__items
-    .comment__item
-      #comment__btn
-        = icon('fas', 'comment-alt')
-        %span.pop コメント作成
-    .event__item
-      #event__btn
-        = icon('fas', 'edit')
-        %span.pop 予定作成
+    - if @calendar
+      .comment__item
+        #comment__btn
+          = icon('fas', 'comment-alt')
+          %span.pop コメント作成
+      .event__item
+        #event__btn
+          = icon('fas', 'edit')
+          %span.pop 予定作成
 
   .right__items
     .calendar__menu
@@ -16,22 +17,24 @@
           = icon('fas', 'calendar-plus')
         %span.pop カレンダーの新規作成
       #calendar__edit
-        = link_to edit_calendar_path('#') do
-          = icon('fas', 'calendar-check')
-        %span.pop カレンダーの編集
+        -if @calendar
+          = link_to edit_calendar_path('#') do
+            = icon('fas', 'calendar-check')
+          %span.pop カレンダーの編集
       .calendar__change
         %span.pop カレンダーの切替
         #calendar__btn
           =icon('fas', 'calendar-alt')
           %ul#calendar__name
-            - current_user.calendars.each do |calendar|
+            - @calendars.each do |calendar|
               %li
                 = link_to calendar.name, calendar_path(calendar.id, calendarPath: calendar.id)
-    .member__menu
-      %span.pop メンバーリスト
-      #member__btn
-        =icon('fas', 'users')
-        %ul#member__name
-          - @calendar.users.each do |user|
-            %li
-              = link_to user.name, '#'
+    -if @calendar
+      .member__menu
+        %span.pop メンバーリスト
+        #member__btn
+          =icon('fas', 'users')
+          %ul#member__name
+            - @calendar.users.each do |user|
+              %li
+                = link_to user.name, '#'

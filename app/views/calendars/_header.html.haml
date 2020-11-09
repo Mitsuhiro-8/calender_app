@@ -2,11 +2,16 @@
   %nav
     .header__left
       .title
-        = @calendar.name
+        -if @calendar
+          = @calendar.name
       .user
         .user__edit
-          = link_to edit_user_path(current_user.id, calendarPath: @calendar.id), class: 'user__edit--icon' do
-            = icon('fas', 'user-edit')
+          -if @calendar
+            = link_to edit_user_path(current_user.id, calendarPath: @calendar.id), class: 'user__edit--icon' do
+              = icon('fas', 'user-edit')
+          -else
+            = link_to edit_user_path(current_user.id), class: 'user__edit--icon' do
+              = icon('fas', 'user-edit')
           %span.pop
             ユーザー編集
       .user__name
