@@ -18,7 +18,6 @@ window.addEventListener("DOMContentLoaded", function() {
 
   // コメント作成アイコン
   {
-    
     comBtn.addEventListener('click', function() {
       comForm.classList.toggle('open'); 
       sideSecond.classList.toggle('open');
