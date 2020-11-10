@@ -69,7 +69,7 @@ $(function () {
   };
 
   function clearCalendar() {
-    $('#calendar').fullCalendar('delete'); // In case delete doesn't work.
+    // $('#calendar').fullCalendar('delete'); // In case delete doesn't work.
     $('#calendar').html('');
   };
 
