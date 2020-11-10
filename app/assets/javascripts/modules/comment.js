@@ -1,7 +1,7 @@
 'use strict';
 
 window.addEventListener("DOMContentLoaded", function() {
-  
+
   // 変数
   const comBtn = document.getElementById('comment__btn');
   const comForm = document.getElementById('comment__form');
@@ -63,8 +63,11 @@ window.addEventListener("DOMContentLoaded", function() {
       fetch(url, {
         method: 'POST',
         body:  formData,
-      }).then(response => response.json())
-
+      }).then((response) => {
+        if (response.ok ) {
+          return response.json();
+        };
+      })
       .then(result => {
         const buildCom = buildComment(result);
         const comList = document.getElementById('comment__list');
@@ -76,8 +79,7 @@ window.addEventListener("DOMContentLoaded", function() {
       })
 
       .catch(error => {
-        console.error(error);
-        alert("エラー");
+        alert("コメントが送信できませんでした");
       })
     });
 

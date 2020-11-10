@@ -20,8 +20,8 @@ class CommentsController < ApplicationController
         format.json
       end
     else
-      redirect_back(fallback_location: calendar_path(@calendar))
-      flash[:notice] = "コメントを登録できませんでした"
+      # 422はバリデーションエラーの場合に返すステータス
+      render status: 422
     end
   end
 

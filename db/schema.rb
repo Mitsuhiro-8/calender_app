@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_022355) do
+ActiveRecord::Schema.define(version: 2020_11_10_021745) do
 
   create_table "calendar_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "calendar_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_11_05_022355) do
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "text"
+    t.text "text", null: false
     t.bigint "user_id"
     t.bigint "calendar_id"
     t.datetime "created_at", precision: 6, null: false
