@@ -29,16 +29,6 @@ window.addEventListener("DOMContentLoaded", function () {
       mask.addEventListener("click", function() {
         addHidden();
       });
-
-        // 予定追加イベント（カレンダークリック時）
-        const fcDay = document.getElementsByClassName('fc-day');
-        function dayCellDblclick(){
-        event.classList.remove('hidden');
-        mask.classList.remove('hidden');
-      }
-      for(let i = 0; i < fcDay.length; i++) {
-        fcDay[i].addEventListener('dblclick', dayCellDblclick);
-      }
       
       // 予定作成アクション
       const eventFormNew = document.getElementById('event__form--new');
@@ -115,7 +105,7 @@ window.addEventListener("DOMContentLoaded", function () {
       eventAll.addEventListener('change',allDay);
     }
 
-    // 予定の色選択
+    // 予定のラベルカラー選択
     {
       function buildColor() {
         let html =
@@ -211,34 +201,33 @@ window.addEventListener("DOMContentLoaded", function () {
             })
           });
         };
-
         csOpen();
     }
-    // 予定編集操作
-    {
-      const aTags = document.querySelectorAll("div.fc-content");
-      console.log(aTags);
-      const editEvent = document.getElementById('event__edit')
-      const editEventClose = document.getElementById('event__close--edit')
-      const editMask = document.getElementById('mask__edit');
-      const eventDiv = document.getElementsByClassName('event')
+    // // 予定編集操作
+    // {
+    //   const aTags = document.querySelectorAll("div.fc-content");
+    //   console.log(aTags);
+    //   const editEvent = document.getElementById('event__edit')
+    //   const editEventClose = document.getElementById('event__close--edit')
+    //   const editMask = document.getElementById('mask__edit');
+    //   const eventDiv = document.getElementsByClassName('event')
       
-      // 予定変更イベント（カレンダークリック時）
-      function eventClick(e){
-      e.preventDefault();
-      editEvent.classList.remove('hidden');
-      editMask.classList.remove('hidden');
-    }
-    for(let i = 0; i < eventDiv.length; i++) {
-      eventDiv[i].addEventListener('click', eventClick);
-    }
-      editEventClose.addEventListener("click", function() {
-        editEvent.classList.add('hidden');
-        editMask.classList.add('hidden'); 
-      });
-      editMask.addEventListener("click", function() {
-        editEventClose.click();
-      });
-    }
+    //   // 予定変更イベント（カレンダークリック時）
+    //   function eventClick(e){
+    //   e.preventDefault();
+    //   editEvent.classList.remove('hidden');
+    //   editMask.classList.remove('hidden');
+    // }
+    // for(let i = 0; i < eventDiv.length; i++) {
+    //   eventDiv[i].addEventListener('click', eventClick);
+    // }
+    //   editEventClose.addEventListener("click", function() {
+    //     editEvent.classList.add('hidden');
+    //     editMask.classList.add('hidden'); 
+    //   });
+    //   editMask.addEventListener("click", function() {
+    //     editEventClose.click();
+    //   });
+    // }
 
 });
