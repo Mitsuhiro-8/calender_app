@@ -281,7 +281,7 @@ a[data-goto]:hover {
 .fc-event-container {
 
   // 祝日
-   a {
+   a:not([href]) {
    color: #fff;
    background-color: rgb(231, 59, 59);
    text-decoration: none;

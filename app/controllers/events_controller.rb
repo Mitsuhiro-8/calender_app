@@ -13,19 +13,20 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = @calendar.events.new(event_params)  
-    if @event.save
+    @event = @calendar.events.new(event_params)
+    if @event.valid? && @event.save
       respond_to do |format|
         format.json
       end
     else
-      respond_to do |format|
-        format.html { 
-        redirect_back(fallback_location: calendar_path(@calendar))
-        flash[:notice] = "予定を登録できませんでした"
-        }
-        format.json
-      end
+      render status: 422
+      # respond_to do |format|
+      #   format.html { 
+      #   redirect_back(fallback_location: calendar_path(@calendar))
+      #   flash[:notice] = "予定を登録できませんでした"
+      #   }
+      #   format.json
+      # end
     end
   end
   # respond_to do |format|

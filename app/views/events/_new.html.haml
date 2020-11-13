@@ -18,21 +18,13 @@
           &sim;
         .formField__day
           = f.datetime_field :end_time
-      
-      .formField#dayOnly
-        .formField__day
-          = f.date_field :start_time
-        .form__connect
-          &sim;
-        .formField__day
-          = f.date_field :end_time
 
       .formField
         = f.check_box :all_day, {}, true, false
         = f.label :all_day, '終日'
 
       .formField
-        = f.select :color, {}
+        = f.select :color, {デフォルトカラー:"#00BCD4"}
         #hidden__select
 
       .formField__noFlex
