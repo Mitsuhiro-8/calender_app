@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_021745) do
+ActiveRecord::Schema.define(version: 2020_11_12_065902) do
 
   create_table "calendar_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "calendar_id"
@@ -38,16 +38,16 @@ ActiveRecord::Schema.define(version: 2020_11_10_021745) do
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.text "content"
-    t.time "start_hour"
-    t.time "end_hour"
-    t.date "start_day"
-    t.date "end_day"
     t.bigint "user_id"
     t.bigint "calendar_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time"
+    t.boolean "all_day", default: false, null: false
+    t.string "color"
     t.index ["calendar_id"], name: "index_events_on_calendar_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end

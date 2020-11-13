@@ -9,6 +9,6 @@
 # json.calendar_id  @event.calendar.id
 
   json.extract! @event, :id, :title, :content 
-  json.start @event.start_day
-  json.end @event.end_day
+  json.start @event.start_time
+  json.end @event.end_time
   json.url edit_calendar_event_path(@event.calendar_id, @event)

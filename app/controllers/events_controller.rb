@@ -68,7 +68,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:title, :content, :start_hour, :end_hour, :start_day, :end_day).merge(user_id: current_user.id, calendar_id: @calendar)
+      params.require(:event).permit(:title, :content, :start_time, :end_time, :all_day, :color).merge(user_id: current_user.id, calendar_id: @calendar)
     end
 
     def set_calendar
