@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   def create
     # binding.pry
     @comment = @calendar.comments.new(comment_params)
-    if @comment.save
+    if @comment.valid? && @comment.save
       respond_to do |format|
         format.json
       end
