@@ -77,3 +77,76 @@
     box-shadow: 0 0 0 0.2rem rgba(0, 240, 248, 0.3);
   }
 }
+
+// selectタグ
+@mixin select($width) {
+  display: block;
+  width: $width;
+  font-size: small;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 5px 5px;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+
+  &:focus {
+    outline: 0;
+    border: 1px solid #00BCD4;
+    box-shadow: 0 0 0 0.2rem rgba(0, 240, 248, 0.3);
+  }
+}
+
+
+// チェックボックスのデザイン変更
+@mixin checkStyle() {
+    display: none;
+    /*デフォルトのチェックボックスを非表示にする*/
+    &+label {
+      position: relative;
+      padding-left: 20px;
+      font-size: small;
+      user-select: none;
+      /*チェックボックス分の隙間を作る*/
+      
+        &::before {
+        content: "";
+        display: block;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        /*中央ぞろえにする*/
+        border: 1px solid #ced4da;
+        /*チェックのスタイル*/
+        border-radius: 3px;
+        cursor: pointer;
+      }
+    }
+  &:checked+label {
+    
+    &::before {
+      /*チェックしたときの箱の色を変える*/
+      background: #00BCD4;
+    }
+    
+    &::after {
+      /*チェックの✓をつくる*/
+      content: "";
+      display: block;
+      width: 10px;
+      height: 6px;
+      box-sizing: border-box;
+      border-bottom: 2px solid #fff;
+      border-left: 2px solid #fff;
+      position: absolute;
+      /*ここから下は位置を調整する*/
+      top: 40%;
+      left: 5px;
+      /*箱を斜めに傾けてチェック表示にする*/
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg) translateY(-50%);
+    }
+  }
+}

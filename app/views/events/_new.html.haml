@@ -11,21 +11,29 @@
       .formField
         = f.text_field :title, placeholder: 'タイトルを入力してください'
 
-      .formField
+      .formField#dayAndTime
         .formField__day
-          = f.date_field :start_day
+          = f.datetime_field :start_time
         .form__connect
           &sim;
         .formField__day
-          = f.date_field :end_day
+          = f.datetime_field :end_time
+      
+      .formField#dayOnly
+        .formField__day
+          = f.date_field :start_time
+        .form__connect
+          &sim;
+        .formField__day
+          = f.date_field :end_time
 
       .formField
-        .formField__time
-          = f.time_field :start_hour
-        .form__connect
-          &sim;
-        .formField__time
-          = f.time_field :end_hour
+        = f.check_box :all_day, {}, true, false
+        = f.label :all_day, '終日'
+
+      .formField
+        = f.select :color, {}
+        #hidden__select
 
       .formField__noFlex
         .formField__content
@@ -34,5 +42,5 @@
           .formField__input
             = f.text_area :content
 
-      .formSubmit{class: "text-left"}
+      .formSubmit
         = f.submit "登録", class: 'event__submit'
