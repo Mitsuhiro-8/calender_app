@@ -4,30 +4,43 @@ window.addEventListener("DOMContentLoaded", function () {
 
     // 予定作成アイコン
     {
+      // newファイル関係
       const eventBtn = document.getElementById('event__btn');
       const event = document.getElementById('event');
       const eventClose = document.getElementById('event__close--new')
       const mask = document.getElementById('mask');
+      // editファイル関係
+      const eventEdit = document.getElementById('event__edit');
+      const eventCloseEdit = document.getElementById('event__close--edit')
+      const maskEdit = document.getElementById('mask__edit');
       
       // hiddenクラスを付けてビューを非表示にする
-      function addHidden () {
+      function addHidden (event, mask) {
           if (window.confirm("入力した内容は失われます。よろしいですか？")) {
           event.classList.add('hidden');
           mask.classList.add('hidden'); 
           }
       }
-
+      // new関係
       eventBtn.addEventListener("click", function() {
         event.classList.remove('hidden');
         mask.classList.remove('hidden'); 
       });
 
       eventClose.addEventListener("click", function() {
-        addHidden();
+        addHidden(event, mask);
       });
 
       mask.addEventListener("click", function() {
-        addHidden();
+        addHidden(event, mask);
+      });
+
+      // edit関係
+      eventCloseEdit.addEventListener("click", function() {
+        addHidden(eventEdit, maskEdit);
+      });
+      mask.addEventListener("click", function() {
+        addHidden(eventEdit, maskEdit);
       });
       
       // 予定作成アクション
@@ -62,47 +75,61 @@ window.addEventListener("DOMContentLoaded", function () {
 
     // 予定作成ビューの終日判定
     {
-
       function buildDayTimeForm () {
         let form =
-        `<div class="formField" id="dayAndTime" style="display: flex;">
-          <div class="formField__day">
+        ` <div class="formField__day">
            <input type="datetime-local" name="event[start_time]" id="event_start_time">
           </div>
           <div class="form__connect"> ∼ </div>
           <div class="formField__day">
             <input type="datetime-local" name="event[end_time]" id="event_end_time">
-          </div>
-         </div>`
+          </div>`
         return form;
       };
+
       function buildDayForm () {
         let form =
-        `<div class="formField" id="dayOnly" style="display: flex;">
-          <div class="formField__day">
+        ` <div class="formField__day">
            <input type="date" name="event[start_time]" id="event_start_time">
           </div>
           <div class="form__connect"> ∼ </div>
           <div class="formField__day">
             <input type="date" name="event[end_time]" id="event_end_time">
-          </div>
-        </div>`
+          </div>`
         return form;
       }
       const eventAll = document.getElementById('event_all_day');
+      const dayTime = document.getElementById('dayAndTime');
+      const eventAllEdit = document.getElementById('event_all_day_edit');
+      const dayTimeEdit = document.getElementById('dayAndTime__edit');
       function allDay() {
         if (eventAll.checked) {
-          const dayTime = document.getElementById('dayAndTime');
-          dayTime.insertAdjacentHTML('beforebegin', buildDayForm());
-          dayTime.remove();
+          const dayForm = buildDayForm();
+          dayTime.innerHTML = dayForm;
+          eventAll.value = true;
           
         } else {
-          const day = document.getElementById('dayOnly');
-          day.insertAdjacentHTML('beforebegin', buildDayTimeForm());
-          day.remove();
+          const dayTimeForm = buildDayTimeForm();
+          dayTime.innerHTML = dayTimeForm;
+          eventAll.value = false;
         }
       }
+      function allDayEdit() {
+        if (eventAllEdit.checked) {
+          const dayForm = buildDayForm();
+          dayTimeEdit.innerHTML = dayForm;
+          eventAllEdit.value = true;
+          
+        } else {
+          const dayTimeForm = buildDayTimeForm();
+          dayTimeEdit.innerHTML = dayTimeForm;
+          eventAllEdit.value = false;
+        }
+      }
+      // 予定作成用
       eventAll.addEventListener('change',allDay);
+      // 予定編集用
+      eventAllEdit.addEventListener('change',allDayEdit);
     }
 
     // 予定のラベルカラー選択
@@ -175,33 +202,38 @@ window.addEventListener("DOMContentLoaded", function () {
 
         const colorSelect = document.getElementById('event_color');
         const hiddenS = document.getElementById('hidden__select');
+        const colorSelectEdit = document.getElementById('event_color_edit');
+        const hiddenSEdit = document.getElementById('hidden__select--edit');
 
-        function csOpen() {
-            colorSelect.addEventListener("click", function(){
+        function csOpen(target, hiddenTarget) {
+            target.addEventListener("click", function(){
             const buildC = buildColor();
-            hiddenS.innerHTML = buildC;
+            hiddenTarget.innerHTML = buildC;
             const cs = document.getElementById('colorSelect');
             const csLi = cs.querySelectorAll('li');
             csLi.forEach(li => {
               const div = li.querySelector('div');
               const inp = li.querySelector('input[type="radio"]');
 
-              const selectChild = colorSelect.firstElementChild;
+              const selectChild = target.firstElementChild;
               if ( selectChild && selectChild.textContent == div.textContent ) {
                   inp.checked = true;
               };
 
               li.onclick = function () {
                 const option = buildOption(div.textContent, inp.value)
-                colorSelect.innerHTML = option;
+                target.innerHTML = option;
                 const liStyle = li.getAttribute("style");
-                colorSelect.style = liStyle;
+                target.style = liStyle;
                 cs.remove();
               }
             })
           });
         };
-        csOpen();
+        //  予定作成ビュー用
+        csOpen(colorSelect, hiddenS);
+        // 予定編集ビュー用
+        csOpen(colorSelectEdit, hiddenSEdit);
     }
     // // 予定編集操作
     // {
