@@ -63,9 +63,10 @@ window.addEventListener("DOMContentLoaded", function() {
         method: 'POST',
         body:  formData,
       }).then((response) => {
-        if (response.ok ) {
-          return response.json();
+        if (!response.ok ) {
+          throw new Error('コメントを登録できませんでした')
         };
+        return response.json();
       })
       .then(result => {
         const buildCom = buildComment(result);
@@ -78,7 +79,7 @@ window.addEventListener("DOMContentLoaded", function() {
       })
 
       .catch(error => {
-        alert("コメントが送信できませんでした");
+        alert(error);
       })
     });
 
