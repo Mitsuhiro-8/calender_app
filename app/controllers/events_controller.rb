@@ -20,19 +20,8 @@ class EventsController < ApplicationController
       end
     else
       render status: 422
-      # respond_to do |format|
-      #   format.html { 
-      #   redirect_back(fallback_location: calendar_path(@calendar))
-      #   flash[:notice] = "予定を登録できませんでした"
-      #   }
-      #   format.json
-      # end
     end
   end
-  # respond_to do |format|
-  #   format.html { redirect_to group_messages_path, notice: "メッセージを送信しました" }
-  #   format.json
-  # end
 
   def edit
   end
@@ -40,14 +29,15 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @calendar, notice: '予定を更新しました' }
-        # format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        # format.json { render json: @event.errors, status: :unprocessable_entity }
+    @event_valid = Event.new(event_params)
+    if @event_valid.valid? && @event.update(event_params)
+      binding.pry
+      respond_to do |format|
+        format.json
       end
+    else
+      # binding.pry
+        render status: 422
     end
   end
 
