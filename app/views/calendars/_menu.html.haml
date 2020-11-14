@@ -18,7 +18,7 @@
         %span.pop カレンダーの新規作成
       #calendar__edit
         -if @calendar
-          = link_to edit_calendar_path('#') do
+          = link_to edit_calendar_path(@calendar.id) do
             = icon('fas', 'calendar-check')
           %span.pop カレンダーの編集
       .calendar__change
