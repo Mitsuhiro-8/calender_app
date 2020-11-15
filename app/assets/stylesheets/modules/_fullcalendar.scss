@@ -285,6 +285,7 @@ a[data-goto]:hover {
    color: #fff;
    background-color: rgb(231, 59, 59);
    text-decoration: none;
+   pointer-events: none;
   }
 
   // リンク有りのイベント
