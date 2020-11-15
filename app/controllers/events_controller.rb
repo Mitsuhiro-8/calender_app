@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :set_calendar, only: [:update, :create, :edit, :update, :destroy]
+  before_action :set_calendar, only: [:create, :update, :destroy]
 
   def index
   end
@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
   def create
     @event = @calendar.events.new(event_params)
-    binding.pry
+    # binding.pry
     if @event.valid? && @event.save
       respond_to do |format|
         format.json
@@ -30,9 +30,9 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    @event_valid = Event.new(event_params)
+    @event_valid = @calendar.events.new(event_params)
+    binding.pry
     if @event_valid.valid? && @event.update(event_params)
-      binding.pry
       respond_to do |format|
         format.json
       end
@@ -60,7 +60,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:title, :content, :start_time, :end_time, :all_day, :color).merge(user_id: current_user.id, calendar_id: @calendar)
+      params.require(:event).permit(:title, :content, :start_time, :end_time, :all_day, :color).merge(user_id: current_user.id, calendar_id: @calendar.id)
     end
 
     def set_calendar

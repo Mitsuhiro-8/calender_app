@@ -4,12 +4,26 @@ window.addEventListener("DOMContentLoaded", function () {
   
   // 予定作成アイコン
   {
+    // 日にち、時間両方を入力できるinputタグを作成
+    function buildDayTimeForm () {
+      let form =
+      ` <div class="formField__day">
+      <input type="datetime-local" name="event[start_time]" id="event_start_time">
+      </div>
+      <div class="form__connect"> ∼ </div>
+      <div class="formField__day">
+      <input type="datetime-local" name="event[end_time]" id="event_end_time">
+      </div>`
+      return form;
+    };
+
     // newファイル関係
     const eventBtn = document.getElementById('event__btn');
     const event = document.getElementById('event');
     const eventClose = document.getElementById('event__close--new')
     const mask = document.getElementById('mask');
     const eventFormNew = document.getElementById('event__form--new');
+    const dayTime = eventFormNew.querySelector('#dayAndTime');
     // editファイル関係
     const eventEdit = document.getElementById('event__edit');
     const eventCloseEdit = document.getElementById('event__close--edit')
@@ -31,30 +45,52 @@ window.addEventListener("DOMContentLoaded", function () {
       mask.classList.add('hidden');
       targetForm.reset(); 
     }
+    // カラーラベル選択ビューを削除する関数
+    function removeLabel() {
+      const cs = document.getElementById('colorSelect');
+      if (cs) {
+        cs.remove();
+      }
+    }
+    // チェックボックスのvalueをfalseに戻す関数
+    function checkBoxReset() {
+      const getCheckBox = document.getElementById('event_all_day');
+      getCheckBox.value = false;
+    }
     
     // new関係
     // 予定作成アイコンをクリックした時に予定作成用のビューを表示する
     eventBtn.addEventListener("click", function() {
       event.classList.remove('hidden');
       mask.classList.remove('hidden'); 
+      dayTime.innerHTML = buildDayTimeForm();
+      checkBoxReset();
     });
     // クローズボタンをクリックした時に予定作成用のビューを非表示にする
     eventClose.addEventListener("click", function() {
       addHidden(event, mask, eventFormNew);
+      removeLabel();
+      checkBoxReset();
     });
     // マスク部分をクリックした時に予定作成用のビューを非表示にする
     mask.addEventListener("click", function() {
       addHidden(event, mask, eventFormNew);
+      removeLabel();
+      checkBoxReset();
     });
 
     // edit関係
     // クローズボタンをクリックした時に予定編集用のビューを非表示にする
     eventCloseEdit.addEventListener("click", function() {
       addHidden(eventEdit, maskEdit, eventFormEdit);
+      removeLabel();
+      checkBoxReset();
     });
     // マスク部分をクリックした時に予定編集用のビューを非表示にする
     maskEdit.addEventListener("click", function() {
       addHidden(eventEdit, maskEdit, eventFormEdit);
+      removeLabel();
+      checkBoxReset();
     });
       
     // 予定作成アクション
@@ -169,7 +205,6 @@ window.addEventListener("DOMContentLoaded", function () {
         const dayForm = buildDayForm();
         dayTimeEdit.innerHTML = dayForm;
         eventAllEdit.value = true;
-        
       } else {
         const dayTimeForm = buildDayTimeForm();
         dayTimeEdit.innerHTML = dayTimeForm;
@@ -283,35 +318,13 @@ window.addEventListener("DOMContentLoaded", function () {
       });
     };
     //  予定作成ビュー用のアクション
-    csOpen(colorSelect, hiddenS);
+    if (colorSelect) {
+      csOpen(colorSelect, hiddenS);
+    }
     // 予定編集ビュー用のアクション
-    csOpen(colorSelectEdit, hiddenSEdit);
+    if (colorSelectEdit) {
+      csOpen(colorSelectEdit, hiddenSEdit);
+    }
   }
-    // // 予定編集操作
-    // {
-    //   const aTags = document.querySelectorAll("div.fc-content");
-    //   console.log(aTags);
-    //   const editEvent = document.getElementById('event__edit')
-    //   const editEventClose = document.getElementById('event__close--edit')
-    //   const editMask = document.getElementById('mask__edit');
-    //   const eventDiv = document.getElementsByClassName('event')
-      
-    //   // 予定変更イベント（カレンダークリック時）
-    //   function eventClick(e){
-    //   e.preventDefault();
-    //   editEvent.classList.remove('hidden');
-    //   editMask.classList.remove('hidden');
-    // }
-    // for(let i = 0; i < eventDiv.length; i++) {
-    //   eventDiv[i].addEventListener('click', eventClick);
-    // }
-    //   editEventClose.addEventListener("click", function() {
-    //     editEvent.classList.add('hidden');
-    //     editMask.classList.add('hidden'); 
-    //   });
-    //   editMask.addEventListener("click", function() {
-    //     editEventClose.click();
-    //   });
-    // }
 
 });

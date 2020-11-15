@@ -12,7 +12,7 @@ $(function () {
       events: url + ".json",
       eventClick: eventClick,
       // セルクリック時の予定登録アクション
-      dayClick: dayClick,
+      // dayClick: dayClick,
       // 月曜日からの表示に変更
       // firstDay : 1,
       weekMode: 'fixed',
@@ -64,99 +64,118 @@ $(function () {
   
   setCalendar();
 
+    // 日にち、時間両方を入力できるinputタグを作成
+  function buildDayTimeForm () {
+    let form =
+    ` <div class="formField__day">
+    <input type="datetime-local" name="event[start_time]" id="event_start_time">
+    </div>
+    <div class="form__connect"> ∼ </div>
+    <div class="formField__day">
+    <input type="datetime-local" name="event[end_time]" id="event_end_time">
+    </div>`
+    return form;
+  };
+    // 日にちのみ入力できるinputタグを作成
+    function buildDayForm () {
+      let form =
+      ` <div class="formField__day">
+          <input type="date" name="event[start_time]" id="event_start_time">
+        </div>
+        <div class="form__connect"> ∼ </div>
+        <div class="formField__day">
+          <input type="date" name="event[end_time]" id="event_end_time">
+        </div>`
+      return form;
+    }
+  
   // イベントクリック時のアクション
-  const eventClick = function ( event, jsEvent, view ) {
-    jsEvent.preventDefault();
-    console.log(event);
-    console.log(jsEvent);
-    console.log(view);
+  const eventClick = function ( event, jsEvent ) {
+    jsEvent.preventDefault();    
+    // selectタグに追加するoptionタグ生成
+    function buildOption(event) {
+      let option =
+      `<option value="${event}">現在選択している色</option>`
+      return option;
+    }
+    // editビューの表示
+    $('#event__edit').removeClass('hidden');
+    $('#mask__edit').removeClass('hidden'); 
 
-    // function buildEventShow (event) {
-    //   const html =
-    //   `
-    //   <div id="maskShow"></div>
-    //   <div id="eventShow">
-    //     <div class="eventShow">
-    //       <div class="close__btn">
-    //         <button id="event__close--show">
-    //           <i class="fas fa-window-close"></i>
-    //         </button>
-    //       </div>
-    //       <h3>予定の編集</h3> 
-    //     </div>
-    //     <div class="event__contents">
-    //       <div class="date">
-    //         <div class="start__day">
-    //           ${event.}
-    //         </div>
-    //         <div class="start__hour">
-    //         </div>
-    //       <div class="form__connect">
-    //         →
-    //       </div>
-    //       </div>
-    //     <div class="formField__day">
-    //     <input type="date" name="event[end_day]" id="event_end_day">
-    //     </div>
-    //     </div>
-    //     <div class="formField">
-    //     <div class="formField__time">
-    //     <input type="time" name="event[start_hour]" id="event_start_hour">
-    //     </div>
-    //     <div class="form__connect">
-    //     ∼
-    //     </div>
-    //     <div class="formField__time">
-    //     <input type="time" name="event[end_hour]" id="event_end_hour">
-    //     </div>
-    //     </div>
-    //     <div class="formField__noFlex">
-    //     <div class="formField__content">
-    //     <div class="formField__label">
-    //     <label for="event_content">【内容】</label>
-    //     </div>
-    //     <div class="formField__input">
-    //     <textarea name="event[content]" id="event_content"></textarea>
-    //     </div>
-    //     </div>
-    //     </div>
-    //     <div class="formSubmit">
-    //     <input type="submit" name="commit" value="登録" class="event__submit" data-disable-with="登録">
-    //     </div>
-    //     </form></div>
-    //     </div>
-    //   `
-    // }
+    // editビューのvalueや属性の変更
+    // formをupdateアクションに変更
+    $('#event__form--edit').prop('action', event.url);
+    // updateアクションになるようにhidden_fieldを子要素の先頭に追加
+    $('#event__form--edit').prepend('<input type="hidden" name="_method" value="patch">');
+    // タイトルのvalue変更
+    $('#event__form--edit input[type="text"]').val(event.title);
     
-    // buildEventShow(event);
+    // 終日判定の処理
+    $('#event__form--edit input[type="checkbox"]').val(event.allDay);
+    // allDay:trueの場合は終日にチェックを入れてinput[type="date"]をセット
+    if (event.allDay) {
+      // 終日チェックを入れる
+      $('#event__form--edit input[type="checkbox"]').prop('checked', true);
+      // デフォルトのビューを削除してinput[type="date"]をセット
+      $('#event__form--edit #dayAndTime__edit').empty();
+      $('#event__form--edit #dayAndTime__edit').append(buildDayForm());
+      // <input>タグのvalueを変更できるように開始時間と終了時間の文字列を整形
+      const formatStartDay = (event.start._i).slice(0, 10);
+      $('#event__form--edit input[name="event[start_time]"]').val(formatStartDay);
+      // 終了時間は必須では無いのでif文で囲む
+      if (event.end) {
+        const formatEndDay = (event.end._i).slice(0, 10);
+        // 終了時間のvalue変更
+        $('#event__form--edit input[name="event[end_time]"]').val(formatEndDay);
+        }
+        // allDay:falseの場合、input[type="datetime-local"]をセット
+      } else {
+        $('#event__form--edit #dayAndTime__edit').empty();
+        $('#event__form--edit #dayAndTime__edit').append(buildDayTimeForm());
+        // <input>タグのvalueを変更できるように開始時間と終了時間の文字列を整形
+        const formatStartTime = (event.start._i).split('.');
+        // 開始時間のvalue変更
+        $('#event__form--edit input[name="event[start_time]"]').val(formatStartTime[0]);
+        // 終了時間は必須では無いのでif文で囲む
+        if (event.end) {
+          const formatEndTime = (event.end._i).split('.');
+          // 終了時間のvalue変更
+          $('#event__form--edit input[name="event[end_time]"]').val(formatEndTime[0]);
+        }
+      }
+    
+    // 選択しているラベルカラーにstyle変更
+    $('#event__form--edit select[name="event[color]"]').css(['background-color', event.color],['opacity, 0.1']);
+    // 選択しているラベルカラーの情報を持った<option>タグをappend
+    $('#event__form--edit select[name="event[color]"]').append(buildOption(event.color));
 
   }
 
-  const dayClick = function (start, end, jsEvent, view) {
-      //クリックした日付情報を取得
-      const year = moment(start).year();
-      const month = moment(start).month()+1; //1月が0のため+1する
-      const day = moment(start).date();
-      const dayClickUrl = url + "/events/new"
-      //イベント登録のためnewアクションを発火
-      $.ajax({
-        type: 'GET',
-        url: dayClickUrl,
-      }).done(function (res) {
-        //イベント登録用のhtmlを作成
-        $('body').html(res);
-        //イベント登録フォームの日付をクリックした日付とする
-        // $('#event_start_time_1i').val(year);
-        // $('#event_start_time_2i').val(month);
-        // $('#event_start_time_3i').val(day);
-        //イベント登録フォームのモーダル表示
-        // $('#modal').modal();
-        // 成功処理
-      }).fail(function (result) {
-        // console.log(dayClickUrl);
-        // 失敗処理
-        alert('エラーが発生しました。運営に問い合わせてください。')
-      });
-    };
+  // const dayClick = function (start, end, jsEvent, view) {
+  //     //クリックした日付情報を取得
+  //     const year = moment(start).year();
+  //     const month = moment(start).month()+1; //1月が0のため+1する
+  //     const day = moment(start).date();
+  //     const dayClickUrl = url + "/events/new"
+  //     //イベント登録のためnewアクションを発火
+  //     $.ajax({
+  //       type: 'GET',
+  //       url: dayClickUrl,
+  //     }).done(function (res) {
+  //       //イベント登録用のhtmlを作成
+  //       $('body').html(res);
+  //       //イベント登録フォームの日付をクリックした日付とする
+  //       // $('#event_start_time_1i').val(year);
+  //       // $('#event_start_time_2i').val(month);
+  //       // $('#event_start_time_3i').val(day);
+  //       //イベント登録フォームのモーダル表示
+  //       // $('#modal').modal();
+  //       // 成功処理
+  //     }).fail(function (result) {
+  //       // console.log(dayClickUrl);
+  //       // 失敗処理
+  //       alert('エラーが発生しました。運営に問い合わせてください。')
+  //     });
+  //   };
 
 });

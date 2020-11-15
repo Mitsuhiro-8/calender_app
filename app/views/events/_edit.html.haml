@@ -5,19 +5,13 @@
       %butto#event__close--edit
         =icon('fas', 'window-close')
     %h3 予定の編集
-    = form_with model: [@calendar,@event], id: "event__form--edit", local: true do |f|
+    = form_with model: [@calendar, @event], id: "event__form--edit", local: true do |f|
       -if @event.errors.any?
         = render "events/error_messages"
       .formField
         = f.text_field :title, placeholder: 'タイトルを入力してください'
 
       .formField#dayAndTime__edit
-        .formField__day
-          = f.datetime_field :start_time
-        .form__connect
-          &sim;
-        .formField__day
-          = f.datetime_field :end_time
 
       .formField
         %input#event_all_day_edit{type:"checkbox", name:"event[all_day]", value: "false"}

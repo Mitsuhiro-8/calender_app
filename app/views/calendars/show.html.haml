@@ -1,8 +1,8 @@
 .main
   = render "header"
   = render "menu"
-  = render  partial: "events/new", locals: { calendar: @calendar }
-  = render  partial: "events/edit", locals: { calendar: @calendar }
+  = render "events/new"
+  = render "events/edit"
 
 .main__contents{data: {"turbolinks":"false"}}
   #side__bar--second

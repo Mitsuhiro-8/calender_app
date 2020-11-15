@@ -12,12 +12,6 @@
         = f.text_field :title, placeholder: 'タイトルを入力してください'
 
       .formField#dayAndTime
-        .formField__day
-          = f.datetime_field :start_time
-        .form__connect
-          &sim;
-        .formField__day
-          = f.datetime_field :end_time
 
       .formField
         = f.check_box :all_day, {}, true, false
