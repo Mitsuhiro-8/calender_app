@@ -1,16 +1,15 @@
-#comment__form{class: "px-3 mb-1 container"}
+#comment__form
   = form_with model: [@calendar,@comment], id: "comment__form--new", local: true do |f|
 
     .formField
-      .formField__top{class: "d-flex justify-content-between"}
+      .formField__top
         .formField__label
           = f.label :text, 'コメント作成'
-        .colse__btn{class: "mr-2"}
+        .close__btn
           %butto#comment__close--btn
             =icon('fas', 'window-close')
-      .formField__input{class: "mb-1"}
-        = f.text_area :text, maxlengs: "50", class: "form-control", placeholder: 'コメントを入力してください'
-      .formSubmit{class: "text-right"}
-
-        = f.button class: 'btn btn-primary comment__submit', type: 'submit' do
+      .formField__input
+        = f.text_area :text, maxlengs: "50", placeholder: 'コメントを入力してください'
+      .formSubmit
+        = f.button class: 'comment__submit', type: 'submit' do
           =icon('fab', 'telegram')

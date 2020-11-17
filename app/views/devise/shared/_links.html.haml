@@ -1,10 +1,8 @@
 - if controller_name != 'sessions'
   .info
     %p ↓ アカウントを既にお持ちの方はこちら
-    = link_to "ログイン", new_session_path(resource_name), class: 'btn btn-info'
-  %br/
+    = link_to "ログイン", new_session_path(resource_name)
 - if devise_mapping.registerable? && controller_name != 'registrations'
   .info
     %p ↓ 新しくアカウントを作成される方はこちら
-    = link_to "新規アカウント作成", new_registration_path(resource_name), class: 'btn btn-info'
-  %br/
+    = link_to "新規アカウント作成", new_registration_path(resource_name)
