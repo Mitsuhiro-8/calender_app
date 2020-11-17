@@ -2,6 +2,9 @@
 
 window.addEventListener("DOMContentLoaded", function() {
 
+  if (!document.getElementById('calendar')) {
+    return;
+  }
   // 変数
   const comBtn = document.getElementById('comment__btn');
   const comForm = document.getElementById('comment__form');

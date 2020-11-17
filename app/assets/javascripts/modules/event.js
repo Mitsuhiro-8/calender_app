@@ -1,7 +1,10 @@
 'use strict';
 
 window.addEventListener("DOMContentLoaded", function () {
-  
+
+  if (!document.getElementById('calendar')) {
+    return;
+  }
   // 予定作成アイコン
   {
     // 日にち、時間両方を入力できるinputタグを作成
