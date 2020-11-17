@@ -31,13 +31,11 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1.json
   def update
     @event_valid = @calendar.events.new(event_params)
-    binding.pry
     if @event_valid.valid? && @event.update(event_params)
       respond_to do |format|
         format.json
       end
     else
-      # binding.pry
         render status: 422
     end
   end
