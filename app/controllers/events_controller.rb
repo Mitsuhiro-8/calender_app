@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :set_calendar, only: [:update, :create, :edit, :update, :destroy]
+  before_action :set_calendar, only: [:create, :update, :destroy]
 
   def index
   end
@@ -13,29 +13,16 @@ class EventsController < ApplicationController
   end
 
   def create
+    @event = @calendar.events.new(event_params)
     # binding.pry
-    @event = @calendar.events.new(event_params)  
-    if @event.save
+    if @event.valid? && @event.save
       respond_to do |format|
-      format.html { 
-          redirect_to @calendar, notice: '予定を登録しました'
-        }
         format.json
       end
     else
-      respond_to do |format|
-        format.html { 
-        redirect_back(fallback_location: calendar_path(@calendar))
-        flash[:notice] = "予定を登録できませんでした"
-        }
-        format.json
-      end
+      render status: 422
     end
   end
-  # respond_to do |format|
-  #   format.html { redirect_to group_messages_path, notice: "メッセージを送信しました" }
-  #   format.json
-  # end
 
   def edit
   end
@@ -43,14 +30,13 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @calendar, notice: '予定を更新しました' }
-        # format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        # format.json { render json: @event.errors, status: :unprocessable_entity }
+    @event_valid = @calendar.events.new(event_params)
+    if @event_valid.valid? && @event.update(event_params)
+      respond_to do |format|
+        format.json
       end
+    else
+        render status: 422
     end
   end
 
@@ -72,7 +58,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:title, :content, :start_hour, :end_hour, :start_day, :end_day).merge(user_id: current_user.id, calendar_id: @calendar)
+      params.require(:event).permit(:title, :content, :start_time, :end_time, :all_day, :color).merge(user_id: current_user.id, calendar_id: @calendar.id)
     end
 
     def set_calendar

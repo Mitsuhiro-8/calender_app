@@ -3,7 +3,6 @@ class Event < ApplicationRecord
   belongs_to :calendar
 
   validates :title, presence: true
-  validates :start_day, presence: true
-  validates :start_hour, presence: true
+  validates :start_time, presence: true
 
 end

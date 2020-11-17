@@ -97,11 +97,11 @@
       }
 
       .fc-scroller {
-        height: 100% !important;
+        // height: 100% !important;
       }
       
       .fc-week {
-        height: 80px !important;
+        // height: 90px !important;
         width: 100%;
       }
 
@@ -281,10 +281,11 @@ a[data-goto]:hover {
 .fc-event-container {
 
   // 祝日
-   a {
+   a:not([href]) {
    color: #fff;
    background-color: rgb(231, 59, 59);
    text-decoration: none;
+   pointer-events: none;
   }
 
   // リンク有りのイベント

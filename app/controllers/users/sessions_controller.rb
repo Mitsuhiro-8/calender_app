@@ -24,11 +24,15 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  # def after_sign_in_path_for(resource)
-  #   @calendars = current_user.calendars
-  #   @calendar = @calendars.last
-  #   calendar_path(@calendar.id)
-  # end
+  def after_sign_in_path_for(resource)
+    if (session[:calendarPath]).present?
+      calendar_path((session[:calendarPath]))
+    else
+      @calendars = current_user.calendars
+      @calendar = @calendars.last
+      calendar_path(@calendar.id)
+    end
+  end
   
 
 end

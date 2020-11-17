@@ -15,14 +15,13 @@ class CommentsController < ApplicationController
   def create
     # binding.pry
     @comment = @calendar.comments.new(comment_params)
-    if @comment.save
+    if @comment.valid? && @comment.save
       respond_to do |format|
         format.json
       end
-      # redirect_to calendar_path(@calendar), notice: 'コメントを登録しました'
     else
-      redirect_back(fallback_location: calendar_path(@calendar))
-      flash[:notice] = "コメントを登録できませんでした"
+      # 422はバリデーションエラーの場合に返すステータス
+      render status: 422
     end
   end
 

@@ -1,7 +1,7 @@
 // 全体のレイアウト
 html, body {
   background-color: whitesmoke;
-  font-family: cursive;
+  // font-family: cursive;
 }
 
 .main {
@@ -244,7 +244,7 @@ html, body {
             
             &.open {
               display: block;
-              z-index: 1;
+              z-index: 10;
             }
 
             li:hover {
@@ -303,7 +303,7 @@ html, body {
         
         &.open {
           display: block;
-          z-index: 1;
+          z-index: 10;
         }
         
         li:hover {

@@ -34,19 +34,9 @@
       margin-bottom: 10px;
 
       input[type="text"] {
-        display: block;
-        width: 70%;
-        height: calc(1.5em + 0.75rem + 2px);
-        padding: 5px 5px;
-        background-clip: padding-box;
-        border: 1px solid #ced4da;
-        border-radius: 0.25rem;
-
-        &:focus {
-          outline: 0;
-          border: 2px solid #00BCD4;
-        }
+        @include inputText (70%);
       }
+
       input[type="checkbox"] {
         user-select: none;
         margin-right: 3px;
