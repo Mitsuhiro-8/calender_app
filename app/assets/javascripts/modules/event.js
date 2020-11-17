@@ -24,19 +24,32 @@ window.addEventListener("DOMContentLoaded", function () {
     const mask = document.getElementById('mask');
     const eventFormNew = document.getElementById('event__form--new');
     const dayTime = eventFormNew.querySelector('#dayAndTime');
+    const colorSelect = document.getElementById('event_color');
     // editファイル関係
     const eventEdit = document.getElementById('event__edit');
     const eventCloseEdit = document.getElementById('event__close--edit')
     const maskEdit = document.getElementById('mask__edit');
     const eventFormEdit = document.getElementById('event__form--edit');
+    const colorSelectEdit = document.getElementById('event_color_edit');
+
+    // カラーラベル選択ビューとstyleを削除する関数
+    function removeLabel(targetSelector) {
+      const cs = document.getElementById('colorSelect');
+      targetSelector.innerHTML = buildDefaultColor();
+      targetSelector.removeAttribute('style');
+      if (cs) {
+        cs.remove();
+      }
+    }
     
     // hiddenクラスを付けてビューを非表示しフォームを空にする関数
     // confirmあり
-    function addHidden (event, mask, targetForm) {
+    function addHidden (event, mask, targetForm, targetSelector) {
       if (window.confirm("入力した内容は失われます。よろしいですか？")) {
       event.classList.add('hidden');
       mask.classList.add('hidden'); 
       targetForm.reset();
+      removeLabel(targetSelector);
       }
     }
     // confirmなし
@@ -45,12 +58,10 @@ window.addEventListener("DOMContentLoaded", function () {
       mask.classList.add('hidden');
       targetForm.reset(); 
     }
-    // カラーラベル選択ビューを削除する関数
-    function removeLabel() {
-      const cs = document.getElementById('colorSelect');
-      if (cs) {
-        cs.remove();
-      }
+    // デフォルトの<option>タグを作成
+    function buildDefaultColor () {
+      let dCol = `<option value="#00BCD4">デフォルトカラー</option>`;
+      return dCol;
     }
     // チェックボックスのvalueをfalseに戻す関数
     function checkBoxReset() {
@@ -68,28 +79,24 @@ window.addEventListener("DOMContentLoaded", function () {
     });
     // クローズボタンをクリックした時に予定作成用のビューを非表示にする
     eventClose.addEventListener("click", function() {
-      addHidden(event, mask, eventFormNew);
-      removeLabel();
+      addHidden(event, mask, eventFormNew, colorSelect);
       checkBoxReset();
     });
     // マスク部分をクリックした時に予定作成用のビューを非表示にする
     mask.addEventListener("click", function() {
-      addHidden(event, mask, eventFormNew);
-      removeLabel();
+      addHidden(event, mask, eventFormNew, colorSelect);
       checkBoxReset();
     });
 
     // edit関係
     // クローズボタンをクリックした時に予定編集用のビューを非表示にする
     eventCloseEdit.addEventListener("click", function() {
-      addHidden(eventEdit, maskEdit, eventFormEdit);
-      removeLabel();
+      addHidden(eventEdit, maskEdit, eventFormEdit, colorSelectEdit);
       checkBoxReset();
     });
     // マスク部分をクリックした時に予定編集用のビューを非表示にする
     maskEdit.addEventListener("click", function() {
-      addHidden(eventEdit, maskEdit, eventFormEdit);
-      removeLabel();
+      addHidden(eventEdit, maskEdit, eventFormEdit, colorSelectEdit);
       checkBoxReset();
     });
       
@@ -115,7 +122,8 @@ window.addEventListener("DOMContentLoaded", function () {
         
         // ここだけjqueryで記述(fullCalendarのオプションだから)
         $('#calendar').fullCalendar('refetchEvents');
-        alert('予定を登録しました')
+        alert('予定を登録しました');
+        removeLabel(colorSelect);
       })
       
       .catch(error => {
@@ -144,13 +152,13 @@ window.addEventListener("DOMContentLoaded", function () {
         submitBtn.disabled = false;
         // ここだけjqueryで記述(fullCalendarのオプションだから)
         $('#calendar').fullCalendar('refetchEvents');
-        alert('予定を編集しました')
+        alert('予定を編集しました');
+        removeLabel(colorSelectEdit);
       })
       .catch(error => {
         alert(error);
         submitBtn.disabled = false;
       })
-
     });
   }
 
@@ -294,17 +302,17 @@ window.addEventListener("DOMContentLoaded", function () {
 
     // カラーラベルを選択する<select>タグがクリックされた時に選択用のビューを生成するイベントの関数
     function csOpen(target, hiddenTarget) {
-        target.addEventListener("click", function(){
-        const buildC = buildColor();
-        hiddenTarget.innerHTML = buildC;
-        const cs = document.getElementById('colorSelect');
-        const csLi = cs.querySelectorAll('li');
+      target.addEventListener("click", function(){
+      const buildC = buildColor();
+      hiddenTarget.innerHTML = buildC;
+      const cs = document.getElementById('colorSelect');
+      const csLi = cs.querySelectorAll('li');
         csLi.forEach(li => {
           const div = li.querySelector('div');
           const inp = li.querySelector('input[type="radio"]');
           const selectChild = target.firstElementChild;
           if ( selectChild && selectChild.textContent == div.textContent ) {
-              inp.checked = true;
+            inp.checked = true;
           };
           // カラーラベルがクリックされたときの関数
           li.onclick = function () {
