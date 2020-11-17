@@ -40,28 +40,66 @@ h6.comment {
       }
     }
     .comment__text {
-      white-space: nowrap;
+      overflow-wrap: break-word;
     }
-}
-
-
+  }
   }
 
 // コメント作成フォームを隠す設定
   #comment__form {
     display: none;
+    padding: 0 15px;
+    margin-bottom: 10px;
     
     &.open {
       display: block;
     }
-    #comment__close--btn {
-      cursor: pointer;
-      user-select: none;
-      color: royalblue;
-    }
-    .comment__submit {
-      width: 50px;
-      padding: 0;
+
+    .formField {
+      padding-right: 15px;
+      &__top {
+        display: flex;
+        justify-content: space-between;
+
+        .close__btn {
+          margin-right: 10px;
+        }
+      }
+      &__input {
+        margin-bottom: 10px;
+
+        textarea {
+          width: 90%;
+          outline: 0;
+          padding: 5px 10px;
+          background-clip: padding-box;
+          border: 1px solid #ced4da;
+          border-radius: 0.25rem;
+          
+          &:focus {
+            border: 1px solid #00BCD4;
+            box-shadow: 0 0 0 0.2rem rgba(0, 240, 248, 0.3);
+          }
+        }
+      }
+      #comment__close--btn {
+        cursor: pointer;
+        user-select: none;
+        color: #00BCD4;
+      }
+      .formSubmit {
+        text-align: right;
+
+        .comment__submit {
+          padding: 0;
+          @include calendarBtn (50px);
+          margin-right: 10px;
+          i {
+            font-size: medium;
+            color: #00BCD4;
+          }
+        }
+      }
     }
   }
 }

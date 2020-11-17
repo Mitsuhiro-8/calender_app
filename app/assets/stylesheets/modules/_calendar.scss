@@ -1,7 +1,11 @@
 // 全体のレイアウト
-html, body {
+html {
+  height: 100vh;
   background-color: whitesmoke;
-  // font-family: cursive;
+  body {
+    height: 100%;
+    // font-family: cursive;
+  }
 }
 
 .main {
@@ -145,6 +149,7 @@ html, body {
   .right__items {
     display: inline-flex;
     align-items: center;
+    margin-right: 50px;
 
     .calendar__menu {
       display: flex;
@@ -324,143 +329,27 @@ html, body {
 // --------------------------------
 // メインコンテンツ
 .main__contents {
+  height: calc(100% - 102px);
   display: flex;
   justify-content: space-around;
   
-  
-  #side__bar--second {
-    width: 20%;
+  #side__bar {
+    display: none;
+    width: 0%;
     border-collapse: collapse;
     border-right: 1px solid #dee2e6;
+    padding-bottom: 50px;
     
     &.open {
+      display: block;
       width: 25%;
     }
   }
   #main__calendar {
-    width: 80%;
-    padding: 0 30px;
+    width: 100%;
+    padding: 0 30px 50px 0;
     &.open {
       width: 75%;
     }
   }
 }
-
-// -------------------------------------------------
-// カレンダー部分
-
-// カレンダー（JSバージョン）
-// #main__calendar {
-//   box-sizing: border-box;
-//   height: 80vh;
-//   padding: 30px 0;
-//   margin: 0 auto;
-
-//   .monthCalendar {
-//     height: 100%;
-    
-//     .dayOfTheWeek {
-//     display: flex;
-//     padding: 0 20px 0 35px;
-    
-    
-//     .day-week {
-//       flex-grow: 1;
-      
-//       &:first-child {
-//         color: red;
-//       }
-      
-//       &:last-child {
-//         color: blue;
-//       }
-//     }
-//   }
-  
-//   #weeks {
-//     height: 0;
-//     display: flex;
-//     flex-flow: column nowrap;
-//     flex: 1 1 auto;
-//     height: 70vh;
-
-//     .week {
-//       position: relative;
-//       flex: 1 1 auto;
-//       border-top: 1px solid #dee2e6;
-
-        
-//       .dayCellRow {
-
-//         position: absolute;
-//         top: 0;
-//         left: 0;
-//         display: flex;
-//         flex-flow: row nowrap;
-//         box-sizing: border-box;
-//         width: 100%;
-//         height: 100%;
-//         padding: 0 20px;
-          
-//           .dayCell {
-
-//             position: relative;
-//             flex: 1;
-            
-            
-//             &:hover {
-//               box-shadow: 0 0 10px black;
-//               z-index: 1;
-//             }
-//           }
-//        }
-//        .eventRows {
-//         position: relative;
-//         display: flex;
-//         flex-flow: column nowrap;
-//         padding: 0 20px;
-//         pointer-events: none;
-        
-//         .dayRow {
-//           display: flex;
-//           flex: 0 0 35px;
-//           flex-flow: row nowrap;
-          
-//           .day {
-//             flex: 1;
-//             height: 30px;
-//             padding: 5px 0 0 15px;
-//             color: #212121;
-//             font-weight: 500;
-//             font-size: .75em;
-//             line-height: 30px;
-//           }
-//           .disabledBack {
-//             opacity: 0.3;
-//           }
-          
-//           .disabledPrev {
-//            opacity: 0.3;
-//           }
-          
-//           .today {
-//             background-color: #a0f4ff;
-//           }
-//         }
-
-//         .week__event {
-//           display: flex;
-//           flex: 0 0 22px;
-//           flex-flow: row nowrap;
-
-//           .noEvent {
-//             flex: 1 1 0px;
-//             min-width: 0px;
-//           }
-//         }
-//       }
-       
-//       }
-//     }
-//   }
-// }
