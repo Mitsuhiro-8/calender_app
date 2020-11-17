@@ -11,11 +11,12 @@
       .formField
         = f.text_field :title, placeholder: 'タイトルを入力してください'
 
-      .formField#dayAndTime
-
       .formField
         = f.check_box :all_day, {}, true, false
         = f.label :all_day, '終日'
+        
+      .formField#dayAndTime
+
 
       .formField
         = f.select :color, {デフォルトカラー:"#00BCD4"}

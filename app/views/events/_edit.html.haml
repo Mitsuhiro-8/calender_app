@@ -11,11 +11,11 @@
       .formField
         = f.text_field :title, placeholder: 'タイトルを入力してください'
 
-      .formField#dayAndTime__edit
-
       .formField
         %input#event_all_day_edit{type:"checkbox", name:"event[all_day]", value: "false"}
         = f.label :all_day_edit, '終日'
+
+      .formField#dayAndTime__edit
 
       .formField
         %select#event_color_edit{name:"event[color]"}
