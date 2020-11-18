@@ -197,6 +197,7 @@ $(function () {
   // 非表示のイベントを表示する関数
   const eventLimitClick = function (cellInfo, jsEvent) {
     jsEvent.preventDefault();
+    console.log(cellInfo);
 
     // クリックしたセルの情報を使いやすいように変数化
     const targetDayEl = cellInfo.dayEl[0];
@@ -351,7 +352,7 @@ $(function () {
       $('#event__form--edit input[type="checkbox"]').val(allDay);
       // allDay:trueの場合は終日にチェックを入れてinput[type="date"]をセット
       function allDayJudgPop (allDay, start, end) {
-      if (allDay == true) {
+      if (allDay == "true") {
         // 終日チェックを入れる
         $('#event__form--edit input[type="checkbox"]').prop('checked', true);
         // デフォルトのビューを削除してinput[type="date"]をセット
