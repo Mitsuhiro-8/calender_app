@@ -1,8 +1,10 @@
 // 新規アカウント・ログイン画面
 .AccountPage {
-  margin: 5em auto 0 auto;
+  margin: 50px auto;
+  padding: 10px 30px;
   width: 60%;
   height: 80%;
+  min-height: 530px;
   background-color: white;
   border: none;
   border-radius: 10px;
@@ -17,7 +19,7 @@
     h3 {
       font-weight: bold;
       font-size: x-large;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
     .info {
       a {
@@ -103,7 +105,7 @@
 }
 
 .FormField {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 
   &__label {
     
@@ -125,6 +127,7 @@
     input[type="email"],
     input[type="password"] {
       @include inputText (100%);
+      height: 30px;
     }
 
 
