@@ -31,11 +31,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     @user.calendars.build(@calendar.attributes)
     if @user.save
-      # @calendar.users << @user.id
-      # @calendar.save
       session["devise.regist_data"]["user"].clear
       session[:calendarPath] = @user.calendars.first.id
-      redirect_to calendar_path(session[:calendarPath])
+      sign_in(:user, @user)
+      redirect_to calendar_path(session[:calendarPath]), notice: "アカウントを作成しました"
     else
       render :new_calendar
     end
@@ -84,7 +83,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
-  #   new_calendar_path
+  #   calendar_path(resource)
   # end
 
   # The path used after sign up for inactive accounts.

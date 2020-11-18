@@ -1,7 +1,8 @@
 .calendarPage
   .calendarPage__title
     %h3 カレンダー作成
-    -# = link_to "戻る", :back
+    .back__btn
+      = link_to "戻る", :back
   .calendarPage__form
     = form_with model: @calendar, local: true do |f|
       - if @calendar.errors.any?
@@ -11,12 +12,6 @@
           = f.label :name, 'カレンダー名'
         .formField__input
           = f.text_field :name, placeholder: 'カレンダー名を入力してください'
-
-      -# .formField
-      -#   .fromField__label
-      -#     = f.label :image, '画像'
-      -#   .formField__input
-      -#     = f.file_field :image
 
       .formField
         .fromField__label

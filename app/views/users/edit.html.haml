@@ -1,18 +1,18 @@
-.AccountPage{class: 'container'}
+.AccountPage
   .AccountPage__title
     %h3 アカウントの編集
-    = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-secondary'
-    = link_to "戻る", :back, class: 'btn btn-secondary'
+    = link_to "ログアウト", destroy_user_session_path, method: :delete
+    = link_to "戻る", :back
   .AccountPage__form
     = form_for(current_user) do |f|
       .FormField
-        .FormField__label--normal
+        .FormField__label
           = f.label :name, '名前'
-        .FormField__input--normal
-          = f.text_field :name, class: 'form-control', autofocus: true
+        .FormField__input
+          = f.text_field :name, autofocus: true
       .FormField
-        .FormField__label--normal
+        .FormField__label
           = f.label :email, 'メールアドレス'
-        .FormField__input--normal
-          = f.email_field :email, class: 'form-control'
-      = f.submit "更新", class: 'btn btn-primary'
+        .FormField__input
+          = f.email_field :email
+      = f.submit "更新"

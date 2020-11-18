@@ -2,17 +2,20 @@
 
 window.addEventListener("DOMContentLoaded", function() {
 
+  if (!document.getElementById('calendar')) {
+    return;
+  }
   // 変数
   const comBtn = document.getElementById('comment__btn');
   const comForm = document.getElementById('comment__form');
   const comClose = document.getElementById('comment__close--btn')
-  const sideSecond = document.getElementById('side__bar--second')
+  const sideBar = document.getElementById('side__bar')
   const mainCalendar = document.getElementById('main__calendar')
 
   // openクラス削除
   function comFormRemoveOpen () {
     comForm.classList.remove('open');
-    sideSecond.classList.remove('open');
+    sideBar.classList.remove('open');
     mainCalendar.classList.remove('open');
   }
 
@@ -20,7 +23,7 @@ window.addEventListener("DOMContentLoaded", function() {
   {
     comBtn.addEventListener('click', function() {
       comForm.classList.toggle('open'); 
-      sideSecond.classList.toggle('open');
+      sideBar.classList.toggle('open');
       mainCalendar.classList.toggle('open');
     });
     
