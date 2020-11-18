@@ -249,7 +249,7 @@ html {
             
             &.open {
               display: block;
-              z-index: 10;
+              z-index: 5;
             }
 
             li:hover {
@@ -308,15 +308,9 @@ html {
         
         &.open {
           display: block;
-          z-index: 10;
+          z-index: 5;
         }
-        
-        li:hover {
-          background-color: rgba(0, 247, 255, 0.7);
-          border-radius: 0.5em;
-        }
-        a {
-          display: block;
+        p {
           padding-left: 5px;
           text-decoration: none;
           color: white;
@@ -347,6 +341,7 @@ html {
   }
   #main__calendar {
     width: 100%;
+    min-height: 400px;
     padding: 0 30px 50px 0;
     &.open {
       width: 75%;

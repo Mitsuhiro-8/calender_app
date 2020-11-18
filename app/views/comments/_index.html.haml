@@ -1,6 +1,6 @@
-%h6.comment コメントリスト
 .side__comments
   = render "comments/new"
+  %h6 コメントリスト
   #comment__list
     - @comments.order(:created_at).each do |comment|
       .comment__container

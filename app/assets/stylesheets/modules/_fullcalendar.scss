@@ -79,7 +79,7 @@
       .fc-head-container {
       }
       .fc-day-header {
-        width: 130px;
+        width: calc(100% / 7);
       }
 
         .fc-sun {
@@ -99,21 +99,19 @@
       }
 
       .fc-scroller {
-        // height: 100% !important;
       }
       
       .fc-week {
-        // height: 90px !important;
         width: 100%;
       }
 
       // 日付のセル
       .fc-day {
-        width: 130px;
+        width: calc(100% / 7);
       }
 
       .fc-day-top {
-        width: 130px;
+        width: calc(100% / 7);
 
         &.fc-other-month {
           opacity: 0.3;
@@ -128,7 +126,7 @@
 // Misc Reusable Components
 // ---------------------------------
 .fc-scroller.fc-day-grid-container {
-  overflow: auto !important; 
+  overflow: scroll !important; 
 }
 .fc-divider {
   border-style: solid;

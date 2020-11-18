@@ -1,13 +1,12 @@
 // コメントリスト
-h6.comment {
-  padding: 10px;
-  border-bottom: 1px solid #dee2e6;
-}
-
 .side__comments {
   overflow: auto;
   height: 70vh;
   margin-top: 10px;
+
+  h6 {
+    padding: 10px 15px;
+  }
 
   #comment__list {
     display: flex;
@@ -19,7 +18,7 @@ h6.comment {
     height: 70px;
     width: 90%;
     padding: 5px;
-    margin-bottom: 5px;
+    margin: 5px 0;
     border-radius: 5px;
     font-size: xx-small;
     position: relative;
@@ -48,25 +47,17 @@ h6.comment {
 // コメント作成フォームを隠す設定
   #comment__form {
     display: none;
-    padding: 0 15px;
+    padding: 10px 15px;
     margin-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
     
     &.open {
       display: block;
     }
-
     .formField {
       padding-right: 15px;
-      &__top {
-        display: flex;
-        justify-content: space-between;
-
-        .close__btn {
-          margin-right: 10px;
-        }
-      }
       &__input {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
 
         textarea {
           width: 90%;
@@ -82,12 +73,7 @@ h6.comment {
           }
         }
       }
-      #comment__close--btn {
-        cursor: pointer;
-        user-select: none;
-        color: #00BCD4;
-      }
-      .formSubmit {
+      &__submit {
         text-align: right;
 
         .comment__submit {
@@ -95,7 +81,7 @@ h6.comment {
           @include calendarBtn (50px);
           margin-right: 10px;
           i {
-            font-size: medium;
+            font-size: large;
             color: #00BCD4;
           }
         }

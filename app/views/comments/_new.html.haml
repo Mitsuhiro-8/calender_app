@@ -1,15 +1,8 @@
 #comment__form
   = form_with model: [@calendar,@comment], id: "comment__form--new", local: true do |f|
-
     .formField
-      .formField__top
-        .formField__label
-          = f.label :text, 'コメント作成'
-        .close__btn
-          %butto#comment__close--btn
-            =icon('fas', 'window-close')
       .formField__input
         = f.text_area :text, maxlengs: "50", placeholder: 'コメントを入力してください'
-      .formSubmit
+      .formField__submit
         = f.button class: 'comment__submit', type: 'submit' do
           =icon('fab', 'telegram')

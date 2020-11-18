@@ -8,7 +8,6 @@ window.addEventListener("DOMContentLoaded", function() {
   // 変数
   const comBtn = document.getElementById('comment__btn');
   const comForm = document.getElementById('comment__form');
-  const comClose = document.getElementById('comment__close--btn')
   const sideBar = document.getElementById('side__bar')
   const mainCalendar = document.getElementById('main__calendar')
 
@@ -26,10 +25,6 @@ window.addEventListener("DOMContentLoaded", function() {
       sideBar.classList.toggle('open');
       mainCalendar.classList.toggle('open');
     });
-    
-    comClose.addEventListener('click', function() {
-      comFormRemoveOpen ();
-    }); 
   }
 
   // コメントの非同期処理

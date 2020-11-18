@@ -39,7 +39,7 @@
   }
 
   .event__contents {
-    margin: 20px auto;
+    margin: 20px 60px;
   }
 
   .close__btn {
@@ -80,11 +80,11 @@
       }
       
       .form__connect {
-        margin-right: 10px;
+        margin-right: 7px;
       }
       
       input[type="text"] {
-        @include inputText(80%);
+        @include inputText(280px);
         height: 20px;
       }
 
@@ -93,7 +93,7 @@
       }
 
       select {
-        @include select(80%);
+        @include select(280px);
         background-color: rgba(0, 240, 248, 0.1);
 
         option {
@@ -103,17 +103,16 @@
 
         #colorSelect {
           opacity: 1;
-          top: 60%;
-          left: 15%;
+          top: 50%;
+          left: 10%;
           position: absolute;
           z-index: 10;
-          background-color:rgb(255, 255, 255);
+          border-radius: 3px;
           
           .contents {
             ul {
               width: 350px;
               max-height: 200px;
-              margin: 8px 0px 0px;
               overflow: scroll;
               font-size: 0.875rem;
               background-color: rgb(255, 255, 255);
@@ -136,41 +135,30 @@
       
       
   &__day {
-    width: 155px;
-    height:35px;
-
-    &:first-child {
-      padding-right: 5px;
-    }
-
+    width: 50%;
+    height:30px;
 
     input[type="datetime-local"],
     input[type="date"] {
       width: 90%;
-      height: 90%;
+      height: 100%;
       padding-left: 5px;
       border: none;
       border-radius: 0.25rem;
       user-select: none;
       border: 1px solid #ced4da;
       font-size: 10px;
+      z-index: 1;
       &:focus {
         outline: 0;
         border: 1px solid #00BCD4;
         box-shadow: 0 0 0 0.2rem rgba(0, 240, 248, 0.3);
       }
       
-      &::-webkit-datetime-edit-year-field,
-      &::-webkit-datetime-edit-month-field,
-      &::-webkit-datetime-edit-day-field,
-      &::-webkit-datetime-edit-text {
-        color: #212529;
-      } 
-
       &::-webkit-calendar-picker-indicator {
         font-size: large;
-        z-index: 1;
         margin-right: 3px;
+
         &:focus {
           outline: 0;
           border: 1px solid #00BCD4;
@@ -182,7 +170,7 @@
 }
 
   textarea {
-    width: 80%;
+    width: 280px;
     outline: 0;
     padding: 5px 10px;
     background-clip: padding-box;
