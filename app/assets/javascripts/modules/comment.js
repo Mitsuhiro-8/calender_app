@@ -29,6 +29,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
   // コメントの非同期処理
   {
+    // コメント要素作成
     function buildComment (result) {
 
       let html =
@@ -50,6 +51,17 @@ window.addEventListener("DOMContentLoaded", function() {
       return html
     }
 
+      // コメント送信後のpopを作成する関数
+      function buildPop () {
+        let pop = `<div id="event__afterPop">コメントを登録しました</div>`
+        document.getElementById('main__calendar').insertAdjacentHTML("afterbegin", pop);
+
+        const rePop = function removePop () {
+          document.getElementById('event__afterPop').remove();
+        }
+        setTimeout(rePop, 2000);
+      }
+
     const comFormNew = document.getElementById('comment__form--new');
 
     comFormNew.addEventListener("submit", function (e) {
@@ -70,10 +82,10 @@ window.addEventListener("DOMContentLoaded", function() {
         const buildCom = buildComment(result);
         const comList = document.getElementById('comment__list');
         const comText = document.getElementById('comment_text');
-
         comList.insertAdjacentHTML('beforeend', buildCom);
         comFormRemoveOpen ();
         comText.value = '';
+        buildPop();
       })
 
       .catch(error => {

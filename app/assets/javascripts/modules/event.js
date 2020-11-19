@@ -102,6 +102,17 @@ window.addEventListener("DOMContentLoaded", function () {
       addHidden(eventEdit, maskEdit, eventFormEdit, colorSelectEdit);
       checkBoxReset();
     });
+
+    // 予定登録・編集後のpopを作成する関数
+    function buildPop (text) {
+      let pop = `<div id="event__afterPop">${text}</div>`
+      document.getElementById('main__calendar').insertAdjacentHTML("afterbegin", pop);
+
+      const rePop = function removePop () {
+        document.getElementById('event__afterPop').remove();
+      }
+      setTimeout(rePop, 2000);
+    }
       
     // 予定作成アクション
     eventFormNew.addEventListener("submit", function (e) {
@@ -125,7 +136,7 @@ window.addEventListener("DOMContentLoaded", function () {
         
         // ここだけjqueryで記述(fullCalendarのオプションだから)
         $('#calendar').fullCalendar('refetchEvents');
-        alert('予定を登録しました');
+        buildPop("予定を登録しました");
         removeLabel(colorSelect);
       })
       
@@ -155,7 +166,7 @@ window.addEventListener("DOMContentLoaded", function () {
         submitBtn.disabled = false;
         // ここだけjqueryで記述(fullCalendarのオプションだから)
         $('#calendar').fullCalendar('refetchEvents');
-        alert('予定を編集しました');
+        buildPop("予定を編集しました");
         removeLabel(colorSelectEdit);
       })
       .catch(error => {

@@ -254,3 +254,36 @@
     
   } 
 }
+
+#event__afterPop {
+  position: fixed;
+  top: 30%;
+  left: 25%;
+  color: white;
+  background-color: #00BCD4;
+  animation: pop 2s forwards;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  z-index: 100;
+  width:50%;
+}
+
+@keyframes pop {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
