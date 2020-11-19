@@ -28,7 +28,7 @@
           %ul#calendar__name
             - @calendars.each do |calendar|
               %li
-                = link_to calendar.name, calendar_path(calendar.id, calendarPath: calendar.id)
+                = link_to calendar.name, calendar_path(calendar.id)
     -if @calendar
       .member__menu
         %span.pop メンバーリスト

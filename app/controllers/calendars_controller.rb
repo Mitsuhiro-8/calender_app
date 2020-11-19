@@ -6,9 +6,12 @@ class CalendarsController < ApplicationController
   end
   
   def show
-    session[:calendarPath] = params[:calendarPath]
     if session[:calendarPath].present?
+      session[:calendarPath] = params[:id] if params[:id]
       @calendar = Calendar.find(session[:calendarPath])
+    elsif params[:id]
+      @calendar = Calendar.find(params[:id])
+      session[:calendarPath] = params[:id]
     else
       @calendar = Calendar.find(current_user.calendars.last.id)
     end

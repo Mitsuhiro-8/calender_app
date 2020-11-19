@@ -6,7 +6,7 @@ $(function () {
     return;
   }
   function eventCalendar() {
-    const url = "/calendars/:id"
+    const url = location.href;
     return $('#calendar').fullCalendar({
       locale: 'ja',
       events: url + ".json",
@@ -144,6 +144,8 @@ $(function () {
     $('#event__form--edit').prop('action', event.url);
     // updateアクションになるようにhidden_fieldを子要素の先頭に追加
     $('#event__form--edit').prepend('<input type="hidden" name="_method" value="patch">');
+    // イベント削除ボタンのurlを変更
+    $('#event__deleteBtn').prop('href', event.url);
     // タイトルのvalue変更
     $('#event__form--edit input[type="text"]').val(event.title);
     // 終日判定の処理
@@ -197,7 +199,6 @@ $(function () {
   // 非表示のイベントを表示する関数
   const eventLimitClick = function (cellInfo, jsEvent) {
     jsEvent.preventDefault();
-    console.log(cellInfo);
 
     // クリックしたセルの情報を使いやすいように変数化
     const targetDayEl = cellInfo.dayEl[0];
@@ -211,11 +212,11 @@ $(function () {
         return left;
       }
       if(target.includes('fc-mon')) {
-        const left = "14%";
+        const left = "14.5%";
         return left;
       }
       if(target.includes('fc-tue')) {
-        const left = "28%";
+        const left = "29%";
         return left;
       }
       if(target.includes('fc-wed')) {
@@ -223,15 +224,15 @@ $(function () {
         return left;
       }
       if(target.includes('fc-thu')) {
-        const left = "57%";
+        const left = "57.5%";
         return left;
       }
       if(target.includes('fc-fri')) {
-        const left = "71%";
+        const left = "71.8%";
         return left;
       }
       if(target.includes('fc-sat')) {
-        const left = "85%";
+        const left = "86%";
         return left;
       }
     };
@@ -259,6 +260,7 @@ $(function () {
       id:"ePop__close",
       css: {
         "display" : "inline-block",
+        "cursor" : "pointer",
       },
       on: {
         click: function() {
@@ -288,7 +290,7 @@ $(function () {
         `<li class="fc-event-container" style="width:100%">
           <a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end"
           id="event__pop-${index}"
-          data-event="${eFoot.title},${event.footprint.componentFootprint.isAllDay},${eFoot.dateProfile.start._i},${eFoot.dateProfile.end._i},${eFoot.color},${eFoot.miscProps.content}"
+          data-event="${eFoot.title}。${event.footprint.componentFootprint.isAllDay}。${eFoot.dateProfile.start._i}。${eFoot.dateProfile.end._i}。${eFoot.color}。${eFoot.miscProps.content}"
           style="background-color:${eFoot.color};"
           href="${eFoot.url}"
           >
@@ -303,7 +305,7 @@ $(function () {
         `<li class="fc-event-container" style="width:100%">
           <a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end"
           id="event__pop-${index}"
-          data-event="${eFoot.title},${event.footprint.componentFootprint.isAllDay},${eFoot.dateProfile.start._i},${eFoot.dateProfile.end},${eFoot.miscProps.content}"
+          data-event="${eFoot.title}。${event.footprint.componentFootprint.isAllDay}。${eFoot.dateProfile.start._i}。${eFoot.dateProfile.end}。${eFoot.miscProps.content}"
           style="background-color:${eFoot.color};"
           href="${eFoot.url}"
           >
@@ -343,9 +345,11 @@ $(function () {
       $('#event__form--edit').prop('action', url);
       // updateアクションになるようにhidden_fieldを子要素の先頭に追加
       $('#event__form--edit').prepend('<input type="hidden" name="_method" value="patch">');
+      // イベント削除ボタンのurlを変更
+      $('#event__deleteBtn').prop('href', url);
       // data属性の内容を変数化
       const t = $(this).data('event');
-      const [title, allDay, start, end, color, content] = t.split(',');
+      const [title, allDay, start, end, color, content] = t.split('。');
       // タイトルのvalue変更
        $('#event__form--edit input[type="text"]').val(title);
       // 終日判定の処理

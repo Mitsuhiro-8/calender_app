@@ -1,9 +1,13 @@
 #mask__edit.hidden
 #event__edit.hidden
   .event__contents
-    .close__btn
+    .event__top
       %butto#event__close--edit
         =icon('fas', 'window-close')
+      .deleteBtn
+        = link_to "", calendar_event_path(""), method: :delete, id: "event__deleteBtn", data: {confirm: "本当に削除してもよろしいですか？"}
+        %i{class:'fas fa-trash-alt'}
+        %span 削除
     %h3 予定の編集
     = form_with model: [@calendar, @event], id: "event__form--edit", local: true do |f|
       -if @event.errors.any?

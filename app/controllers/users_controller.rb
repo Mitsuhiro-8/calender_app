@@ -5,12 +5,13 @@ class UsersController < ApplicationController
   end
 
   def edit
-    session[:calendarPath] = params[:calendarPath]
+    @calendar = Calendar.find_by(id: params[:calendar_id])
   end
   
   def update
+    @calendar = Calendar.find_by(id: params[:calendar_id])
     if current_user.update(user_params)
-      redirect_to calendar_path(session[:calendarPath]), notice: "ユーザー情報を更新しました" 
+      redirect_to calendar_path(@calendar), notice: "ユーザー情報を更新しました" 
     else
       render :edit
     end
