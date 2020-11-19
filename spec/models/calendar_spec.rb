@@ -35,13 +35,4 @@ RSpec.describe Calendar, type: :model do
       end
     end
   end
-
-
-
-  # describe "カレンダーの編集機能" do
-  # end
-
-  # describe "カレンダーの削除機能" do
-  # end
-  
 end
