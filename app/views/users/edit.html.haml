@@ -4,7 +4,7 @@
     = link_to "ログアウト", destroy_user_session_path, method: :delete
     = link_to "戻る", :back
   .AccountPage__form
-    = form_for(current_user) do |f|
+    = form_with model: [@calendar, current_user], local: true do |f|
       .FormField
         .FormField__label
           = f.label :name, '名前'

@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   }
   
   root "calendars#index"
-  # resources :label_colors, only: [:index, :new, :create, :edit, :update], path: 'color'
-  resources :users, only: [:index, :edit, :update]
+
   resources :calendars do
     resources :events, only: [:create, :edit, :update, :destroy]
-    resources :comments
+    resources :users, only: [:edit, :update]
+    resources :comments, only: [:new, :create, :destroy]
   end
   devise_scope :user do
     get '/users/sign_out', to: 'devise/sessions#destroy'
