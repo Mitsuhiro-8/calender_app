@@ -103,7 +103,7 @@ html {
           @include pop();
           padding: 5px 0;
           width: 50px;
-          top: 10%;
+          top: 0%;
           left: 140%;
         }
       
@@ -131,8 +131,8 @@ html {
         @include pop();
         padding: 5px 0;
         width: 70px;
-        top: 10%;
-        left: 140%;
+        top: -10%;
+        left: 150%;
       }
       
       &:hover .pop {
