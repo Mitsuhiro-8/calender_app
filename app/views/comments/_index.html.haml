@@ -2,16 +2,19 @@
   = render "comments/new"
   %h6 コメントリスト
   #comment__list
-    - @comments.order(:created_at).each do |comment|
-      .comment__container
-        .comment__content
-          .comment__top
-            .user__name
-              = comment.user.name + " さん"
-            .comment__time
-              = comment.created_at.strftime("%H:%M")
-          .comment__done
-            = link_to calendar_comment_path(comment.calendar_id, comment.id), method: :delete, class: "comment__trash--btn" do
-              =icon('fas', 'trash-alt')
-        .comment__text
-          = comment.text
+    - if @comments.present?
+      - @comments.order(:created_at).each do |comment|
+        .comment__container
+          .comment__content
+            .comment__top
+              .user__name
+                = comment.user.name + " さん"
+              .comment__time
+                = comment.created_at.strftime("%H:%M")
+            .comment__done
+              = link_to calendar_comment_path(comment.calendar_id, comment.id), method: :delete, class: "comment__trash--btn" do
+                =icon('fas', 'trash-alt')
+          .comment__text
+            = comment.text
+    - else
+      #no__comment コメントはありません

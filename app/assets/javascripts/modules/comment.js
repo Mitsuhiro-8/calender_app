@@ -63,6 +63,7 @@ window.addEventListener("DOMContentLoaded", function() {
       }
 
     const comFormNew = document.getElementById('comment__form--new');
+    const noCom = document.getElementById('no__comment');
 
     comFormNew.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -86,6 +87,9 @@ window.addEventListener("DOMContentLoaded", function() {
         comFormRemoveOpen ();
         comText.value = '';
         buildPop();
+        if (noCom) {
+          noCom.remove();
+        }
       })
 
       .catch(error => {

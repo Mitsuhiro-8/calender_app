@@ -14,34 +14,38 @@
     align-items: center;
 
     // 個別コメントの設定
-  .comment__container {
-    height: 70px;
-    width: 90%;
-    padding: 5px;
-    margin: 5px 0;
-    border-radius: 5px;
-    font-size: xx-small;
-    position: relative;
-    background-color: rgba(121, 218, 248, 0.8);
-    overflow: hidden;
+    .comment__container {
+      height: 70px;
+      width: 90%;
+      padding: 5px;
+      margin: 5px 0;
+      border-radius: 5px;
+      font-size: xx-small;
+      position: relative;
+      background-color: rgba(121, 218, 248, 0.8);
+      overflow: hidden;
 
-    .comment__content {
-      display: flex;
-      justify-content: space-between;
-      
-      .comment__trash--btn {
-        padding: 0;
-        margin-right: 5px;
-        font-size: small;
-        cursor: pointer;
-        user-select: none;
-        color: rgba(243, 66, 60, 0.8);
+      .comment__content {
+        display: flex;
+        justify-content: space-between;
+        
+        .comment__trash--btn {
+          padding: 0;
+          margin-right: 5px;
+          font-size: small;
+          cursor: pointer;
+          user-select: none;
+          color: rgba(243, 66, 60, 0.8);
+        }
+      }
+      .comment__text {
+        overflow-wrap: break-word;
       }
     }
-    .comment__text {
-      overflow-wrap: break-word;
+    #no__comment {
+      margin-top: 10px;
+      font-weight: bold;
     }
-  }
   }
 
 // コメント作成フォームを隠す設定
