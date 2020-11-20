@@ -251,6 +251,10 @@ html {
               display: block;
               z-index: 5;
             }
+            li:hover {
+              border-radius: 0.5em;
+              background-color: rgba(0, 247, 255, 0.7);
+            }
 
             a {
               padding: 3px 5px;
