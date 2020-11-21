@@ -11,6 +11,7 @@ $(function () {
       locale: 'ja',
       events: url + ".json",
       height: "parent",
+      nextDayThreshold: "00:00:00",
       // イベントセルクリック時の予定登録アクション
       eventClick: eventClick,
       // イベントを表示する個数
@@ -22,7 +23,6 @@ $(function () {
       },
       eventLimitText: '',
       eventLimitClick: eventLimitClick,
-      // 月曜日からの表示に変更
       weekMode: 'fixed',
       //カレンダー上部を年月で表示させる
       titleFormat: 'YYYY年 M月',
@@ -163,7 +163,10 @@ $(function () {
       $('#event__form--edit input[name="event[start_time]"]').val(formatStartDay);
       // 終了時間は必須では無いのでif文で囲む
       if (event.end) {
-        const formatEndDay = (event.end._i).slice(0, 10);
+        // allDay:trueの場合、終了時間に1日後になっているので元の日時に戻す処理
+        const oneDayTime = 60*60*24*1000;
+        const endTime = new Date(Date.parse(event.end)).getTime();
+        const formatEndDay = moment(new Date(endTime - oneDayTime)).format('YYYY-MM-DD');
         // 終了時間のvalue変更
         $('#event__form--edit input[name="event[end_time]"]').val(formatEndDay);
       }
@@ -367,7 +370,10 @@ $(function () {
         $('#event__form--edit input[name="event[start_time]"]').val(formatStartDay);
         // 終了時間は必須では無いのでif文で囲む
       if (end) {
-        const formatEndDay = end.slice(0, 10);
+        // allDay:trueの場合、終了時間に1日後になっているので元の日時に戻す処理
+        const oneDayTime = 60*60*24*1000;
+        const endTime = new Date(Date.parse(end)).getTime();
+        const formatEndDay = moment(new Date(endTime - oneDayTime)).format('YYYY-MM-DD');
         // 終了時間のvalue変更
         $('#event__form--edit input[name="event[end_time]"]').val(formatEndDay);
       }

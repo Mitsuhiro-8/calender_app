@@ -120,7 +120,6 @@ window.addEventListener("DOMContentLoaded", function () {
       const formData = new FormData(this);
       const url = this.getAttribute('action');
       const submitBtn = eventFormNew.querySelector('input[type="submit"]');
-  
       fetch(url, {
         method: 'POST',
         body: formData,
