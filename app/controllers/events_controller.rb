@@ -14,7 +14,6 @@ class EventsController < ApplicationController
 
   def create
     @event = @calendar.events.new(event_params)
-    # binding.pry
     if @event.valid? && @event.save
       respond_to do |format|
         format.json

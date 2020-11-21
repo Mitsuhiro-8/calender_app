@@ -1,3 +1,6 @@
 .main
-  = render "header"
-  = render "menu"
+  - @calendars.each do |calendar|
+    %div
+      %h3=calendar.name
+      %hp=calendar.created_at.strftime("%H:%M")
+      = link_to "カレンダーへ",calendar_path(calendar.id)

@@ -454,6 +454,7 @@ tr:first-child > td > .fc-day-grid-event {
 .fc-day-grid-event .fc-content {
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
   }
 
 .fc-day-grid-event .fc-time {

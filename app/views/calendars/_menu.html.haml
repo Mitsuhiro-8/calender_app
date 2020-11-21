@@ -1,14 +1,13 @@
 .menu
   .left__items
-    - if @calendar
-      .comment__item
-        #comment__btn
-          = icon('fas', 'comment-alt')
-          %span.pop コメント作成
-      .event__item
-        #event__btn
-          = icon('fas', 'edit')
-          %span.pop 予定作成
+    .comment__item
+      #comment__btn
+        = icon('fas', 'comment-alt')
+        %span.pop コメント作成
+    .event__item
+      #event__btn
+        = icon('fas', 'edit')
+        %span.pop 予定作成
 
   .right__items
     .calendar__menu

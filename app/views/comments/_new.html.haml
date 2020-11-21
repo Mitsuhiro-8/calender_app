@@ -2,7 +2,7 @@
   = form_with model: [@calendar,@comment], id: "comment__form--new", local: true do |f|
     .formField
       .formField__input
-        = f.text_area :text, maxlengs: "50", placeholder: 'コメントを入力してください'
+        = f.text_area :text, maxlengs: "30", placeholder: 'コメントは30文字以内で入力してください'
       .formField__submit
         = f.button class: 'comment__submit', type: 'submit' do
           =icon('fab', 'telegram')
