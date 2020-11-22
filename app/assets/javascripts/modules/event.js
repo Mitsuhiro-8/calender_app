@@ -282,6 +282,13 @@ window.addEventListener("DOMContentLoaded", function () {
                 <input type="radio" value="rgb(231, 59, 59)">
               </label>
             </li>
+            <li style="background-color: rgba(243, 95, 140, 0.1);">
+              <label>
+                <i class="fas fa-tag" style="color:#FF82B2; width:16px; height: 16px; margin-right: 5px;"></i>
+                <div style="width:85%; margin-right: 5px;">ピンク</div>
+                <input type="radio" value="#FF82B2">
+              </label>
+            </li>
             <li style="background-color: rgba(251, 127, 119, 0.1);">
               <label>
                 <i class="fas fa-tag" style="color:rgb(251, 127, 119); width:16px; height: 16px; margin-right: 5px;"></i>

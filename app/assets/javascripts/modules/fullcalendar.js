@@ -101,31 +101,35 @@ $(function () {
 
     // ラベルカラーに応じたbackground-colorを定義
     function colorJudg(eColor){
-      if (eColor == "#00BCD4") {
+      if (eColor == "#00BCD4") {  // デフォルトカラー
         const color = "rgba(0, 240, 248, 0.1)";
         return color;
       }
-      if (eColor == "#2ECB87") {
+      if (eColor == "#2ECB87") {  // グリーン
         const color = "rgba(46, 204, 135, 0.1)";
         return color;
       }
-      if (eColor  == "#47b2f7") {
+      if (eColor  == "#47b2f7") {  // ブルー
         const color = "rgba(71, 178, 247, 0.1)";
         return color;
       }
-      if (eColor  == "rgb(253, 192, 45)") {
+      if (eColor  == "rgb(253, 192, 45)") {  // イエロー
         const color = "rgba(253, 192, 45, 0.1)";
         return color;
       }
-      if (eColor  == "rgb(231, 59, 59)") {
+      if (eColor  == "rgb(231, 59, 59)") {  // レッド
         const color = "rgba(231, 59, 59, 0.1)";
         return color;
       }
-      if (eColor  == "rgb(251, 127, 119)") {
+      if (eColor  == "#FF82B2") {  // ピンク
+        const color = "rgba(243, 95, 140, 0.1)";
+        return color;
+      }
+      if (eColor  == "rgb(251, 127, 119)") {  // コーラル
         const color = "rgba(251, 127, 119, 0.1)";
         return color;
       }
-      if (eColor  == "rgb(179, 139, 220)") {
+      if (eColor  == "rgb(179, 139, 220)") {  // バイオレット
         const color = "rgba(179, 139, 220, 0.1)";
         return color;
       }
