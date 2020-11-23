@@ -84,7 +84,7 @@ window.addEventListener("DOMContentLoaded", function() {
         const comList = document.getElementById('comment__list');
         const comText = document.getElementById('comment_text');
         comList.insertAdjacentHTML('beforeend', buildCom);
-        comFormRemoveOpen ();
+        // comFormRemoveOpen ();
         comText.value = '';
         buildPop();
         if (noCom) {
