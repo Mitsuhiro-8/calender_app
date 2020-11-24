@@ -68,7 +68,7 @@ $(function () {
   }
   // 上記の関数を実行
   setCalendar();
-  
+
   // オプションタグ内の文字を決定する関数
   function selectLabel(color) {
     if ( color == "#00BCD4") { return "デフォルトカラー"};
@@ -263,7 +263,6 @@ $(function () {
       css: {
         'position': 'absolute',
         'overflow':'auto',
-        'min-height' : '80px',
         'height' : '90%',
         'width' : '140px',
         'background-color': '#fafafa',
