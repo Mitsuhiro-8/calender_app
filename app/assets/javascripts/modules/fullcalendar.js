@@ -68,10 +68,22 @@ $(function () {
   }
   // 上記の関数を実行
   setCalendar();
+  
+  // オプションタグ内の文字を決定する関数
+  function selectLabel(color) {
+    if ( color == "#00BCD4") { return "デフォルトカラー"};
+    if ( color == "#2ECB87") { return "グリーン"};
+    if ( color == "#47b2f7") { return "ブルー"};
+    if ( color == "rgb(253, 192, 45)") { return "イエロー"};
+    if ( color == "rgb(231, 59, 59)") { return "レッド"};
+    if ( color == "#FF82B2") { return "ピンク"};
+    if ( color == "rgb(251, 127, 119)") { return "コーラル"};
+    if ( color == "rgb(179, 139, 220)") { return "バイオレット"};
+  }
 
     // selectタグに追加するoptionタグ生成
   function buildOption(color) {
-    let option =`<option value="${color}">選択しているラベルカラー</option>`
+    let option =`<option value="${color}">${selectLabel(color)}</option>`
     return option;
     }
     // 日にち、時間両方を入力できるinputタグを作成
