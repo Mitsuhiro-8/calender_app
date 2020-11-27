@@ -12,14 +12,17 @@
 ###### ruby 2.6.5
 ###### rails 6.0.3.3
 
-- Gem
-  - devise
-  - jquery-rails
-  - font-awesome-sass
-  - fullcalendar-rails
-  - momentjs-rails
-  - holiday_jp
+###### Gem
+- devise
+- haml-rails
+- jquery-rails
+- font-awesome-sass
+- fullcalendar-rails
+- momentjs-rails
+- holiday_jp
+- factory_bot_rails
+- faker
 
 
 ## Author
-作成者: 公文 充宏
+###### 作成者: 公文 充宏
